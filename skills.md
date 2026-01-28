@@ -1,195 +1,269 @@
-# Skills - Capacidades del Sistema de Agentes PMBOK 8
+# Skills - Sistema de Agentes PMBOK 8
 
 ## Descripción General
 
-Este documento define las capacidades (skills) de cada subagente del sistema. Cada skill representa un conjunto de conocimientos y procedimientos especializados para generar artefactos de gestión de proyectos según el PMBOK 8.
+Este archivo proporciona un índice ejecutivo de las capacidades (skills) del sistema. Cada skill representa un dominio de desempeño del PMBOK 8 del PMI (Project Management Institute) y genera artefactos especializados de gestión de proyectos.
+
+**Para documentación detallada de cada skill**, consulta la carpeta [skills/](skills/) con archivos individuales por dominio.
 
 ---
 
-## Skill: Gobernanza
+## Índice Rápido de Skills
 
-**Propósito:** Generar documentos de autorización, supervisión y control del proyecto.
+### Dominios de Desempeño PMBOK 8
 
-**Artefactos que produce:**
+| Dominio | Artefactos Principales | Cuándo Usar | Documentación |
+|---------|------------------------|-------------|---------------|
+| **Gobernanza** | Acta de Constitución, Registro de Decisiones, Plan de Cambios | Fase de Inicio y autorización del proyecto | [Ver detalles](skills/gobernanza.md) |
+| **Alcance** | WBS, Diccionario WBS, Requisitos, Matriz de Trazabilidad | Fase de Planificación, definición de entregables | [Ver detalles](skills/alcance.md) |
+| **Cronograma** | Gantt, Hitos, Diagrama de Red, Camino Crítico | Fase de Planificación, gestión temporal | [Ver detalles](skills/cronograma.md) |
+| **Finanzas** | Presupuesto, Flujo de Caja, ROI, Análisis EVM | Fase de Planificación y control financiero | [Ver detalles](skills/finanzas.md) |
+| **Interesados** | Registro de Interesados, Matriz Poder/Interés, Plan de Comunicaciones | Desde Inicio, gestión continua de stakeholders | [Ver detalles](skills/interesados.md) |
+| **Recursos** | RACI, Organigrama, Plan de Recursos, Calendario | Fase de Planificación, asignación de equipo | [Ver detalles](skills/recursos.md) |
+| **Riesgo** | Registro de Riesgos, Matriz Probabilidad/Impacto, Plan de Respuesta | Fase de Planificación, gestión continua | [Ver detalles](skills/riesgo.md) |
 
-El subagente de gobernanza genera el Acta de Constitución del Proyecto (Project Charter), que autoriza formalmente el proyecto e incluye objetivos, alcance de alto nivel, supuestos, restricciones y autoridad del director del proyecto. También produce el Registro de Decisiones, documento que captura decisiones clave del proyecto con su fecha, responsable, contexto y resultado. Adicionalmente genera el Plan de Gestión de Cambios, que define el proceso para solicitar, evaluar y aprobar cambios al proyecto, así como los Criterios de Éxito del Proyecto, métricas específicas que determinan si el proyecto cumplió sus objetivos.
+### Framework Complementario
 
-**Proceso de generación:**
-
-Para generar estos artefactos, el subagente primero analiza el requerimiento y justificación del proyecto para extraer objetivos, alcance preliminar y restricciones. Luego identifica a los interesados principales y sus expectativas. Posteriormente estructura el documento según la plantilla del dominio de gobernanza. Finalmente valida que el artefacto cubra todos los elementos requeridos por PMBOK 8.
-
-**Plantilla ubicada en:** `references/gobernanza/plantillas/`
-
----
-
-## Skill: Alcance
-
-**Propósito:** Definir y documentar qué incluye y qué excluye el proyecto.
-
-**Artefactos que produce:**
-
-El Enunciado del Alcance describe en detalle los entregables del proyecto, criterios de aceptación y exclusiones explícitas. La Estructura de Desglose del Trabajo (WBS) descompone jerárquicamente el trabajo total del proyecto en componentes manejables. El Diccionario de la WBS proporciona descripciones detalladas de cada paquete de trabajo de la WBS. La Matriz de Trazabilidad de Requisitos vincula requisitos con su origen, estado y entregable asociado. Finalmente, el Documento de Requisitos lista y describe todos los requisitos del proyecto con su prioridad y estado.
-
-**Proceso de generación:**
-
-El subagente inicia identificando los entregables principales del proyecto. Luego descompone cada entregable en paquetes de trabajo usando el principio de descomposición hasta alcanzar un nivel manejable (regla del 8/80). Posteriormente documenta cada paquete en el diccionario con su descripción, criterios de aceptación y responsable. Finalmente valida completitud contra la justificación del proyecto.
-
-**Niveles de la WBS:**
-- Nivel 1: Proyecto
-- Nivel 2: Fases o entregables principales
-- Nivel 3: Componentes
-- Nivel 4: Paquetes de trabajo
-
-**Plantilla ubicada en:** `references/alcance/plantillas/`
+| Framework | Artefactos Principales | Cuándo Usar | Documentación |
+|-----------|------------------------|-------------|---------------|
+| **Ágil** | Product Backlog, Historias de Usuario, Sprint Backlog, Burndown, Velocity | Proyectos con enfoque ágil, iterativo o híbrido | [Ver detalles](skills/agile.md) |
 
 ---
 
-## Skill: Cronograma
+## Resumen Ejecutivo por Skill
 
-**Propósito:** Planificar y representar la dimensión temporal del proyecto.
+### 1. Gobernanza
+**Propósito**: Autorización, supervisión y toma de decisiones del proyecto.
 
-**Artefactos que produce:**
+**Genera**: Acta de Constitución del Proyecto, Registro de Decisiones, Plan de Gestión de Cambios, Criterios de Éxito.
 
-El Cronograma del Proyecto representa gráficamente las actividades, su duración y secuencia mediante un diagrama de Gantt. La Lista de Hitos identifica los eventos clave del proyecto con sus fechas objetivo. El Diagrama de Red muestra las dependencias entre actividades usando el método del camino crítico. El Calendario del Proyecto define los días y horarios laborables, festivos y restricciones de recursos. El Plan de Gestión del Cronograma establece las políticas y procedimientos para desarrollar y controlar el cronograma.
+**Formato típico**: `.md` (documentos narrativos)
 
-**Proceso de generación:**
-
-El proceso inicia importando los paquetes de trabajo de la WBS generada por el skill de alcance. Luego estima la duración de cada actividad usando técnicas de estimación análoga, paramétrica o de tres puntos. Posteriormente identifica dependencias entre actividades del tipo fin-inicio, inicio-inicio, fin-fin e inicio-fin. Aplica el método del camino crítico para identificar la ruta más larga y calcula las holguras de las actividades no críticas. Finalmente genera la representación gráfica en formato apropiado.
-
-**Técnicas de estimación:**
-- Análoga: Basada en proyectos similares anteriores
-- Paramétrica: Usando relaciones estadísticas
-- Tres puntos: (Optimista + 4×Más probable + Pesimista) / 6
-
-**Plantilla ubicada en:** `references/cronograma/plantillas/`
+**Es el primer skill** que se ejecuta - proporciona la autorización formal del proyecto.
 
 ---
 
-## Skill: Finanzas
+### 2. Alcance
+**Propósito**: Definir qué incluye y qué excluye el proyecto.
 
-**Propósito:** Gestionar los aspectos económicos del proyecto.
+**Genera**: Enunciado del Alcance, WBS (Estructura de Desglose del Trabajo), Diccionario de la WBS, Matriz de Trazabilidad de Requisitos, Documento de Requisitos.
 
-**Artefactos que produce:**
+**Formato típico**: `.json` (WBS jerárquica), `.csv` (diccionario y requisitos)
 
-El Presupuesto del Proyecto detalla los costos estimados por categoría y período, incluyendo reservas para contingencias. El Análisis Costo-Beneficio evalúa la viabilidad financiera comparando costos totales contra beneficios esperados. El Flujo de Caja proyecta las entradas y salidas de efectivo a lo largo del proyecto. El Plan de Gestión de Costos define cómo se estimarán, presupuestarán y controlarán los costos. El Análisis del Valor Ganado proporciona métricas de desempeño como CPI y SPI durante la ejecución.
-
-**Proceso de generación:**
-
-El subagente inicia estimando costos por paquete de trabajo de la WBS. Luego agrega los costos en categorías tales como personal, materiales, servicios y equipos. Posteriormente calcula reservas de contingencia basadas en el análisis de riesgos, típicamente entre 5% y 15%. Desarrolla el flujo de caja alineado con el cronograma. Finalmente calcula métricas financieras como ROI, VAN y TIR si se requiere análisis de viabilidad.
-
-**Métricas clave:**
-- ROI = (Beneficio - Costo) / Costo × 100
-- VAN = Valor presente de flujos futuros - Inversión inicial
-- Período de recuperación = Tiempo para recuperar la inversión
-
-**Plantilla ubicada en:** `references/finanzas/plantillas/`
+**Usa salidas de**: Gobernanza (objetivos del Acta), Interesados (requisitos de stakeholders)
 
 ---
 
-## Skill: Interesados
+### 3. Cronograma
+**Propósito**: Planificar la dimensión temporal del proyecto.
 
-**Propósito:** Identificar, analizar y planificar el compromiso de los stakeholders.
+**Genera**: Cronograma del Proyecto (Gantt), Lista de Hitos, Diagrama de Red, Calendario del Proyecto, Camino Crítico.
 
-**Artefactos que produce:**
+**Formato típico**: `.csv` (datos tabulares para Gantt)
 
-El Registro de Interesados identifica a todas las personas y organizaciones que pueden afectar o ser afectadas por el proyecto, incluyendo su información de contacto, rol, interés e influencia. La Matriz Poder/Interés clasifica a los interesados en cuadrantes para definir estrategias de gestión diferenciadas. El Plan de Gestión de Interesados documenta las estrategias para incrementar el apoyo y reducir resistencias. El Plan de Comunicaciones define qué información se compartirá con quién, cuándo, cómo y con qué frecuencia. La Matriz de Comunicaciones especifica los canales, formatos y responsables de cada tipo de comunicación.
-
-**Proceso de generación:**
-
-El proceso comienza identificando a todos los interesados potenciales del proyecto. Luego analiza el nivel de poder e interés de cada uno para ubicarlos en la matriz. Posteriormente define la estrategia de gestión para cada cuadrante: gestionar de cerca a los de alto poder y alto interés, mantener satisfechos a los de alto poder y bajo interés, mantener informados a los de bajo poder y alto interés, y monitorear a los de bajo poder y bajo interés. Finalmente desarrolla el plan de comunicaciones alineado con las estrategias definidas.
-
-**Cuadrantes de la matriz:**
-- Alto Poder / Alto Interés: Gestionar de cerca
-- Alto Poder / Bajo Interés: Mantener satisfechos
-- Bajo Poder / Alto Interés: Mantener informados
-- Bajo Poder / Bajo Interés: Monitorear
-
-**Plantilla ubicada en:** `references/interesados/plantillas/`
+**Usa salidas de**: Alcance (paquetes de trabajo), Recursos (disponibilidad)
 
 ---
 
-## Skill: Recursos
+### 4. Finanzas
+**Propósito**: Gestionar aspectos económicos del proyecto.
 
-**Propósito:** Planificar y gestionar los recursos humanos y materiales del proyecto.
+**Genera**: Presupuesto, Análisis Costo-Beneficio, Flujo de Caja, Análisis del Valor Ganado (EVM), Métricas financieras (ROI, VAN, TIR).
 
-**Artefactos que produce:**
+**Formato típico**: `.csv` (presupuestos y métricas)
 
-El Plan de Gestión de Recursos define cómo se identificarán, adquirirán, gestionarán y liberarán los recursos del proyecto. La Matriz RACI asigna responsabilidades específicas para cada entregable y actividad usando los roles de Responsable, Aprobador, Consultado e Informado. El Organigrama del Proyecto representa gráficamente la estructura del equipo y líneas de reporte. El Calendario de Recursos muestra la disponibilidad de cada recurso a lo largo del proyecto. El Plan de Desarrollo del Equipo describe las actividades de capacitación y desarrollo de competencias.
-
-**Proceso de generación:**
-
-El subagente inicia identificando los roles necesarios basándose en la WBS y el cronograma. Luego define las responsabilidades de cada rol usando la matriz RACI. Posteriormente estima las cantidades y períodos de necesidad de cada recurso. Identifica las competencias requeridas y compara contra las disponibles para identificar brechas. Finalmente desarrolla el plan de adquisición y desarrollo de recursos.
-
-**Roles RACI:**
-- R (Responsible): Quien ejecuta el trabajo
-- A (Accountable): Quien aprueba, solo uno por actividad
-- C (Consulted): Quien aporta información
-- I (Informed): Quien debe conocer el resultado
-
-**Plantilla ubicada en:** `references/recursos/plantillas/`
+**Usa salidas de**: Alcance (paquetes a costear), Cronograma (distribución temporal), Recursos (tasas), Riesgo (reservas)
 
 ---
 
-## Skill: Riesgo
+### 5. Interesados
+**Propósito**: Identificar, analizar y gestionar stakeholders.
 
-**Propósito:** Identificar, analizar y planificar respuestas a la incertidumbre del proyecto.
+**Genera**: Registro de Interesados, Matriz Poder/Interés, Plan de Gestión de Interesados, Plan de Comunicaciones, Matriz de Comunicaciones.
 
-**Artefactos que produce:**
+**Formato típico**: `.csv` (registro y matrices)
 
-El Registro de Riesgos documenta todos los riesgos identificados con su descripción, causa, probabilidad, impacto y estado. La Matriz de Probabilidad e Impacto clasifica los riesgos por su severidad para priorizar la atención. El Plan de Respuesta a Riesgos documenta las estrategias y acciones específicas para cada riesgo priorizado. El Plan de Gestión de Riesgos define el enfoque, metodología, roles y umbrales para la gestión de riesgos. El Análisis de Oportunidades identifica eventos positivos potenciales y estrategias para maximizar su probabilidad o impacto.
-
-**Proceso de generación:**
-
-El proceso comienza identificando riesgos mediante técnicas como lluvia de ideas, análisis de supuestos, revisión de lecciones aprendidas y juicio de expertos. Luego realiza análisis cualitativo asignando probabilidad e impacto a cada riesgo. Posteriormente realiza análisis cuantitativo para los riesgos de alta prioridad si se requiere mayor precisión. Define la estrategia de respuesta apropiada: evitar, mitigar, transferir o aceptar para amenazas; explotar, mejorar, compartir o aceptar para oportunidades. Finalmente documenta los disparadores, acciones de respuesta y responsables.
-
-**Estrategias de respuesta a amenazas:**
-- Evitar: Eliminar la causa del riesgo
-- Mitigar: Reducir probabilidad o impacto
-- Transferir: Pasar la responsabilidad a un tercero
-- Aceptar: Reconocer el riesgo sin acción proactiva
-
-**Plantilla ubicada en:** `references/riesgo/plantillas/`
+**Usa salidas de**: Gobernanza (stakeholders iniciales del Acta)
 
 ---
 
-## Skill: Ágil
+### 6. Recursos
+**Propósito**: Planificar y gestionar recursos humanos y materiales.
 
-**Propósito:** Generar artefactos específicos para enfoques ágiles e híbridos.
+**Genera**: Plan de Gestión de Recursos, Matriz RACI, Organigrama del Proyecto, Calendario de Recursos, Plan de Desarrollo del Equipo.
 
-**Artefactos que produce:**
+**Formato típico**: `.csv` (RACI y calendario), `.json` (organigrama jerárquico)
 
-El Product Backlog lista ordenada de todo lo que se necesita en el producto, priorizada por valor. Las Historias de Usuario describen funcionalidades desde la perspectiva del usuario en formato "Como [rol], quiero [funcionalidad] para [beneficio]". El Sprint Backlog contiene los elementos seleccionados para el sprint actual con las tareas necesarias. La Definition of Done define los criterios que debe cumplir un elemento para considerarse terminado. El Burndown Chart muestra el trabajo restante a lo largo del tiempo para visualizar el progreso. La Velocity mide la cantidad de trabajo completado por sprint para predecir capacidad futura.
+**Usa salidas de**: Alcance (roles necesarios), Cronograma (necesidades temporales)
 
-**Proceso de generación:**
+---
 
-El subagente inicia traduciendo los requisitos del proyecto a historias de usuario con criterios de aceptación. Luego prioriza las historias usando técnicas como MoSCoW o valor de negocio versus esfuerzo. Posteriormente estima el tamaño de las historias usando puntos de historia o talla de camiseta. Agrupa las historias en releases y sprints según la velocidad estimada o conocida. Finalmente genera los tableros y gráficos de seguimiento apropiados.
+### 7. Riesgo
+**Propósito**: Gestionar amenazas y oportunidades.
 
-**Formato de historia de usuario:**
+**Genera**: Registro de Riesgos, Matriz de Probabilidad e Impacto, Plan de Respuesta a Riesgos, Análisis de Oportunidades, Cálculo de Reservas.
+
+**Formato típico**: `.csv` (registro de riesgos y matrices)
+
+**Usa salidas de**: Todos los dominios (cada dominio tiene riesgos asociados)
+
+---
+
+### 8. Ágil
+**Propósito**: Generar artefactos para enfoques ágiles e híbridos.
+
+**Genera**: Product Backlog, Historias de Usuario, Sprint Backlog, Definition of Done, Burndown Chart, Velocity, Product Roadmap, Retrospective Notes.
+
+**Formato típico**: `.csv` (backlogs y métricas), `.md` (historias y retrospectivas)
+
+**Alternativa a**: Alcance tradicional (backlog vs WBS), Cronograma tradicional (sprints vs Gantt)
+
+---
+
+## Flujo de Dependencias
+
+Los skills se ejecutan en un flujo natural:
+
 ```
-Como [tipo de usuario]
-Quiero [funcionalidad]
-Para [beneficio/valor]
-
-Criterios de aceptación:
-- [Criterio 1]
-- [Criterio 2]
+┌─────────────┐
+│ Gobernanza  │ (Autorización)
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│ Interesados │ (Identificación)
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│   Alcance   │ (Definición)  ←──→  ┌────────┐
+└──────┬──────┘                     │  Ágil  │ (Alternativa)
+       │                             └────────┘
+       ▼
+┌─────────────┐
+│ Cronograma  │ (Temporalización)
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│  Finanzas   │ (Presupuestación)
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│  Recursos   │ (Asignación)
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│   Riesgo    │ (Análisis)
+└─────────────┘
 ```
 
-**Técnicas de priorización:**
-- MoSCoW: Must have, Should have, Could have, Won't have
-- Valor/Esfuerzo: Matriz que prioriza alto valor con bajo esfuerzo
-- Kano: Clasifica en básico, desempeño y atractivo
+---
 
-**Plantilla ubicada en:** `references/agile/plantillas/`
+## Formatos de Salida
+
+El sistema optimiza los formatos según el tipo de información:
+
+| Tipo de Información | Formato | Razón |
+|---------------------|---------|-------|
+| Tablas, registros, matrices | `.csv` | Fácil filtrado, ordenamiento, análisis |
+| Estructuras jerárquicas | `.json` | WBS, organigramas, estructuras anidadas |
+| Documentos narrativos | `.md` | Actas, planes, informes, documentación |
+
+**Principio**: Minimizar tokens, maximizar utilidad.
 
 ---
 
-## Integración de Skills
+## Enfoques de Ciclo de Vida
 
-Los skills no operan de forma aislada sino que se integran según las dependencias naturales entre los dominios de desempeño del PMBOK 8.
+Los skills se adaptan según el enfoque del proyecto:
 
-**Flujo de dependencias:**
+### Predictivo (Cascada)
+- Documentación completa y detallada desde el inicio
+- WBS exhaustiva, Gantt detallado, presupuesto preciso
+- Control de cambios formal
+- Todos los dominios PMBOK tradicionales
 
-El proceso típico inicia con Gobernanza para autorizar el proyecto mediante el Acta de Constitución. Esto habilita a Interesados para identificar y analizar a los stakeholders clave. Con esa información, Alcance define qué se va a entregar. A partir del alcance definido, Cronograma establece cuándo se entregará. Con el cronograma establecido, Finanzas determina cuánto costará. Recursos entonces define quién lo hará y con qué. Finalmente, Riesgo analiza qué podría salir mal o bien y cómo responder.
+### Ágil
+- Artefactos livianos y adaptativos
+- Product Backlog en lugar de WBS
+- Sprints en lugar de Gantt
+- Skill Ágil como principal
 
-**Para enfoques ágiles:** El skill Ágil puede ejecutarse en paralelo o como alternativa a los skills de Alcance y Cronograma tradicionales, generando artefactos más livianos y adaptativos.
+### Iterativo/Incremental
+- Documentación evolutiva
+- Refinamiento progresivo por iteración
+- Balance entre planificación y adaptación
+
+### Híbrido
+- Combina elementos de predictivo y ágil
+- Planificación predictiva + desarrollo ágil
+- Gobernanza tradicional + entregas iterativas
+
+---
+
+## Principios PMBOK 8
+
+Todos los skills están alineados con los 6 principios fundamentales:
+
+1. **Adoptar una Visión Holística** - Considerar el proyecto como sistema integrado
+2. **Enfocarse en el Valor** - Cada entregable aporta valor medible
+3. **Integrar la Calidad** - Calidad embebida en procesos y entregables
+4. **Liderazgo Responsable** - Toma de decisiones éticas y documentadas
+5. **Integrar Sostenibilidad** - Considerar impactos ambientales, sociales y económicos
+6. **Construir Cultura Empoderada** - Fomentar equipos colaborativos
+
+---
+
+## Archivos Relacionados
+
+- **[SKILL.md](SKILL.md)** - Configuración del skill para Claude Code
+- **[agent.md](agent.md)** - Lógica del agente coordinador principal
+- **[skills/](skills/)** - Documentación detallada de cada skill (RECOMENDADO)
+- **[subagents/](subagents/)** - Implementación operacional de agentes
+- **[references/](references/)** - Plantillas y guías de referencia por dominio
+
+---
+
+## Cómo Usar Este Sistema
+
+### Para generar un artefacto específico:
+1. Consulta la tabla de índice para identificar el skill apropiado
+2. Lee la documentación detallada en [skills/nombre-del-skill.md](skills/)
+3. Revisa las plantillas en `references/[dominio]/plantillas/`
+4. El agente coordinador orquestará la generación
+
+### Para planificar un proyecto completo:
+1. Inicia con **Gobernanza** (Acta de Constitución)
+2. Identifica **Interesados** clave
+3. Define **Alcance** (WBS) o usa **Ágil** (Product Backlog)
+4. Planifica **Cronograma**, **Finanzas** y **Recursos**
+5. Analiza **Riesgos** y define respuestas
+
+### Para proyectos ágiles:
+1. Inicia con **Gobernanza** (Visión del producto)
+2. Identifica **Interesados** (Product Owner, stakeholders)
+3. Genera **Ágil** (Product Backlog con historias de usuario)
+4. Planifica **Finanzas** (presupuesto por sprint/release)
+5. Define **Recursos** (equipo Scrum) y **Riesgo** (impedimentos)
+
+---
+
+## Documentación Completa
+
+Para información exhaustiva de cada skill, incluyendo:
+- Proceso detallado de generación
+- Técnicas y metodologías específicas
+- Ejemplos completos de cada artefacto
+- Métricas de calidad
+- Errores comunes a evitar
+- Fórmulas y cálculos
+
+**Visita**: [skills/README.md](skills/README.md) - Índice completo de documentación
+
+---
+
+**Versión del Sistema**: PMBOK 8 (PMI)
+**Última actualización**: 2026-01-28
