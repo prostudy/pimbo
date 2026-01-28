@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PM Docs IA - Generador de Artefactos PMBOK 8</title>
+    <title>PimBo - Generador de Artefactos PMBOK 8</title>
     <style>
         * {
             margin: 0;
@@ -39,9 +39,15 @@
             margin-bottom: 10px;
         }
 
-        .header p {
+        .header .subtitle {
             font-size: 1.1em;
             opacity: 0.9;
+        }
+
+        .header .version {
+            font-size: 0.9em;
+            opacity: 0.7;
+            margin-top: 10px;
         }
 
         .content {
@@ -92,6 +98,68 @@
         textarea {
             resize: vertical;
             min-height: 100px;
+        }
+
+        /* Provider selector */
+        .provider-selector {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .provider-option {
+            position: relative;
+            border: 3px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .provider-option:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .provider-option.selected {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .provider-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .provider-logo {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .provider-name {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .provider-description {
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .provider-features {
+            margin-top: 10px;
+            font-size: 0.85em;
+            color: #888;
+        }
+
+        .provider-features li {
+            margin-left: 20px;
+            margin-top: 5px;
         }
 
         .artifacts-grid {
@@ -258,6 +326,24 @@
             background: #c7d2fe;
         }
 
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .info-box.warning {
+            background: #fff3cd;
+            border-left-color: #ffc107;
+        }
+
+        .info-box.success {
+            background: #d4edda;
+            border-left-color: #28a745;
+        }
+
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 1.8em;
@@ -266,17 +352,62 @@
             .artifacts-grid {
                 grid-template-columns: 1fr;
             }
+
+            .provider-selector {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🚀 PM Docs IA</h1>
-            <p>Generador Inteligente de Artefactos de Gestión de Proyectos PMBOK 8</p>
+            <h1>🚀 PimBo</h1>
+            <p class="subtitle">Generador Inteligente de Artefactos de Gestión de Proyectos PMBOK 8</p>
+            <p class="version">Powered by Claude AI & Google Gemini</p>
         </div>
 
         <div class="content">
+            <!-- SECCIÓN 0: Selección de Proveedor de IA -->
+            <div class="section">
+                <h2>🤖 Proveedor de IA</h2>
+                <p class="help-text">Selecciona qué inteligencia artificial usarás para generar los artefactos</p>
+
+                <div class="provider-selector">
+                    <label class="provider-option selected" data-provider="claude">
+                        <input type="radio" name="provider" value="claude" checked>
+                        <div class="provider-logo">🧠</div>
+                        <div class="provider-name">Claude AI</div>
+                        <div class="provider-description">
+                            Excelente para documentos narrativos y análisis detallado
+                        </div>
+                        <ul class="provider-features">
+                            <li>Genera archivos directamente</li>
+                            <li>Mejor para documentación compleja</li>
+                            <li>Análisis contextual profundo</li>
+                        </ul>
+                    </label>
+
+                    <label class="provider-option" data-provider="gemini">
+                        <input type="radio" name="provider" value="gemini">
+                        <div class="provider-logo">💎</div>
+                        <div class="provider-name">Google Gemini</div>
+                        <div class="provider-description">
+                            Ideal para datos estructurados y visualización
+                        </div>
+                        <ul class="provider-features">
+                            <li>Muestra artefactos visualmente</li>
+                            <li>Genera archivo ZIP descargable</li>
+                            <li>Excelente para tablas y matrices</li>
+                        </ul>
+                    </label>
+                </div>
+
+                <div id="providerInfo" class="info-box" style="margin-top: 20px;">
+                    <strong>Usando Claude AI:</strong> Los archivos se generarán automáticamente en tu directorio. No se mostrarán en el chat.
+                </div>
+            </div>
+
             <!-- SECCIÓN 1: Información del Proyecto -->
             <div class="section">
                 <h2>📋 Información del Proyecto</h2>
@@ -487,23 +618,26 @@
 
             <!-- BOTÓN GENERAR -->
             <div class="section" style="text-align: center;">
-                <button class="btn" onclick="generatePrompt()">✨ Generar Prompt para Claude</button>
+                <button class="btn" onclick="generatePrompt()">
+                    <span id="btnText">✨ Generar Prompt</span>
+                </button>
             </div>
 
             <!-- OUTPUT -->
             <div class="output-section" id="outputSection">
                 <h2 style="color: #667eea; margin-bottom: 20px;">📝 Prompt Generado</h2>
-                <p style="margin-bottom: 15px; color: #666;">
+                <p id="outputInstructions" style="margin-bottom: 15px; color: #666;">
                     Copia el siguiente texto y pégalo en Claude Code o Claude.ai para generar tus artefactos:
                 </p>
                 <div class="prompt-output" id="promptOutput"></div>
-                <button class="btn copy-btn" onclick="copyPrompt()">📋 Copiar Prompt</button>
+                <button class="btn copy-btn" onclick="copyPrompt(event)">📋 Copiar Prompt</button>
             </div>
         </div>
     </div>
 
     <script>
         let selectedPhase = '';
+        let selectedProvider = 'claude';
 
         // Templates predefinidos
         const templates = {
@@ -528,6 +662,41 @@
                 justification: 'Reducir costos de infraestructura en 30%, mejorar disponibilidad a 99.9% y habilitar escalabilidad automática para picos de demanda.'
             }
         };
+
+        function selectProvider(provider) {
+            selectedProvider = provider;
+
+            // Update UI
+            document.querySelectorAll('.provider-option').forEach(option => {
+                option.classList.remove('selected');
+                // Find the one that contains the selected provider's radio button
+                const radio = option.querySelector('input[type="radio"]');
+                if (radio && radio.value === provider) {
+                    option.classList.add('selected');
+                }
+            });
+
+            // Update radio
+            document.querySelector(`input[value="${provider}"]`).checked = true;
+
+            // Update info box
+            const infoBox = document.getElementById('providerInfo');
+            if (provider === 'claude') {
+                infoBox.className = 'info-box';
+                infoBox.innerHTML = '<strong>Usando Claude AI:</strong> Los archivos se generarán automáticamente en tu directorio. No se mostrarán en el chat.';
+            } else {
+                infoBox.className = 'info-box warning';
+                infoBox.innerHTML = '<strong>Usando Google Gemini:</strong> Los artefactos se mostrarán visualmente en el chat para que puedas copiarlos. Al final se generará un archivo ZIP descargable con todos los documentos.';
+            }
+
+            // Update button text
+            const btnText = document.getElementById('btnText');
+            if (provider === 'claude') {
+                btnText.textContent = '✨ Generar Prompt para Claude';
+            } else {
+                btnText.textContent = '✨ Generar Prompt para Gemini';
+            }
+        }
 
         function loadTemplate(templateName) {
             const template = templates[templateName];
@@ -566,6 +735,14 @@
         document.querySelectorAll('.artifact-card input[type="checkbox"]').forEach(checkbox => {
             checkbox.addEventListener('change', function() {
                 updateCardStyle(this.id);
+            });
+        });
+
+        // Event listeners para provider selector
+        document.querySelectorAll('.provider-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const provider = this.getAttribute('data-provider');
+                selectProvider(provider);
             });
         });
 
@@ -618,7 +795,7 @@
                 return;
             }
 
-            // Generar prompt
+            // Generar prompt según proveedor
             const phaseLabels = {
                 inicio: 'Inicio',
                 planificacion: 'Planificación',
@@ -634,7 +811,33 @@
                 iterativo: 'Iterativo/Incremental'
             };
 
-            const prompt = `Actúa como el agente coordinador del sistema PM Docs IA especializado en PMBOK 8.
+            let prompt = '';
+
+            if (selectedProvider === 'claude') {
+                prompt = generateClaudePrompt(projectName, description, justification, phaseLabels[selectedPhase], approachLabels[approach], selectedArtifacts);
+            } else {
+                prompt = generateGeminiPrompt(projectName, description, justification, phaseLabels[selectedPhase], approachLabels[approach], selectedArtifacts);
+            }
+
+            // Mostrar output
+            document.getElementById('promptOutput').textContent = prompt;
+
+            // Update instructions
+            const instructions = document.getElementById('outputInstructions');
+            if (selectedProvider === 'claude') {
+                instructions.textContent = 'Copia el siguiente texto y pégalo en Claude Code o Claude.ai para generar tus artefactos:';
+            } else {
+                instructions.innerHTML = '<strong>Instrucciones para Gemini:</strong><br>1. Copia el prompt completo<br>2. Pégalo en Google Gemini (gemini.google.com o tu GEM personalizada)<br>3. Los artefactos se mostrarán visualmente para copiar<br>4. Al final recibirás un link para descargar el ZIP con todos los archivos';
+            }
+
+            document.getElementById('outputSection').classList.add('active');
+            document.getElementById('outputSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function generateClaudePrompt(projectName, description, justification, phase, approach, artifacts) {
+            const projectCode = projectName.toUpperCase().replace(/\s+/g, '-');
+
+            return `Actúa como el agente coordinador del sistema PimBo especializado en PMBOK 8.
 
 INFORMACIÓN DEL PROYECTO:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -647,13 +850,13 @@ ${description}
 Justificación / Caso de Negocio:
 ${justification}
 
-Fase del Ciclo de Vida: ${phaseLabels[selectedPhase]}
-Enfoque del Proyecto: ${approachLabels[approach]}
+Fase del Ciclo de Vida: ${phase}
+Enfoque del Proyecto: ${approach}
 
 ARTEFACTOS A GENERAR:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-${selectedArtifacts.map((artifact, index) => `${index + 1}. ${artifact}`).join('\n')}
+${artifacts.map((artifact, index) => `${index + 1}. ${artifact}`).join('\n')}
 
 INSTRUCCIONES:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -661,7 +864,7 @@ INSTRUCCIONES:
 1. Lee el contexto del proyecto proporcionado
 2. Activa los subagentes apropiados según los artefactos solicitados
 3. Genera cada artefacto siguiendo las plantillas en /references/
-4. Guarda cada archivo con el formato: ${projectName.toUpperCase().replace(/\s+/g, '-')}-[artefacto]-v1.[ext]
+4. Guarda cada archivo con el formato: ${projectCode}-[artefacto]-v1.[ext]
 5. Usa los formatos especificados en config-salidas.md:
    - CSV para registros, matrices y cronogramas
    - JSON para estructuras jerárquicas (WBS)
@@ -670,28 +873,162 @@ INSTRUCCIONES:
 IMPORTANTE:
 - NO muestres el contenido en el chat, solo genera los archivos
 - Confirma cada archivo generado con: ✓ Archivo generado: [nombre]
-- Adapta los artefactos al enfoque ${approachLabels[approach]}
+- Adapta los artefactos al enfoque ${approach}
 
 Genera los artefactos ahora.`;
-
-            // Mostrar output
-            document.getElementById('promptOutput').textContent = prompt;
-            document.getElementById('outputSection').classList.add('active');
-            document.getElementById('outputSection').scrollIntoView({ behavior: 'smooth' });
         }
 
-        function copyPrompt() {
-            const promptText = document.getElementById('promptOutput').textContent;
-            navigator.clipboard.writeText(promptText).then(() => {
-                const btn = event.target;
-                const originalText = btn.textContent;
-                btn.textContent = '✅ Copiado!';
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                }, 2000);
-            }).catch(err => {
+        function generateGeminiPrompt(projectName, description, justification, phase, approach, artifacts) {
+            const projectCode = projectName.toUpperCase().replace(/\s+/g, '-');
+
+            return `Eres PimBo, un agente experto en generar documentación de proyectos según PMBOK 8.
+
+🎯 INFORMACIÓN DEL PROYECTO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📋 Proyecto: ${projectName}
+
+📝 Descripción:
+${description}
+
+💼 Justificación:
+${justification}
+
+⚙️ Configuración:
+• Fase: ${phase}
+• Enfoque: ${approach}
+
+📦 ARTEFACTOS A GENERAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+${artifacts.map((artifact, index) => `${index + 1}. ${artifact}`).join('\n')}
+
+📋 INSTRUCCIONES PARA GEMINI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Para cada artefacto solicitado:
+
+1. **MOSTRAR VISUALMENTE**: Genera el contenido completo del artefacto con formato claro
+
+2. **FORMATO DE PRESENTACIÓN**:
+
+   ╔═══════════════════════════════════════════════════════╗
+   ║  📄 NOMBRE DEL ARTEFACTO                              ║
+   ║  Archivo: ${projectCode}-[nombre]-v1.[extensión]     ║
+   ╚═══════════════════════════════════════════════════════╝
+
+   [CONTENIDO COMPLETO DEL ARTEFACTO AQUÍ]
+
+   ─────────────────────────────────────────────────────────
+   ✅ Listo para copiar y guardar
+   ─────────────────────────────────────────────────────────
+
+3. **GUÍAS POR TIPO DE ARTEFACTO**:
+
+   📄 DOCUMENTOS MARKDOWN (.md):
+   - Acta de Constitución
+   - Plan de Comunicaciones
+   - Historias de Usuario
+   → Formato: Markdown bien estructurado con títulos, listas y tablas
+
+   📊 TABLAS CSV (.csv):
+   - Cronograma Gantt
+   - Presupuesto
+   - Registro de Interesados
+   - Matriz RACI
+   - Registro de Riesgos
+   - Product Backlog
+   → Formato: CSV con encabezados claros, datos completos
+   → Ejemplo:
+   ID,Columna1,Columna2,Columna3
+   1,Dato1,Dato2,Dato3
+   2,Dato4,Dato5,Dato6
+
+   🌳 ESTRUCTURAS JSON (.json):
+   - WBS (Estructura de Desglose del Trabajo)
+   → Formato: JSON bien formateado, estructura jerárquica clara
+
+4. **CONTENIDO DE CALIDAD**:
+   - Usa el contexto del proyecto para personalizar cada artefacto
+   - Genera datos realistas y específicos para "${projectName}"
+   - Adapta al enfoque ${approach}
+   - Incluye detalles profesionales y completos
+
+5. **AL FINALIZAR - ARCHIVO ZIP**:
+
+   Después de mostrar todos los artefactos, genera un resumen:
+
+   ╔═══════════════════════════════════════════════════════╗
+   ║  📦 DESCARGA TODOS LOS ARCHIVOS                       ║
+   ╚═══════════════════════════════════════════════════════╝
+
+   Archivos generados para ${projectName}:
+   ${artifacts.map((artifact, index) => `${index + 1}. ${projectCode}-[nombre]-v1.[ext]`).join('\n   ')}
+
+   🔽 DESCARGA EL ZIP:
+   [Genera un archivo ZIP con todos los artefactos y proporciona el link de descarga]
+
+IMPORTANTE:
+- Genera TODOS los artefactos solicitados
+- Muestra el contenido COMPLETO de cada uno (no resúmenes)
+- Usa formato visual claro para fácil copia
+- Proporciona el ZIP al final
+
+¡Comienza a generar los artefactos ahora! 🚀`;
+        }
+
+        function copyPrompt(event) {
+            const promptOutput = document.getElementById('promptOutput');
+            const promptText = promptOutput.textContent;
+
+            // Try modern clipboard API first
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(promptText).then(() => {
+                    showCopySuccess(event.target);
+                }).catch(err => {
+                    // Fallback to older method
+                    copyToClipboardFallback(promptOutput, event.target);
+                });
+            } else {
+                // Use fallback method directly
+                copyToClipboardFallback(promptOutput, event.target);
+            }
+        }
+
+        function copyToClipboardFallback(element, btn) {
+            try {
+                // Create a temporary textarea
+                const textarea = document.createElement('textarea');
+                textarea.value = element.textContent;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+
+                // Select and copy
+                textarea.select();
+                textarea.setSelectionRange(0, 99999); // For mobile devices
+
+                const successful = document.execCommand('copy');
+                document.body.removeChild(textarea);
+
+                if (successful) {
+                    showCopySuccess(btn);
+                } else {
+                    alert('Error al copiar. Por favor, selecciona y copia manualmente.');
+                }
+            } catch (err) {
                 alert('Error al copiar. Por favor, selecciona y copia manualmente.');
-            });
+            }
+        }
+
+        function showCopySuccess(btn) {
+            const originalText = btn.textContent;
+            btn.textContent = '✅ ¡Copiado!';
+            btn.style.background = '#38a169';
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = '';
+            }, 2000);
         }
     </script>
 </body>
