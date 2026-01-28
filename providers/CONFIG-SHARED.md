@@ -1,0 +1,1 @@
+../config-salidas.md

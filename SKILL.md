@@ -1,6 +1,6 @@
 ---
 name: pmbok8-project-management
-description: Sistema de agentes para generación automática de artefactos de gestión de proyectos basado en PMBOK 8 del PMI. Usar cuando se necesite crear documentación de proyectos como Actas de Constitución, WBS, Registros de Riesgos, Matrices RACI, Product Backlogs, Cronogramas, Presupuestos y cualquier otro entregable de gestión de proyectos. Soporta enfoques predictivos, ágiles e híbridos adaptando los artefactos según el ciclo de vida del proyecto.
+description: Sistema de agentes para generación automática de artefactos de gestión de proyectos basado en PMBOK 8 del PMI. Usar cuando se necesite crear documentación de proyectos como Actas de Constitución, WBS, Registros de Riesgos, Matrices RACI, Product Backlogs, Cronogramas, Presupuestos y cualquier otro entregable de gestión de proyectos. Soporta enfoques predictivos, ágiles e híbridos adaptando los artefactos según el ciclo de vida del proyecto. NUEVO: Incluye soporte multi-proveedor para Claude (narrativa/análisis) y Gemini (datos estructurados/cuantitativos).
 ---
 
 # Sistema de Agentes para Gestión de Proyectos PMBOK 8
@@ -13,21 +13,23 @@ Utilice este skill cuando necesite generar documentación de gestión de proyect
 
 ## Estructura del Sistema
 
-El sistema está organizado en tres niveles. El agente coordinador (agent.md) recibe los requerimientos del proyecto y determina qué artefactos generar según la fase del ciclo de vida. Los subagentes especializados en el directorio subagents contienen las instrucciones detalladas para cada dominio de desempeño del PMBOK 8. Las referencias y plantillas en el directorio references proporcionan las plantillas base para cada tipo de artefacto.
+El sistema está organizado en tres niveles con soporte multi-proveedor. El agente coordinador (agent.md) recibe los requerimientos del proyecto y determina qué artefactos generar según la fase del ciclo de vida. Los subagentes especializados en el directorio subagents contienen las instrucciones detalladas para cada dominio de desempeño del PMBOK 8. Las referencias y plantillas en el directorio references proporcionan las plantillas base para cada tipo de artefacto. El directorio providers contiene instrucciones optimizadas para diferentes proveedores de IA (Claude, Gemini).
 
 ## Flujo de Trabajo
 
 Para generar artefactos de gestión de proyectos, siga estos pasos:
 
-Primero, identifique la fase del ciclo de vida del proyecto. Las fases posibles son Inicio, Planificación, Ejecución, Monitoreo y Control, o Cierre.
+Primero, seleccione el proveedor de IA apropiado. Use providers/INSTRUCCION-INICIO-CLAUDE.md para documentos narrativos y análisis, o providers/INSTRUCCION-INICIO-GEMINI.md para datos estructurados y análisis cuantitativos.
 
-Segundo, determine el enfoque del proyecto. Los enfoques disponibles son Predictivo (tradicional/cascada), Ágil (Scrum, Kanban), o Híbrido (combinación).
+Segundo, identifique la fase del ciclo de vida del proyecto. Las fases posibles son Inicio, Planificación, Ejecución, Monitoreo y Control, o Cierre.
 
-Tercero, consulte el agente coordinador leyendo el archivo agent.md para entender la lógica de coordinación.
+Tercero, determine el enfoque del proyecto. Los enfoques disponibles son Predictivo (tradicional/cascada), Ágil (Scrum, Kanban), o Híbrido (combinación).
 
-Cuarto, active los subagentes correspondientes. Para la fase de Inicio utilice gobernanza-agent.md e interesados-agent.md. Para Planificación utilice alcance-agent.md, cronograma-agent.md, finanzas-agent.md, recursos-agent.md y riesgo-agent.md. Para proyectos ágiles utilice agile-agent.md.
+Cuarto, consulte el agente coordinador leyendo el archivo agent.md para entender la lógica de coordinación.
 
-Quinto, utilice las plantillas del directorio references para generar los documentos con la estructura correcta.
+Quinto, active los subagentes correspondientes. Para la fase de Inicio utilice gobernanza-agent.md e interesados-agent.md. Para Planificación utilice alcance-agent.md, cronograma-agent.md, finanzas-agent.md, recursos-agent.md y riesgo-agent.md. Para proyectos ágiles utilice agile-agent.md.
+
+Sexto, utilice las plantillas del directorio references para generar los documentos con la estructura correcta.
 
 ## Artefactos por Fase del Ciclo de Vida
 
@@ -69,4 +71,4 @@ Por ejemplo, si el usuario indica que tiene un proyecto de implementación de CR
 
 ## Ubicación de Archivos
 
-El archivo agent.md contiene la lógica del agente coordinador principal. El archivo skills.md describe las capacidades detalladas del sistema. El directorio subagents contiene los agentes especializados por dominio. El directorio references contiene las plantillas y guías de referencia organizadas por dominio.
+El archivo agent.md contiene la lógica del agente coordinador principal. El archivo skills.md describe las capacidades detalladas del sistema. El directorio providers contiene las instrucciones optimizadas para cada proveedor de IA. El directorio subagents contiene los agentes especializados por dominio. El directorio references contiene las plantillas y guías de referencia organizadas por dominio.

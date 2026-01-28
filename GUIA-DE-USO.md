@@ -7,6 +7,8 @@
 
 Este sistema de agentes ha sido diseñado para asistir a los participantes del diplomado en la generación automática de artefactos de gestión de proyectos. El sistema está completamente alineado con el PMBOK 8 del Project Management Institute (PMI) y soporta enfoques predictivos, ágiles e híbridos.
 
+**NUEVO**: El sistema ahora soporta múltiples proveedores de IA (Claude y Gemini) con instrucciones optimizadas para cada uno.
+
 Con este sistema, usted podrá generar documentación profesional de proyectos simplemente proporcionando el requerimiento, la justificación y la fase del ciclo de vida en que se encuentra su proyecto.
 
 ---
@@ -21,6 +23,13 @@ pmbok8-agents-system/
 ├── SKILL.md                 → Archivo de configuración principal
 ├── agent.md                 → Agente coordinador que orquesta el proceso
 ├── skills.md                → Descripción de capacidades del sistema
+├── INSTRUCCION-INICIO.md    → Instrucciones originales para Claude
+├── INSTRUCCION-INICIO-DEFAULT.md → Enlace a instrucciones por defecto
+│
+├── providers/               → Soporte multi-proveedor de IA
+│   ├── INSTRUCCION-INICIO-CLAUDE.md  → Instrucciones optimizadas para Claude
+│   ├── INSTRUCCION-INICIO-GEMINI.md  → Instrucciones optimizadas para Gemini
+│   └── README.md            → Guía de uso de proveedores
 │
 ├── subagents/               → Agentes especializados por dominio
 │   ├── gobernanza-agent.md
@@ -42,6 +51,35 @@ pmbok8-agents-system/
     ├── riesgo/plantillas/
     └── agile/plantillas/
 ```
+
+---
+
+## Selección del Proveedor de IA
+
+El sistema ahora soporta múltiples proveedores de IA, cada uno optimizado para diferentes tipos de artefactos:
+
+### Claude (Anthropic) - Recomendado por defecto
+**Fortalezas**: Documentación narrativa, análisis de contexto extenso, justificaciones de negocio
+**Mejor para**: 
+- Actas de Constitución del Proyecto
+- Planes de Comunicación y Gestión
+- Business Cases y justificaciones
+- Documentos extensos con análisis
+
+**Archivo a usar**: `providers/INSTRUCCION-INICIO-CLAUDE.md`
+
+### Gemini (Google) - Especializado en datos
+**Fortalezas**: Procesamiento de datos estructurados, análisis cuantitativos, capacidades multimodales
+**Mejor para**:
+- Matrices RACI y de Responsabilidades
+- Registros de Riesgos y análisis cuantitativos
+- Cronogramas y estructuras de datos
+- Análisis de Valor Ganado
+
+**Archivo a usar**: `providers/INSTRUCCION-INICIO-GEMINI.md`
+
+### Instrucciones por Defecto
+Si no especifica un proveedor, se usarán las instrucciones de Claude mediante el enlace `INSTRUCCION-INICIO-DEFAULT.md`.
 
 ---
 
