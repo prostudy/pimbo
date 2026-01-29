@@ -1,0 +1,205 @@
+{
+  "domains": {
+    "gobernanza": {
+      "name": "Gobernanza",
+      "skill_file": "gobernanza.md",
+      "agent_file": "gobernanza-agent.md",
+      "description": "Supervisión y toma de decisiones del proyecto",
+      "color": "#007AFF"
+    },
+    "alcance": {
+      "name": "Alcance",
+      "skill_file": "alcance.md",
+      "agent_file": "alcance-agent.md",
+      "description": "Definición de qué se entrega y qué se excluye",
+      "color": "#5856D6"
+    },
+    "cronograma": {
+      "name": "Cronograma",
+      "skill_file": "cronograma.md",
+      "agent_file": "cronograma-agent.md",
+      "description": "Planificación y control temporal del proyecto",
+      "color": "#32ADE6"
+    },
+    "finanzas": {
+      "name": "Finanzas",
+      "skill_file": "finanzas.md",
+      "agent_file": "finanzas-agent.md",
+      "description": "Gestión económica, presupuestos y análisis financiero",
+      "color": "#34C759"
+    },
+    "interesados": {
+      "name": "Interesados",
+      "skill_file": "interesados.md",
+      "agent_file": "interesados-agent.md",
+      "description": "Identificación y gestión de stakeholders",
+      "color": "#FF9500"
+    },
+    "recursos": {
+      "name": "Recursos",
+      "skill_file": "recursos.md",
+      "agent_file": "recursos-agent.md",
+      "description": "Planificación y gestión de recursos humanos y materiales",
+      "color": "#FF3B30"
+    },
+    "riesgo": {
+      "name": "Riesgo",
+      "skill_file": "riesgo.md",
+      "agent_file": "riesgo-agent.md",
+      "description": "Gestión de incertidumbre, amenazas y oportunidades",
+      "color": "#FF2D92"
+    },
+    "agile": {
+      "name": "Ágil",
+      "skill_file": "agile.md",
+      "agent_file": "agile-agent.md",
+      "description": "Artefactos específicos para enfoques ágiles e híbridos",
+      "color": "#30D158"
+    }
+  },
+  "artifacts": {
+    "acta": {
+      "name": "Acta de Constitución",
+      "full_name": "Acta de Constitución del Proyecto",
+      "domain": "gobernanza",
+      "format": "md",
+      "description": "Documento que autoriza formalmente el proyecto. Incluye objetivos, alcance preliminar, patrocinador y presupuesto inicial.",
+      "phases": ["Inicio"],
+      "badges": ["Gobernanza", "Inicio"],
+      "importance": "Crítico"
+    },
+    "wbs": {
+      "name": "WBS (EDT)",
+      "full_name": "WBS (Estructura de Desglose del Trabajo)",
+      "domain": "alcance",
+      "format": "json",
+      "description": "Estructura de Desglose del Trabajo. Descomposición jerárquica del trabajo total del proyecto.",
+      "phases": ["Planificación"],
+      "badges": ["Alcance", "Planificación"],
+      "importance": "Alta"
+    },
+    "requisitos": {
+      "name": "Documento de Requisitos",
+      "full_name": "Documento de Requisitos",
+      "domain": "alcance",
+      "format": "md",
+      "description": "Lista completa de requisitos funcionales y no funcionales con prioridades y criterios de aceptación.",
+      "phases": ["Planificación"],
+      "badges": ["Alcance", "Planificación"],
+      "importance": "Alta"
+    },
+    "cronograma": {
+      "name": "Cronograma (Gantt)",
+      "full_name": "Cronograma del Proyecto",
+      "domain": "cronograma",
+      "format": "csv",
+      "description": "Cronograma con actividades, duraciones, dependencias y camino crítico en formato Gantt.",
+      "phases": ["Planificación"],
+      "badges": ["Cronograma", "Planificación"],
+      "importance": "Alta"
+    },
+    "presupuesto": {
+      "name": "Presupuesto",
+      "full_name": "Presupuesto del Proyecto",
+      "domain": "finanzas",
+      "format": "csv",
+      "description": "Presupuesto detallado por categorías, con reservas de contingencia y distribución temporal.",
+      "phases": ["Planificación"],
+      "badges": ["Finanzas", "Planificación"],
+      "importance": "Alta"
+    },
+    "interesados": {
+      "name": "Registro de Interesados",
+      "full_name": "Registro de Interesados",
+      "domain": "interesados",
+      "format": "csv",
+      "description": "Identificación de stakeholders con análisis de poder/interés y estrategias de gestión.",
+      "phases": ["Inicio"],
+      "badges": ["Interesados", "Inicio"],
+      "importance": "Alta"
+    },
+    "comunicaciones": {
+      "name": "Plan de Comunicaciones",
+      "full_name": "Plan de Comunicaciones",
+      "domain": "interesados",
+      "format": "md",
+      "description": "Define qué información se compartirá con quién, cuándo, cómo y con qué frecuencia.",
+      "phases": ["Planificación"],
+      "badges": ["Interesados", "Planificación"],
+      "importance": "Alta"
+    },
+    "raci": {
+      "name": "Matriz RACI",
+      "full_name": "Matriz RACI",
+      "domain": "recursos",
+      "format": "csv",
+      "description": "Asigna responsabilidades: Responsable, Aprobador, Consultado e Informado para cada entregable.",
+      "phases": ["Planificación"],
+      "badges": ["Recursos", "Planificación"],
+      "importance": "Media"
+    },
+    "riesgos": {
+      "name": "Registro de Riesgos",
+      "full_name": "Registro de Riesgos",
+      "domain": "riesgo",
+      "format": "csv",
+      "description": "Documenta riesgos con probabilidad, impacto, estrategia de respuesta y responsable.",
+      "phases": ["Planificación"],
+      "badges": ["Riesgo", "Planificación"],
+      "importance": "Alta"
+    },
+    "backlog": {
+      "name": "Product Backlog",
+      "full_name": "Product Backlog",
+      "domain": "agile",
+      "format": "csv",
+      "description": "Lista priorizada de historias de usuario y funcionalidades para proyectos ágiles.",
+      "phases": ["Inicio"],
+      "badges": ["Ágil", "Inicio"],
+      "importance": "Alta"
+    },
+    "historias": {
+      "name": "Historias de Usuario",
+      "full_name": "Historias de Usuario",
+      "domain": "agile",
+      "format": "md",
+      "description": "Funcionalidades desde la perspectiva del usuario con criterios de aceptación específicos.",
+      "phases": ["Planificación"],
+      "badges": ["Ágil", "Planificación"],
+      "importance": "Alta"
+    },
+    "business-case": {
+      "name": "Business Case",
+      "full_name": "Caso de Negocio del Proyecto",
+      "domain": "gobernanza",
+      "format": "md",
+      "description": "Justificación económica detallada del proyecto con análisis costo-beneficio, ROI esperado y alternativas evaluadas.",
+      "phases": ["Inicio"],
+      "badges": ["Gobernanza", "Inicio"],
+      "importance": "Crítico"
+    }
+  },
+  "format_instructions": {
+    "md": {
+      "name": "Markdown",
+      "description": "Formato de texto estructurado profesional",
+      "instructions": "FORMATO DE SALIDA: Markdown profesional\n- Estructura clara con títulos jerárquicos\n- Tablas cuando sea apropiado\n- Formato legible y profesional\n- IMPORTANTE: Devuelve el contenido en Markdown bien estructurado."
+    },
+    "json": {
+      "name": "JSON",
+      "description": "Formato de datos estructurados jerárquicos",
+      "instructions": "FORMATO DE SALIDA: JSON válido únicamente\nEstructura requerida:\n{\n  \"project_name\": \"[nombre del proyecto]\",\n  \"wbs\": {\n    \"1\": {\n      \"name\": \"[Fase Principal]\",\n      \"children\": {\n        \"1.1\": {\n          \"name\": \"[Subfase]\",\n          \"children\": {\n            \"1.1.1\": {\"name\": \"[Tarea específica]\"}\n          }\n        }\n      }\n    }\n  }\n}\nIMPORTANTE: Devuelve SOLO el JSON, sin texto adicional."
+    },
+    "csv": {
+      "name": "CSV",
+      "description": "Formato tabular para hojas de cálculo",
+      "instructions": "FORMATO DE SALIDA: CSV válido únicamente\n- Usa comas como separadores\n- Incluye encabezados en la primera fila\n- Usa comillas para campos que contengan comas o saltos de línea\n- IMPORTANTE: Devuelve SOLO el contenido CSV, sin texto adicional."
+    }
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "pmbok_version": "8",
+    "last_updated": "2026-01-28",
+    "description": "Configuración centralizada del sistema PimBo para generación dinámica de artefactos PMBOK 8"
+  }
+}

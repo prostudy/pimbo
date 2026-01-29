@@ -14,10 +14,22 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+// Load configuration manager
+require_once 'ConfigManager.php';
+
 // Configuration
 $CLAUDE_API_URL = 'https://api.anthropic.com/v1/messages';
 $SKILLS_PATH = __DIR__ . '/../../skills/';
 $SUBAGENTS_PATH = __DIR__ . '/../../subagents/';
+
+// Initialize dynamic configuration
+try {
+    ConfigManager::init();
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode(['error' => 'Configuration error: ' . $e->getMessage()]);
+    exit;
+}
 
 $input = json_decode(file_get_contents('php://input'), true);
 
@@ -43,28 +55,38 @@ if (strpos($CLAUDE_API_KEY, 'sk-ant-api') !== 0) {
     exit;
 }
 
-// Function to load skill knowledge
-function loadSkill($skillName) {
+// Function to load skill knowledge (now uses ConfigManager)
+function loadSkill($domainId) {
     global $SKILLS_PATH;
-    $skillFile = $SKILLS_PATH . $skillName . '.md';
     
-    if (!file_exists($skillFile)) {
-        throw new Exception("Skill file not found: $skillName");
+    $skillFile = ConfigManager::getSkillFile($domainId);
+    if (!$skillFile) {
+        throw new Exception("No skill file configured for domain: $domainId");
     }
     
-    return file_get_contents($skillFile);
+    $fullPath = $SKILLS_PATH . $skillFile;
+    if (!file_exists($fullPath)) {
+        throw new Exception("Skill file not found: $fullPath");
+    }
+    
+    return file_get_contents($fullPath);
 }
 
-// Function to load subagent implementation
-function loadSubagent($agentName) {
+// Function to load subagent implementation (now uses ConfigManager)
+function loadSubagent($domainId) {
     global $SUBAGENTS_PATH;
-    $agentFile = $SUBAGENTS_PATH . $agentName . '-agent.md';
     
-    if (!file_exists($agentFile)) {
-        throw new Exception("Subagent file not found: $agentName");
+    $agentFile = ConfigManager::getAgentFile($domainId);
+    if (!$agentFile) {
+        throw new Exception("No agent file configured for domain: $domainId");
     }
     
-    return file_get_contents($agentFile);
+    $fullPath = $SUBAGENTS_PATH . $agentFile;
+    if (!file_exists($fullPath)) {
+        throw new Exception("Subagent file not found: $fullPath");
+    }
+    
+    return file_get_contents($fullPath);
 }
 
 // Function to send message to Claude API
@@ -114,23 +136,9 @@ function logAgentActivity($step, $message) {
     ];
 }
 
-// Function to get domain mapping for artifacts
-function getArtifactDomain($artifact) {
-    $domainMapping = [
-        'acta' => 'gobernanza',
-        'wbs' => 'alcance',
-        'requisitos' => 'alcance',
-        'cronograma' => 'cronograma',
-        'presupuesto' => 'finanzas',
-        'interesados' => 'interesados',
-        'comunicaciones' => 'interesados',
-        'raci' => 'recursos',
-        'riesgos' => 'riesgo',
-        'backlog' => 'agile',
-        'historias' => 'agile'
-    ];
-    
-    return $domainMapping[$artifact] ?? null;
+// Function to get domain mapping for artifacts (now dynamic)
+function getArtifactDomain($artifactId) {
+    return ConfigManager::getArtifactDomain($artifactId);
 }
 
 // Function to create specialized prompt using existing skills and subagents
@@ -188,89 +196,24 @@ $artifactInstructions
     return $prompt;
 }
 
-// Function to get artifact instructions based on format
-function getArtifactInstructions($artifact) {
-    switch($artifact) {
-        case 'wbs':
-            return "
-FORMATO DE SALIDA: JSON válido únicamente
-Estructura requerida:
-{
-  \"project_name\": \"[nombre del proyecto]\",
-  \"wbs\": {
-    \"1\": {
-      \"name\": \"[Fase Principal]\",
-      \"children\": {
-        \"1.1\": {
-          \"name\": \"[Subfase]\",
-          \"children\": {
-            \"1.1.1\": {\"name\": \"[Tarea específica]\"}
-          }
-        }
-      }
+// Function to get artifact instructions based on format (now dynamic)
+function getArtifactInstructions($artifactId) {
+    $format = ConfigManager::getArtifactFormat($artifactId);
+    if (!$format) {
+        return "No format instructions available for artifact: $artifactId";
     }
-  }
-}
-IMPORTANTE: Devuelve SOLO el JSON, sin texto adicional.";
-            
-        case 'cronograma':
-        case 'presupuesto':
-        case 'raci':
-        case 'riesgos':
-            return "
-FORMATO DE SALIDA: CSV válido únicamente
-- Usa comas como separadores
-- Incluye encabezados en la primera fila
-- Usa comillas para campos que contengan comas o saltos de línea
-- IMPORTANTE: Devuelve SOLO el contenido CSV, sin texto adicional.";
-            
-        case 'interesados':
-            return "
-FORMATO DE SALIDA: CSV válido únicamente para el registro de interesados
-Columnas requeridas: Nombre, Rol, Organización, Poder, Interés, Influencia, Estrategia
-IMPORTANTE: Devuelve SOLO el contenido CSV, sin texto adicional.";
-            
-        default:
-            return "
-FORMATO DE SALIDA: Markdown profesional
-- Estructura clara con títulos jerárquicos
-- Tablas cuando sea apropiado
-- Formato legible y profesional
-- IMPORTANTE: Devuelve el contenido en Markdown bien estructurado.";
-    }
+    
+    return ConfigManager::getFormatInstructionText($format);
 }
 
 // Function to get artifact display names
 function getArtifactName($artifact) {
-    $names = [
-        'acta' => 'Acta de Constitución del Proyecto',
-        'wbs' => 'WBS (Estructura de Desglose del Trabajo)',
-        'requisitos' => 'Documento de Requisitos',
-        'cronograma' => 'Cronograma del Proyecto',
-        'presupuesto' => 'Presupuesto del Proyecto',
-        'interesados' => 'Registro de Interesados',
-        'comunicaciones' => 'Plan de Comunicaciones',
-        'raci' => 'Matriz RACI',
-        'riesgos' => 'Registro de Riesgos',
-        'backlog' => 'Product Backlog',
-        'historias' => 'Historias de Usuario'
-    ];
-    
-    return $names[$artifact] ?? $artifact;
+    return ConfigManager::getArtifactFullName($artifact) ?? $artifact;
 }
 
-// Function to determine file extension based on artifact
-function getFileExtension($artifact) {
-    switch($artifact) {
-        case 'wbs':
-            return 'json';
-        case 'cronograma':
-        case 'presupuesto':
-        case 'raci':
-            return 'csv';
-        default:
-            return 'md';
-    }
+// Function to determine file extension based on artifact (now dynamic)
+function getFileExtension($artifactId) {
+    return ConfigManager::getFileExtension($artifactId) ?? 'md';
 }
 
 try {
@@ -288,32 +231,13 @@ try {
         throw new Exception("No se han seleccionado artefactos para generar");
     }
     
-    // Show domain mapping for educational purposes
-    $domainsUsed = [];
-    foreach ($selectedArtifacts as $artifact) {
-        $domain = getArtifactDomain($artifact);
-        if ($domain && !in_array($domain, $domainsUsed)) {
-            $domainsUsed[] = $domain;
-        }
-    }
+    // Show domain mapping for educational purposes (now dynamic)
+    $domainsUsed = ConfigManager::getUsedDomains($selectedArtifacts);
     
     $logs[] = logAgentActivity(2, "📊 Dominios PMBOK 8 activados: " . implode(', ', array_map('strtoupper', $domainsUsed)));
     $logs[] = logAgentActivity(2, "🎯 Total de subagentes a invocar: " . count($domainsUsed));
     
-    // Step 3: Process each artifact with specialized subagents
-    $artifactNames = [
-        'acta' => 'Acta de Constitución',
-        'wbs' => 'WBS (EDT)',
-        'requisitos' => 'Documento de Requisitos',
-        'cronograma' => 'Cronograma',
-        'presupuesto' => 'Presupuesto',
-        'interesados' => 'Registro de Interesados',
-        'comunicaciones' => 'Plan de Comunicaciones',
-        'raci' => 'Matriz RACI',
-        'riesgos' => 'Registro de Riesgos',
-        'backlog' => 'Product Backlog',
-        'historias' => 'Historias de Usuario'
-    ];
+    // Step 3: Process each artifact with specialized subagents (now fully dynamic)
     
     foreach ($selectedArtifacts as $artifact) {
         $artifactName = getArtifactName($artifact);

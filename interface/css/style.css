@@ -1407,6 +1407,59 @@ textarea {
     border: 1px solid var(--gray-200);
 }
 
+/* Loading message for dynamic content */
+.loading-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-8);
+    color: var(--gray-500);
+    font-style: italic;
+    min-height: 200px;
+}
+
+.loading-message p {
+    margin: 0;
+    text-align: center;
+}
+
+/* Dynamic artifact cards enhancement */
+.artifact-card[data-domain] {
+    transition: all var(--transition-base);
+}
+
+.artifact-card[data-domain="gobernanza"] {
+    border-left: 3px solid #007AFF;
+}
+
+.artifact-card[data-domain="alcance"] {
+    border-left: 3px solid #5856D6;
+}
+
+.artifact-card[data-domain="cronograma"] {
+    border-left: 3px solid #32ADE6;
+}
+
+.artifact-card[data-domain="finanzas"] {
+    border-left: 3px solid #34C759;
+}
+
+.artifact-card[data-domain="interesados"] {
+    border-left: 3px solid #FF9500;
+}
+
+.artifact-card[data-domain="recursos"] {
+    border-left: 3px solid #FF3B30;
+}
+
+.artifact-card[data-domain="riesgo"] {
+    border-left: 3px solid #FF2D92;
+}
+
+.artifact-card[data-domain="agile"] {
+    border-left: 3px solid #30D158;
+}
+
 /* Responsive adjustments for web interface */
 @media (max-width: 640px) {
     .result-header {

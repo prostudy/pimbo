@@ -13,8 +13,157 @@ const appState = {
         phase: '',
         approach: '',
         artifacts: []
-    }
+    },
+    // Dynamic configuration loaded from API
+    config: null
 };
+
+// ============================================
+// Dynamic Configuration Management
+// ============================================
+
+async function loadConfiguration() {
+    try {
+        const response = await fetch('php/config-api.php?type=all');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const result = await response.json();
+        
+        if (!result.success) {
+            throw new Error(result.error || 'Failed to load configuration');
+        }
+        
+        appState.config = result.data;
+        return result.data;
+    } catch (error) {
+        console.error('Error loading configuration:', error);
+        // Fallback to basic configuration
+        return null;
+    }
+}
+
+// Get artifact information dynamically
+function getArtifactInfo(artifactId) {
+    if (!appState.config) return null;
+    return appState.config.artifacts[artifactId] || null;
+}
+
+// Get domain information dynamically  
+function getDomainInfo(domainId) {
+    if (!appState.config) return null;
+    return appState.config.domains[domainId] || null;
+}
+
+// Get all artifacts dynamically
+function getAllArtifacts() {
+    if (!appState.config) return {};
+    return appState.config.artifacts;
+}
+
+// Check if configuration is loaded
+function isConfigurationLoaded() {
+    return appState.config !== null;
+}
+
+// Generate artifacts grid dynamically
+function generateArtifactsGrid() {
+    if (!isConfigurationLoaded()) {
+        console.warn('Cannot generate artifacts grid: configuration not loaded');
+        return;
+    }
+    
+    const artifactsGrid = document.querySelector('.artifacts-grid');
+    if (!artifactsGrid) {
+        console.warn('Artifacts grid container not found');
+        return;
+    }
+    
+    // Clear all existing content including loading message
+    artifactsGrid.innerHTML = '';
+    
+    const artifacts = getAllArtifacts();
+    const domains = appState.config.domains;
+    
+    // Sort artifacts by domain for better organization
+    const sortedArtifacts = Object.keys(artifacts).sort((a, b) => {
+        const domainA = artifacts[a].domain;
+        const domainB = artifacts[b].domain;
+        return domainA.localeCompare(domainB);
+    });
+    
+    // Create cards for each artifact
+    sortedArtifacts.forEach(artifactId => {
+        const artifact = artifacts[artifactId];
+        const domain = domains[artifact.domain];
+        
+        const card = document.createElement('div');
+        card.className = 'artifact-card';
+        card.setAttribute('data-domain', artifact.domain);
+        card.setAttribute('data-format', artifact.format);
+        
+        card.innerHTML = `
+            <input type="checkbox" id="${artifactId}">
+            <div class="artifact-header">
+                <h3>${artifact.name}</h3>
+            </div>
+            <p class="artifact-description">
+                ${artifact.description}
+            </p>
+            <div class="artifact-badges">
+                ${artifact.badges.map(badge => `<span class="artifact-badge">${badge}</span>`).join('')}
+            </div>
+        `;
+        
+        artifactsGrid.appendChild(card);
+    });
+    
+    console.log(`✅ Generated ${Object.keys(artifacts).length} artifact cards dynamically from config`);
+    
+    // Setup event listeners for dynamic cards
+    setupDynamicCardListeners();
+    
+    // Restore any previously selected artifacts
+    restoreDynamicSelections();
+}
+
+// Setup event listeners for dynamically generated cards
+function setupDynamicCardListeners() {
+    // Event listeners para artifact cards (dynamic)
+    document.querySelectorAll('.artifact-card').forEach(card => {
+        card.addEventListener('click', function() {
+            const checkbox = this.querySelector('input[type="checkbox"]');
+            if (checkbox) {
+                checkbox.checked = !checkbox.checked;
+                toggleArtifact(checkbox.id);
+            }
+        });
+    });
+
+    // Prevenir que el click en checkbox propague al card (dynamic)
+    document.querySelectorAll('.artifact-card input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleArtifact(this.id);
+        });
+    });
+}
+
+// Restore selections for dynamically generated cards
+function restoreDynamicSelections() {
+    if (appState.formData.artifacts) {
+        appState.formData.artifacts.forEach(function(artifactId) {
+            const checkbox = document.getElementById(artifactId);
+            if (checkbox) {
+                checkbox.checked = true;
+                const card = checkbox.closest('.artifact-card');
+                if (card) {
+                    card.classList.add('selected');
+                }
+            }
+        });
+    }
+}
 
 // Templates predefinidos
 const templates = {
@@ -41,7 +190,19 @@ const templates = {
 };
 
 // Cargar datos guardados al inicio
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
+    // Load dynamic configuration first
+    console.log('Loading PimBo configuration...');
+    await loadConfiguration();
+    
+    if (isConfigurationLoaded()) {
+        console.log('Configuration loaded successfully:', appState.config.metadata);
+        // Generate artifacts grid dynamically
+        generateArtifactsGrid();
+    } else {
+        console.warn('Failed to load dynamic configuration, using fallback');
+    }
+    
     loadSavedData();
     initializeApp();
     updateStepDisplay();
@@ -58,25 +219,6 @@ function initializeApp() {
         btn.addEventListener('click', function() {
             const phase = this.getAttribute('data-phase');
             selectPhase(phase);
-        });
-    });
-
-    // Event listeners para artifact cards
-    document.querySelectorAll('.artifact-card').forEach(card => {
-        card.addEventListener('click', function() {
-            const checkbox = this.querySelector('input[type="checkbox"]');
-            if (checkbox) {
-                checkbox.checked = !checkbox.checked;
-                toggleArtifact(checkbox.id);
-            }
-        });
-    });
-
-    // Prevenir que el click en checkbox propague al card
-    document.querySelectorAll('.artifact-card input[type="checkbox"]').forEach(checkbox => {
-        checkbox.addEventListener('click', function(e) {
-            e.stopPropagation();
-            toggleArtifact(this.id);
         });
     });
 
@@ -97,6 +239,8 @@ function initializeApp() {
         input.addEventListener('change', saveFormData);
         input.addEventListener('blur', saveFormData);
     });
+    
+    // Note: Artifact card listeners are now setup dynamically in generateArtifactsGrid()
 }
 
 // ============================================
@@ -417,27 +561,22 @@ function updateSummary() {
     document.getElementById('summaryApproach').textContent =
         approachLabels[appState.formData.approach] || '-';
 
-    // Artifacts
+    // Artifacts (now dynamic)
     const artifactsList = document.getElementById('summaryArtifacts');
     artifactsList.innerHTML = '';
 
-    const artifactNames = {
-        acta: 'Acta de Constitución',
-        wbs: 'WBS (EDT)',
-        requisitos: 'Documento de Requisitos',
-        cronograma: 'Cronograma (Gantt)',
-        presupuesto: 'Presupuesto',
-        interesados: 'Registro de Interesados',
-        comunicaciones: 'Plan de Comunicaciones',
-        raci: 'Matriz RACI',
-        riesgos: 'Registro de Riesgos',
-        backlog: 'Product Backlog',
-        historias: 'Historias de Usuario'
-    };
-
     appState.formData.artifacts.forEach(function(artifactId) {
         const li = document.createElement('li');
-        li.textContent = artifactNames[artifactId] || artifactId;
+        
+        // Use dynamic configuration if available
+        if (isConfigurationLoaded()) {
+            const artifactInfo = getArtifactInfo(artifactId);
+            li.textContent = artifactInfo ? artifactInfo.name : artifactId;
+        } else {
+            // Fallback to artifact ID
+            li.textContent = artifactId;
+        }
+        
         artifactsList.appendChild(li);
     });
 }
@@ -583,22 +722,28 @@ function selectMode(mode) {
 }
 
 function showPromptMode() {
-    const artifacts = {
-        acta: 'Acta de Constitución del Proyecto',
-        wbs: 'WBS (Estructura de Desglose del Trabajo) en formato JSON',
-        requisitos: 'Documento de Requisitos',
-        cronograma: 'Cronograma del Proyecto (Gantt) en formato CSV',
-        presupuesto: 'Presupuesto del Proyecto en formato CSV',
-        interesados: 'Registro de Interesados en formato CSV',
-        comunicaciones: 'Plan de Comunicaciones',
-        raci: 'Matriz RACI en formato CSV',
-        riesgos: 'Registro de Riesgos en formato CSV',
-        backlog: 'Product Backlog en formato CSV',
-        historias: 'Historias de Usuario'
-    };
-
+    // Build artifacts list dynamically
     const selectedArtifacts = appState.formData.artifacts.map(function(id) {
-        return artifacts[id];
+        if (isConfigurationLoaded()) {
+            const artifactInfo = getArtifactInfo(id);
+            return artifactInfo ? artifactInfo.full_name : id;
+        } else {
+            // Fallback artifacts mapping
+            const fallbackArtifacts = {
+                acta: 'Acta de Constitución del Proyecto',
+                wbs: 'WBS (Estructura de Desglose del Trabajo) en formato JSON',
+                requisitos: 'Documento de Requisitos',
+                cronograma: 'Cronograma del Proyecto (Gantt) en formato CSV',
+                presupuesto: 'Presupuesto del Proyecto en formato CSV',
+                interesados: 'Registro de Interesados en formato CSV',
+                comunicaciones: 'Plan de Comunicaciones',
+                raci: 'Matriz RACI en formato CSV',
+                riesgos: 'Registro de Riesgos en formato CSV',
+                backlog: 'Product Backlog en formato CSV',
+                historias: 'Historias de Usuario'
+            };
+            return fallbackArtifacts[id] || id;
+        }
     });
 
     const phaseLabels = {
