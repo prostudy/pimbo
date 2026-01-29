@@ -14,7 +14,7 @@ Este archivo proporciona un índice ejecutivo de las capacidades (skills) del si
 
 | Dominio | Artefactos Principales | Cuándo Usar | Documentación |
 |---------|------------------------|-------------|---------------|
-| **Gobernanza** | Acta de Constitución, Registro de Decisiones, Plan de Cambios | Fase de Inicio y autorización del proyecto | [Ver detalles](skills/gobernanza.md) |
+| **Gobernanza** | Acta de Constitución, Registro de Decisiones, Plan de Cambios, Checklist Kick-off | Fase de Inicio y autorización del proyecto | [Ver detalles](skills/gobernanza.md) |
 | **Alcance** | WBS, Diccionario WBS, Requisitos, Matriz de Trazabilidad | Fase de Planificación, definición de entregables | [Ver detalles](skills/alcance.md) |
 | **Cronograma** | Gantt, Hitos, Diagrama de Red, Camino Crítico | Fase de Planificación, gestión temporal | [Ver detalles](skills/cronograma.md) |
 | **Finanzas** | Presupuesto, Flujo de Caja, ROI, Análisis EVM | Fase de Planificación y control financiero | [Ver detalles](skills/finanzas.md) |
@@ -35,7 +35,7 @@ Este archivo proporciona un índice ejecutivo de las capacidades (skills) del si
 ### 1. Gobernanza
 **Propósito**: Autorización, supervisión y toma de decisiones del proyecto.
 
-**Genera**: Acta de Constitución del Proyecto, Registro de Decisiones, Plan de Gestión de Cambios, Criterios de Éxito.
+**Genera**: Acta de Constitución del Proyecto, Registro de Decisiones, Plan de Gestión de Cambios, Criterios de Éxito, Lista de Verificación de Kick-off.
 
 **Formato típico**: `.md` (documentos narrativos)
 

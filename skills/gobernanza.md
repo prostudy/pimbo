@@ -67,6 +67,19 @@ Documento que define métricas específicas que determinan si el proyecto cumpli
 **Cuándo se genera**: Fase de Inicio
 **Importancia**: Crítico - Define "terminado" para el proyecto
 
+### 5. Lista de Verificación de Kick-off
+
+Documento que asegura la preparación adecuada de la reunión de inicio formal:
+- Agenda, hora y lugar/enlace
+- Participantes confirmados
+- Materiales y pre-lecturas
+- Matríz de roles inicial
+- Presentación de soporte
+
+**Formato**: `.md` (Markdown)
+**Cuándo se genera**: Fase de Inicio (antes de la reunión)
+**Importancia**: Alta - Establece el tono profesional del proyecto
+
 ## Proceso de Generación
 
 ### Paso 1: Análisis de Entrada
@@ -142,7 +155,14 @@ El skill estructura el Acta siguiendo este formato:
 - Umbrales de aceptación
 
 #### Sección 10: Autorización
-- Firmas del patrocinador y partes autorizantes
+**Sección 10 - Autorización** contiene las firmas del patrocinador y otras partes autorizantes.
+
+### Paso 4b: Generación de Lista de Kick-off
+
+El skill genera la lista de verificación basándose en:
+- Stakeholders identificados (para la lista de invitados)
+- Complejidad del proyecto (para la agenda)
+- Artefactos previos (para los materiales a revisar)
 
 ### Paso 5: Validación
 
@@ -248,6 +268,13 @@ Un Acta de Constitución de calidad debe:
 - [ ] Incluir cronograma con mínimo 5 hitos clave
 - [ ] Tener presupuesto o rango de estimación
 - [ ] Estar autorizado por el patrocinador
+
+Una Lista de Kick-off de calidad debe:
+- [ ] Definir una agenda clara cronometrada
+- [ ] Listar todos los asistentes obligatorios y opcionales
+- [ ] Enumerar los materiales de lectura previa
+- [ ] Incluir detalles logísticos completos
+- [ ] Definir los objetivos de la reunión
 
 ## Palabras Clave
 

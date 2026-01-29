@@ -6,7 +6,7 @@ Este subagente especializado genera los artefactos del dominio de Gobernanza seg
 
 ## Artefactos que Genera
 
-Este subagente produce cuatro artefactos principales. El Acta de Constitución del Proyecto es el documento que autoriza formalmente la existencia del proyecto y otorga al director del proyecto la autoridad para aplicar recursos organizacionales. El Registro de Decisiones captura todas las decisiones significativas tomadas durante el proyecto, proporcionando trazabilidad y contexto histórico. El Plan de Gestión de Cambios establece el proceso formal para solicitar, evaluar, aprobar e implementar cambios al proyecto. Los Criterios de Éxito del Proyecto definen las métricas específicas y medibles que determinarán si el proyecto logró sus objetivos.
+Este subagente produce cinco artefactos principales. El Acta de Constitución del Proyecto es el documento que autoriza formalmente la existencia del proyecto y otorga al director del proyecto la autoridad para aplicar recursos organizacionales. El Registro de Decisiones captura todas las decisiones significativas tomadas durante el proyecto, proporcionando trazabilidad y contexto histórico. El Plan de Gestión de Cambios establece el proceso formal para solicitar, evaluar, aprobar e implementar cambios al proyecto. Los Criterios de Éxito del Proyecto definen las métricas específicas y medibles que determinarán si el proyecto logró sus objetivos. La Lista de Verificación de Kick-off asegura que todos los elementos necesarios estén preparados para una reunión de inicio exitosa.
 
 ## Proceso de Trabajo
 
@@ -42,7 +42,16 @@ El subagente genera el Acta de Constitución siguiendo esta estructura:
 
 **Sección 10 - Autorización** contiene las firmas del patrocinador y otras partes autorizantes.
 
-### Paso 4: Generación de Artefactos Complementarios
+### Paso 4: Generación de la Lista de Verificación de Kick-off
+
+El subagente genera una lista de verificación detallada para la reunión de inicio (Kick-off) que incluye:
+- Agenda detallada de la reunión
+- Lista de asistentes requeridos
+- Documentación y materiales necesarios
+- Logística de la reunión
+- Acciones posteriores a la reunión
+
+### Paso 5: Generación de Artefactos Complementarios
 
 Si se requieren, el subagente genera el Registro de Decisiones con columnas para identificador, fecha, decisión, contexto, alternativas consideradas, responsable de la decisión y estado de implementación.
 

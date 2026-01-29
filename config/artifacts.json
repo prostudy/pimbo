@@ -177,6 +177,16 @@
       "phases": ["Inicio"],
       "badges": ["Gobernanza", "Inicio"],
       "importance": "Crítico"
+    },
+    "kickoff-checklist": {
+      "name": "Project Kick-Off Meeting Checklist",
+      "full_name": "Lista de Verificación de Kick-off",
+      "domain": "gobernanza",
+      "format": "md",
+      "description": "Lista de verificación para reunión de inicio del proyecto",
+      "phases": ["Inicio"],
+      "badges": ["Gobernanza", "Inicio"],
+      "importance": "Alta"
     }
   },
   "format_instructions": {
