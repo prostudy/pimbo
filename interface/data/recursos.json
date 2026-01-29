@@ -67,15 +67,15 @@
             "title": "¿Cómo usar PimBo?",
             "category": "pmbok",
             "type": "article",
-            "description": "Agente de IA Inteligente para Generación Automática de Documentación de Proyectos",
+            "description": " Un sistema de agentes especializados implementado mediante archivos de configuración en lenguaje natural (Markdown) que, al ser interpretados por un LLM, inducen comportamientos de agente específicos sin requerir código ejecutable tradicional.  ",
             "image": "https://placehold.co/600x400/1e293b/fbbf24?text=PimBo",
-            "url": "https://pimbo.ai/",
+            "url": "https://github.com/prostudy/pimbo",
             "date": "5 dic 2025",
             "tags": [
                 "PimBo",
                 "Guía"
             ],
-            "content": "<div class='video-container'><iframe width='100%' height='315' src='https://todopmp.com/wp-content/uploads/2026/01/La_Orquesta_de_IA_pimBo.mp4' frameborder='0' allowfullscreen></iframe></div><p>Genera artefactos profesionales de gestión de proyectos basados en PMBOK 8 en segundos</p><p><strong>PimBo</strong> es un sistema de agentes de IA especializados que automatiza la generación de documentación de gestión de proyectos siguiendo los estándares del PMBOK®  (Project Management Body of Knowledge) del Project Management Institute (PMI).</p>"
+            "content": "<div class='video-container'><iframe width='100%' height='315' src='https://todopmp.com/wp-content/uploads/2026/01/La_Orquesta_de_IA_pimBo.mp4' frameborder='0' allowfullscreen></iframe></div><p> Un sistema de agentes especializados implementado mediante archivos de configuración en lenguaje natural (Markdown) que, al ser interpretados por un LLM, inducen comportamientos de agente específicos sin requerir código ejecutable tradicional.  </p>"
         },
         {
             "id": 2,

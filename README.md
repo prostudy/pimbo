@@ -1,12 +1,16 @@
-# 🚀 PimBo - AI-Powered PMBOK Documentation Generator
+# 🚀 PimBo - Markdown-Driven Agent System
 
 <div align="center">
 
 ![PimBo Logo](https://img.shields.io/badge/PimBo-AI%20Project%20Manager-blueviolet?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzY2N2VlYSIvPjx0ZXh0IHg9IjUwIiB5PSI1MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjQwIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPvCfmoA8L3RleHQ+PC9zdmc+)
 
-**Agente de IA Inteligente para Generación Automática de Documentación de Proyectos**
+**Un sistema de agentes especializados implementado mediante archivos de configuración en lenguaje natural (Markdown) que, al ser interpretados por un LLM, inducen comportamientos de agente específicos sin requerir código ejecutable tradicional.**
 
 Genera artefactos profesionales de gestión de proyectos basados en PMBOK 8 en segundos
+
+**"PimBo: El 'kit de conocimiento experto' que convierte tu IA favorita en un director de proyectos certificado, sin instalar nada."**  
+
+
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PMBOK 8](https://img.shields.io/badge/PMBOK-8-blue)](https://www.pmi.org/pmbok-guide-standards)
@@ -44,9 +48,15 @@ Genera artefactos profesionales de gestión de proyectos basados en PMBOK 8 en s
 
 ## 🎯 Sobre el Proyecto
 
-**PimBo** (Project Implementation Management Bot) es un sistema de agentes de IA especializados que automatiza la generación de documentación de gestión de proyectos siguiendo los estándares del **PMBOK® 8** (Project Management Body of Knowledge) del Project Management Institute (PMI).
+### ¿Qué es PimBo?
 
-### El Problema
+**PimBo** es un sistema de agentes de IA especializados que automatiza la generación de documentación de gestión de proyectos siguiendo los estándares del **PMBOK® 8** (Project Management Body of Knowledge) del Project Management Institute (PMI).
+
+No es software que instalas, es como un 'manual de instrucciones experto' que le enseñas a una inteligencia artificial a generar documentación profesional de proyectos. Son archivos de texto que, cuando  los lee Claude o ChatGPT, transforman la IA en un especialista certificado en gestión de proyectos que crea tus documentos automáticamente
+
+Un framework de **agentes especializados** basado en prompts estructurados que implementa un sistema multi-agente mediante configuración declarativa en Markdown, donde un **LLM host** interpreta diferentes conjuntos de instrucciones para simular agentes con responsabilidades específicas del dominio PMBOK 8.
+
+### ¿Qué problema resuelve?
 
 Los directores de proyectos y equipos dedican **30-40% de su tiempo** a crear documentación:
 - ❌ Actas de constitución
@@ -55,158 +65,33 @@ Los directores de proyectos y equipos dedican **30-40% de su tiempo** a crear do
 - ❌ Registros de riesgos e interesados
 - ❌ Planes de gestión diversos
 
+### Analogía
+"Imagina que tienes un asistente virtual como ChatGPT, pero no sabe nada de gestión de proyectos. PimBo es como darle un doctorado instantáneo.                                                                   
+                                                                                                                                                                                                                    
+  No instalas nada. No hay código que ejecutar. Son simplemente archivos de texto (como recetas de cocina) que contienen todo el conocimiento experto del PMBOK - el estándar mundial de gestión de proyectos.      
+                                                                                                                                                                                                                    
+  Cuando la IA lee estos archivos, 'sabe' exactamente cómo crear un Acta de Constitución, un cronograma, un presupuesto, o cualquiera de los 28+ documentos que necesitas para dirigir un proyecto profesionalmente.
+                                                                                                                                                                                                                    
+  Es como tener un consultor senior de proyectos certificado PMP trabajando para ti, pero que vive dentro de Claude o ChatGPT. Tú solo describes tu proyecto, y la IA - guiada por estas 'instrucciones expertas' - 
+  genera toda tu documentación en minutos."   
+
+
+
 ### La Solución: PimBo
 
 ✅ **Genera automáticamente** más de 28 tipos de artefactos PMBOK 8
+
 ✅ **En minutos, no días** - Lo que tomaba horas, ahora toma segundos
+
 ✅ **Calidad profesional** - Basado en plantillas del PMI
+
 ✅ **Adaptable** - Soporta enfoques Predictivos, Ágiles e Híbridos
+
 ✅ **Inteligente** - Usa Claude AI para contexto y coherencia
 
 ---
 
-## ✨ Características Principales
 
-### 🤖 Sistema Multi-Agente
-
-```
-┌─────────────────────────────────────────────────────────┐
-│          Agente Coordinador (agent.md)                  │
-│  Orquesta la generación según contexto del proyecto     │
-└─────────────────┬───────────────────────────────────────┘
-                  │
-    ┌─────────────┴─────────────┐
-    │                           │
-┌───▼────┐  ┌────────┐  ┌──────▼────┐  ┌──────────┐
-│Gobern. │  │Alcance │  │Cronograma │  │Finanzas  │
-│Agent   │  │Agent   │  │Agent      │  │Agent     │
-└────────┘  └────────┘  └───────────┘  └──────────┘
-┌────────┐  ┌────────┐  ┌──────────┐  ┌──────────┐
-│Interes.│  │Recursos│  │Riesgo    │  │Ágil      │
-│Agent   │  │Agent   │  │Agent     │  │Agent     │
-└────────┘  └────────┘  └──────────┘  └──────────┘
-```
-
-### 📦 8 Dominios de Desempeño PMBOK 8
-
-| Dominio | Artefactos | Formato |
-|---------|------------|---------|
-| **Gobernanza** | Acta de Constitución, Registro de Decisiones | `.md` |
-| **Alcance** | WBS, Requisitos, Matriz de Trazabilidad | `.json`, `.csv` |
-| **Cronograma** | Gantt, Hitos, Diagrama de Red | `.csv` |
-| **Finanzas** | Presupuesto, ROI, Flujo de Caja, EVM | `.csv` |
-| **Interesados** | Registro, Matriz Poder/Interés, Plan Comunicaciones | `.csv` |
-| **Recursos** | RACI, Organigrama, Plan de Recursos | `.csv`, `.json` |
-| **Riesgo** | Registro de Riesgos, Matriz Prob/Impacto | `.csv` |
-| **Ágil** | Product Backlog, Historias de Usuario, Burndown | `.csv`, `.md` |
-
-### 🎨 3 Interfaces de Usuario
-
-1. **Interfaz Web HTML** (Recomendada)
-   - Sin instalación, solo abrir en navegador
-   - Visual e intuitiva
-   - Plantillas rápidas predefinidas
-
-2. **CLI Interactivo**
-   - Script bash con prompts paso a paso
-   - Ideal para terminal/automatización
-
-3. **Streamlit App**
-   - Aplicación web Python
-   - Widgets avanzados
-   - Personalizable
-
-### 🌍 Multi-Proveedor de IA
-
-```
-PimBo soporta múltiples proveedores:
-├── Claude (Anthropic)   → Narrativa y análisis
-├── Gemini (Google)      → Datos estructurados
-└── OpenAI (Futuro)      → Planificado
-```
-
-### 📊 Optimización de Formatos
-
-PimBo usa el formato óptimo para cada tipo de información:
-
-- **CSV**: Registros, matrices, cronogramas → Fácil análisis
-- **JSON**: Estructuras jerárquicas (WBS, organigramas)
-- **Markdown**: Documentos narrativos (Actas, planes)
-
-**Resultado**: Reduce tokens hasta 70% vs mostrar en chat
-
----
-
-## 📦 Artefactos que Genera
-
-### Fase de Inicio
-- ✅ Acta de Constitución del Proyecto
-- ✅ Registro de Interesados inicial
-- ✅ Business Case / Justificación
-- ✅ Visión del Producto (Ágil)
-
-### Fase de Planificación
-- ✅ WBS (Estructura de Desglose del Trabajo)
-- ✅ Diccionario de la WBS
-- ✅ Cronograma del Proyecto (Gantt)
-- ✅ Presupuesto detallado
-- ✅ Registro de Riesgos
-- ✅ Plan de Comunicaciones
-- ✅ Matriz RACI
-- ✅ Product Backlog (Ágil)
-
-### Fase de Ejecución
-- ✅ Sprint Backlogs
-- ✅ Informes de Avance
-- ✅ Solicitudes de Cambio
-
-### Fase de Monitoreo
-- ✅ Análisis de Valor Ganado (EVM)
-- ✅ Informes de Desempeño
-- ✅ Actualizaciones de riesgos
-
-### Fase de Cierre
-- ✅ Lecciones Aprendidas
-- ✅ Informe de Cierre
-
-**Total**: 28+ tipos de artefactos
-
----
-
-## 🎬 Demo Rápida
-
-### Opción 1: Interfaz Web (60 segundos)
-
-```bash
-# 1. Abrir interfaz
-open pmbok8-agents-system/interface/index.html
-
-# 2. Click en plantilla "CRM de Ventas"
-
-# 3. Seleccionar artefactos:
-#    ☑ Acta de Constitución
-#    ☑ Registro de Interesados
-#    ☑ Product Backlog
-
-# 4. Click "Generar Prompt"
-
-# 5. Copiar y pegar en Claude Code
-```
-
-**Resultado**:
-```
-✓ Archivo generado: SISTEMA-CRM-acta-v1.md
-✓ Archivo generado: SISTEMA-CRM-interesados-v1.csv
-✓ Archivo generado: SISTEMA-CRM-backlog-v1.csv
-```
-
-### Video Demostración
-
-[![PimBo Demo](https://img.youtube.com/vi/DEMO_ID/0.jpg)](https://www.youtube.com/watch?v=DEMO_ID)
-
-_Próximamente: Video tutorial completo_
-
----
 
 ## 🛠️ Instalación
 
@@ -347,6 +232,149 @@ streamlit run pmbok8-agents-system/interface/streamlit_app.py
 - ✅ Métricas visuales
 
 **Ideal para**: Desarrolladores, personalización avanzada
+
+---
+
+## ✨ Características Principales
+
+### 🤖 Sistema Multi-Agente
+
+```
+┌─────────────────────────────────────────────────────────┐
+│          Agente Coordinador (agent.md)                  │
+│  Orquesta la generación según contexto del proyecto     │
+└─────────────────┬───────────────────────────────────────┘
+                  │
+    ┌─────────────┴─────────────┐
+    │                           │
+┌───▼────┐  ┌────────┐  ┌──────▼────┐  ┌──────────┐
+│Gobern. │  │Alcance │  │Cronograma │  │Finanzas  │
+│Agent   │  │Agent   │  │Agent      │  │Agent     │
+└────────┘  └────────┘  └───────────┘  └──────────┘
+┌────────┐  ┌────────┐  ┌──────────┐  ┌──────────┐
+│Interes.│  │Recursos│  │Riesgo    │  │Ágil      │
+│Agent   │  │Agent   │  │Agent     │  │Agent     │
+└────────┘  └────────┘  └──────────┘  └──────────┘
+```
+
+### 📦 8 Dominios de Desempeño PMBOK 8
+
+| Dominio | Artefactos | Formato |
+|---------|------------|---------|
+| **Gobernanza** | Acta de Constitución, Registro de Decisiones | `.md` |
+| **Alcance** | WBS, Requisitos, Matriz de Trazabilidad | `.json`, `.csv` |
+| **Cronograma** | Gantt, Hitos, Diagrama de Red | `.csv` |
+| **Finanzas** | Presupuesto, ROI, Flujo de Caja, EVM | `.csv` |
+| **Interesados** | Registro, Matriz Poder/Interés, Plan Comunicaciones | `.csv` |
+| **Recursos** | RACI, Organigrama, Plan de Recursos | `.csv`, `.json` |
+| **Riesgo** | Registro de Riesgos, Matriz Prob/Impacto | `.csv` |
+| **Ágil** | Product Backlog, Historias de Usuario, Burndown | `.csv`, `.md` |
+
+### 🎨 3 Interfaces de Usuario
+
+1. **Interfaz Web HTML** (Recomendada)
+   - Sin instalación, solo abrir en navegador
+   - Visual e intuitiva
+   - Plantillas rápidas predefinidas
+
+2. **CLI Interactivo**
+   - Script bash con prompts paso a paso
+   - Ideal para terminal/automatización
+
+3. **Streamlit App**
+   - Aplicación web Python
+   - Widgets avanzados
+   - Personalizable
+
+### 🌍 Multi-Proveedor de IA
+
+```
+PimBo soporta múltiples proveedores:
+├── Claude (Anthropic)   → Narrativa y análisis
+├── Gemini (Google)      → Datos estructurados
+└── OpenAI (Futuro)      → Planificado
+```
+
+### 📊 Optimización de Formatos
+
+PimBo usa el formato óptimo para cada tipo de información:
+
+- **CSV**: Registros, matrices, cronogramas → Fácil análisis
+- **JSON**: Estructuras jerárquicas (WBS, organigramas)
+- **Markdown**: Documentos narrativos (Actas, planes)
+
+**Resultado**: Reduce tokens hasta 70% vs mostrar en chat
+
+---
+
+## 📦 Artefactos que Genera
+
+### Fase de Inicio
+- ✅ Acta de Constitución del Proyecto
+- ✅ Registro de Interesados inicial
+- ✅ Business Case / Justificación
+- ✅ Visión del Producto (Ágil)
+
+### Fase de Planificación
+- ✅ WBS (Estructura de Desglose del Trabajo)
+- ✅ Diccionario de la WBS
+- ✅ Cronograma del Proyecto (Gantt)
+- ✅ Presupuesto detallado
+- ✅ Registro de Riesgos
+- ✅ Plan de Comunicaciones
+- ✅ Matriz RACI
+- ✅ Product Backlog (Ágil)
+
+### Fase de Ejecución
+- ✅ Sprint Backlogs
+- ✅ Informes de Avance
+- ✅ Solicitudes de Cambio
+
+### Fase de Monitoreo
+- ✅ Análisis de Valor Ganado (EVM)
+- ✅ Informes de Desempeño
+- ✅ Actualizaciones de riesgos
+
+### Fase de Cierre
+- ✅ Lecciones Aprendidas
+- ✅ Informe de Cierre
+
+**Total**: 28+ tipos de artefactos
+
+---
+
+## 🎬 Demo Rápida
+
+### Opción 1: Interfaz Web (60 segundos)
+
+```bash
+# 1. Abrir interfaz
+open pmbok8-agents-system/interface/index.html
+
+# 2. Click en plantilla "CRM de Ventas"
+
+# 3. Seleccionar artefactos:
+#    ☑ Acta de Constitución
+#    ☑ Registro de Interesados
+#    ☑ Product Backlog
+
+# 4. Click "Generar Prompt"
+
+# 5. Copiar y pegar en Claude Code
+```
+
+**Resultado**:
+```
+✓ Archivo generado: SISTEMA-CRM-acta-v1.md
+✓ Archivo generado: SISTEMA-CRM-interesados-v1.csv
+✓ Archivo generado: SISTEMA-CRM-backlog-v1.csv
+```
+
+### Video Demostración
+
+[![PimBo Demo](https://img.youtube.com/vi/DEMO_ID/0.jpg)](https://todopmp.com/wp-content/uploads/2026/01/La_Orquesta_de_IA_pimBo.mp4)
+
+_Próximamente: Video tutorial completo_
 
 ---
 
