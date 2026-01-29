@@ -64,8 +64,13 @@
       "domain": "gobernanza",
       "format": "md",
       "description": "Documento que autoriza formalmente el proyecto. Incluye objetivos, alcance preliminar, patrocinador y presupuesto inicial.",
-      "phases": ["Inicio"],
-      "badges": ["Gobernanza", "Inicio"],
+      "phases": [
+        "Inicio"
+      ],
+      "badges": [
+        "Gobernanza",
+        "Inicio"
+      ],
       "importance": "Crítico"
     },
     "wbs": {
@@ -74,8 +79,13 @@
       "domain": "alcance",
       "format": "json",
       "description": "Estructura de Desglose del Trabajo. Descomposición jerárquica del trabajo total del proyecto.",
-      "phases": ["Planificación"],
-      "badges": ["Alcance", "Planificación"],
+      "phases": [
+        "Planificación"
+      ],
+      "badges": [
+        "Alcance",
+        "Planificación"
+      ],
       "importance": "Alta"
     },
     "requisitos": {
@@ -84,8 +94,13 @@
       "domain": "alcance",
       "format": "md",
       "description": "Lista completa de requisitos funcionales y no funcionales con prioridades y criterios de aceptación.",
-      "phases": ["Planificación"],
-      "badges": ["Alcance", "Planificación"],
+      "phases": [
+        "Planificación"
+      ],
+      "badges": [
+        "Alcance",
+        "Planificación"
+      ],
       "importance": "Alta"
     },
     "cronograma": {
@@ -94,8 +109,13 @@
       "domain": "cronograma",
       "format": "csv",
       "description": "Cronograma con actividades, duraciones, dependencias y camino crítico en formato Gantt.",
-      "phases": ["Planificación"],
-      "badges": ["Cronograma", "Planificación"],
+      "phases": [
+        "Planificación"
+      ],
+      "badges": [
+        "Cronograma",
+        "Planificación"
+      ],
       "importance": "Alta"
     },
     "presupuesto": {
@@ -104,8 +124,13 @@
       "domain": "finanzas",
       "format": "csv",
       "description": "Presupuesto detallado por categorías, con reservas de contingencia y distribución temporal.",
-      "phases": ["Planificación"],
-      "badges": ["Finanzas", "Planificación"],
+      "phases": [
+        "Planificación"
+      ],
+      "badges": [
+        "Finanzas",
+        "Planificación"
+      ],
       "importance": "Alta"
     },
     "interesados": {
@@ -114,8 +139,13 @@
       "domain": "interesados",
       "format": "csv",
       "description": "Identificación de stakeholders con análisis de poder/interés y estrategias de gestión.",
-      "phases": ["Inicio"],
-      "badges": ["Interesados", "Inicio"],
+      "phases": [
+        "Inicio"
+      ],
+      "badges": [
+        "Interesados",
+        "Inicio"
+      ],
       "importance": "Alta"
     },
     "comunicaciones": {
@@ -124,8 +154,13 @@
       "domain": "interesados",
       "format": "md",
       "description": "Define qué información se compartirá con quién, cuándo, cómo y con qué frecuencia.",
-      "phases": ["Planificación"],
-      "badges": ["Interesados", "Planificación"],
+      "phases": [
+        "Planificación"
+      ],
+      "badges": [
+        "Interesados",
+        "Planificación"
+      ],
       "importance": "Alta"
     },
     "raci": {
@@ -134,8 +169,13 @@
       "domain": "recursos",
       "format": "csv",
       "description": "Asigna responsabilidades: Responsable, Aprobador, Consultado e Informado para cada entregable.",
-      "phases": ["Planificación"],
-      "badges": ["Recursos", "Planificación"],
+      "phases": [
+        "Planificación"
+      ],
+      "badges": [
+        "Recursos",
+        "Planificación"
+      ],
       "importance": "Media"
     },
     "riesgos": {
@@ -144,8 +184,13 @@
       "domain": "riesgo",
       "format": "csv",
       "description": "Documenta riesgos con probabilidad, impacto, estrategia de respuesta y responsable.",
-      "phases": ["Planificación"],
-      "badges": ["Riesgo", "Planificación"],
+      "phases": [
+        "Planificación"
+      ],
+      "badges": [
+        "Riesgo",
+        "Planificación"
+      ],
       "importance": "Alta"
     },
     "backlog": {
@@ -154,8 +199,13 @@
       "domain": "agile",
       "format": "csv",
       "description": "Lista priorizada de historias de usuario y funcionalidades para proyectos ágiles.",
-      "phases": ["Inicio"],
-      "badges": ["Ágil", "Inicio"],
+      "phases": [
+        "Inicio"
+      ],
+      "badges": [
+        "Ágil",
+        "Inicio"
+      ],
       "importance": "Alta"
     },
     "historias": {
@@ -164,8 +214,13 @@
       "domain": "agile",
       "format": "md",
       "description": "Funcionalidades desde la perspectiva del usuario con criterios de aceptación específicos.",
-      "phases": ["Planificación"],
-      "badges": ["Ágil", "Planificación"],
+      "phases": [
+        "Planificación"
+      ],
+      "badges": [
+        "Ágil",
+        "Planificación"
+      ],
       "importance": "Alta"
     },
     "business-case": {
@@ -174,8 +229,13 @@
       "domain": "gobernanza",
       "format": "md",
       "description": "Justificación económica detallada del proyecto con análisis costo-beneficio, ROI esperado y alternativas evaluadas.",
-      "phases": ["Inicio"],
-      "badges": ["Gobernanza", "Inicio"],
+      "phases": [
+        "Inicio"
+      ],
+      "badges": [
+        "Gobernanza",
+        "Inicio"
+      ],
       "importance": "Crítico"
     },
     "kickoff-checklist": {
@@ -184,8 +244,28 @@
       "domain": "gobernanza",
       "format": "md",
       "description": "Lista de verificación para reunión de inicio del proyecto",
-      "phases": ["Inicio"],
-      "badges": ["Gobernanza", "Inicio"],
+      "phases": [
+        "Inicio"
+      ],
+      "badges": [
+        "Gobernanza",
+        "Inicio"
+      ],
+      "importance": "Alta"
+    },
+    "business-model-canvas": {
+      "name": "Business Model Canvas",
+      "full_name": "Business Model Canvas",
+      "domain": "gobernanza",
+      "format": "json",
+      "description": "Modelo de negocio visual en 9 bloques",
+      "phases": [
+        "Inicio"
+      ],
+      "badges": [
+        "Gobernanza",
+        "Estrategia"
+      ],
       "importance": "Alta"
     }
   },

@@ -6,7 +6,7 @@ Este subagente especializado genera los artefactos del dominio de Gobernanza seg
 
 ## Artefactos que Genera
 
-Este subagente produce cinco artefactos principales. El Acta de Constitución del Proyecto es el documento que autoriza formalmente la existencia del proyecto y otorga al director del proyecto la autoridad para aplicar recursos organizacionales. El Registro de Decisiones captura todas las decisiones significativas tomadas durante el proyecto, proporcionando trazabilidad y contexto histórico. El Plan de Gestión de Cambios establece el proceso formal para solicitar, evaluar, aprobar e implementar cambios al proyecto. Los Criterios de Éxito del Proyecto definen las métricas específicas y medibles que determinarán si el proyecto logró sus objetivos. La Lista de Verificación de Kick-off asegura que todos los elementos necesarios estén preparados para una reunión de inicio exitosa.
+Este subagente produce seis artefactos principales. El Acta de Constitución del Proyecto es el documento que autoriza formalmente la existencia del proyecto y otorga al director del proyecto la autoridad para aplicar recursos organizacionales. El Registro de Decisiones captura todas las decisiones significativas tomadas durante el proyecto, proporcionando trazabilidad y contexto histórico. El Plan de Gestión de Cambios establece el proceso formal para solicitar, evaluar, aprobar e implementar cambios al proyecto. Los Criterios de Éxito del Proyecto definen las métricas específicas y medibles que determinarán si el proyecto logró sus objetivos. La Lista de Verificación de Kick-off asegura que todos los elementos necesarios estén preparados para una reunión de inicio exitosa. El Business Model Canvas proporciona una visión estratégica holística del modelo de negocio en 9 bloques.
 
 ## Proceso de Trabajo
 
@@ -18,7 +18,11 @@ El subagente recibe el requerimiento del proyecto y la justificación de negocio
 
 El subagente identifica los roles de autoridad necesarios para el proyecto. Esto incluye al patrocinador del proyecto quien proporciona recursos y apoyo ejecutivo, al director del proyecto quien lidera la ejecución día a día, y a los tomadores de decisiones clave para cambios significativos.
 
-### Paso 3: Generación del Acta de Constitución
+### Paso 3: Generación del Business Model Canvas (Opcional)
+
+Si el proyecto lo requiere, el subagente genera el Business Model Canvas para alinear la estrategia de negocio antes de formalizar el proyecto. Se definen los 9 bloques clave: Segmentos de Clientes, Propuestas de Valor, Canales, Relaciones con Clientes, Fuentes de Ingresos, Recursos Clave, Actividades Clave, Asociaciones Clave y Estructura de Costos.
+
+### Paso 4: Generación del Acta de Constitución
 
 El subagente genera el Acta de Constitución siguiendo esta estructura:
 

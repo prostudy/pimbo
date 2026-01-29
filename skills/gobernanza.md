@@ -80,6 +80,18 @@ Documento que asegura la preparación adecuada de la reunión de inicio formal:
 **Cuándo se genera**: Fase de Inicio (antes de la reunión)
 **Importancia**: Alta - Establece el tono profesional del proyecto
 
+### 6. Business Model Canvas
+
+Modelo visual estratégico que describe la lógica de cómo una organización crea, entrega y captura valor:
+- 9 bloques constructivos
+- Propuesta de valor clara
+- Segmentos de clientes definidos
+- Estructura de costes y flujos de ingresos
+
+**Formato**: `.json` (Datos estructurados)
+**Cuándo se genera**: Fase de Inicio (Estrategia)
+**Importancia**: Alta - Alineación estratégica del modelo de negocio
+
 ## Proceso de Generación
 
 ### Paso 1: Análisis de Entrada
@@ -108,6 +120,21 @@ El skill identifica los roles de autoridad:
 - **Director del proyecto** - Lidera la ejecución día a día
 - **Tomadores de decisiones clave** - Para cambios significativos
 - **Comité de control de cambios** - Aprueba cambios al proyecto
+
+- **Comité de control de cambios** - Aprueba cambios al proyecto
+
+### Paso 3b: Generación del Business Model Canvas (Opcional)
+
+Si se requiere, el skill genera el BMC definiendo:
+1. **Segmentos de Clientes**: ¿Para quién creamos valor?
+2. **Propuestas de Valor**: ¿Qué problemas solucionamos?
+3. **Canales**: ¿Cómo llegamos a los clientes?
+4. **Relaciones con Clientes**: ¿Qué tipo de relación esperan?
+5. **Fuentes de Ingresos**: ¿Por qué valor están dispuestos a pagar?
+6. **Recursos Clave**: ¿Qué activos necesitamos?
+7. **Actividades Clave**: ¿Qué debemos hacer para que funcione?
+8. **Asociaciones Clave**: ¿Quiénes son nuestros socios/proveedores?
+9. **Estructura de Costos**: ¿Cuáles son los costes más importantes?
 
 ### Paso 4: Generación del Acta de Constitución
 
@@ -275,6 +302,13 @@ Una Lista de Kick-off de calidad debe:
 - [ ] Enumerar los materiales de lectura previa
 - [ ] Incluir detalles logísticos completos
 - [ ] Definir los objetivos de la reunión
+
+Un Business Model Canvas de calidad debe:
+- [ ] Completar los 9 bloques del modelo
+- [ ] Tener una propuesta de valor clara y diferenciada
+- [ ] Identificar segmentos de clientes específicos
+- [ ] Alinear ingresos con costes
+- [ ] Ser coherente entre los bloques (ej. Canales adecuados para el Segmento)
 
 ## Palabras Clave
 
