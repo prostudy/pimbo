@@ -450,62 +450,13 @@ function generatePrompt() {
     // Actualizar resumen
     updateSummary();
 
-    const artifacts = {
-        acta: 'Acta de Constitución del Proyecto',
-        wbs: 'WBS (Estructura de Desglose del Trabajo) en formato JSON',
-        requisitos: 'Documento de Requisitos',
-        cronograma: 'Cronograma del Proyecto (Gantt) en formato CSV',
-        presupuesto: 'Presupuesto del Proyecto en formato CSV',
-        interesados: 'Registro de Interesados en formato CSV',
-        comunicaciones: 'Plan de Comunicaciones',
-        raci: 'Matriz RACI en formato CSV',
-        riesgos: 'Registro de Riesgos en formato CSV',
-        backlog: 'Product Backlog en formato CSV',
-        historias: 'Historias de Usuario'
-    };
+    // Mostrar modal de selección de modo
+    const generationMode = document.getElementById('generationMode');
+    generationMode.classList.remove('hidden');
 
-    const selectedArtifacts = appState.formData.artifacts.map(function(id) {
-        return artifacts[id];
-    });
-
-    const phaseLabels = {
-        inicio: 'Inicio',
-        planificacion: 'Planificación',
-        ejecucion: 'Ejecución',
-        monitoreo: 'Monitoreo y Control',
-        cierre: 'Cierre'
-    };
-
-    const approachLabels = {
-        predictivo: 'Predictivo (Cascada)',
-        agil: 'Ágil',
-        hibrido: 'Híbrido',
-        iterativo: 'Iterativo/Incremental'
-    };
-
-    const prompt = generatePromptText(
-        appState.formData.projectName,
-        appState.formData.description,
-        appState.formData.justification,
-        phaseLabels[appState.formData.phase],
-        approachLabels[appState.formData.approach],
-        selectedArtifacts
-    );
-
-    // Mostrar output
-    document.getElementById('promptOutput').textContent = prompt;
-
-    // Update instructions
-    const instructions = document.getElementById('outputInstructions');
-    instructions.innerHTML = 'Copy the following text and paste it into your AI assistant (Claude, Gemini, ChatGPT, etc.):';
-
-    // Mostrar sección de output
-    const outputSection = document.getElementById('outputSection');
-    outputSection.classList.remove('hidden');
-
-    // Scroll to output
+    // Scroll to mode selection
     setTimeout(function() {
-        outputSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        generationMode.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }, 100);
 }
 
@@ -611,4 +562,388 @@ function showCopySuccess(btn) {
         btn.innerHTML = originalText;
         btn.classList.remove('copied');
     }, 2000);
+}
+
+// ============================================
+// Web Interface Mode Functions
+// ============================================
+
+function selectMode(mode) {
+    const generationMode = document.getElementById('generationMode');
+    const promptOutputSection = document.getElementById('promptOutputSection');
+    const webInterfaceSection = document.getElementById('webInterfaceSection');
+    
+    generationMode.classList.add('hidden');
+    
+    if (mode === 'prompt') {
+        showPromptMode();
+    } else if (mode === 'web') {
+        showWebInterface();
+    }
+}
+
+function showPromptMode() {
+    const artifacts = {
+        acta: 'Acta de Constitución del Proyecto',
+        wbs: 'WBS (Estructura de Desglose del Trabajo) en formato JSON',
+        requisitos: 'Documento de Requisitos',
+        cronograma: 'Cronograma del Proyecto (Gantt) en formato CSV',
+        presupuesto: 'Presupuesto del Proyecto en formato CSV',
+        interesados: 'Registro de Interesados en formato CSV',
+        comunicaciones: 'Plan de Comunicaciones',
+        raci: 'Matriz RACI en formato CSV',
+        riesgos: 'Registro de Riesgos en formato CSV',
+        backlog: 'Product Backlog en formato CSV',
+        historias: 'Historias de Usuario'
+    };
+
+    const selectedArtifacts = appState.formData.artifacts.map(function(id) {
+        return artifacts[id];
+    });
+
+    const phaseLabels = {
+        inicio: 'Inicio',
+        planificacion: 'Planificación',
+        ejecucion: 'Ejecución',
+        monitoreo: 'Monitoreo y Control',
+        cierre: 'Cierre'
+    };
+
+    const approachLabels = {
+        predictivo: 'Predictivo (Cascada)',
+        agil: 'Ágil',
+        hibrido: 'Híbrido',
+        iterativo: 'Iterativo/Incremental'
+    };
+
+    const prompt = generatePromptText(
+        appState.formData.projectName,
+        appState.formData.description,
+        appState.formData.justification,
+        phaseLabels[appState.formData.phase],
+        approachLabels[appState.formData.approach],
+        selectedArtifacts
+    );
+
+    // Mostrar output
+    document.getElementById('promptOutput').textContent = prompt;
+
+    // Update instructions
+    const instructions = document.getElementById('outputInstructions');
+    instructions.innerHTML = 'Copy the following text and paste it into your AI assistant (Claude, Gemini, ChatGPT, etc.):';
+
+    // Mostrar sección de output
+    const promptOutputSection = document.getElementById('promptOutputSection');
+    promptOutputSection.classList.remove('hidden');
+
+    // Scroll to output
+    setTimeout(function() {
+        promptOutputSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 100);
+}
+
+function showWebInterface() {
+    const webInterfaceSection = document.getElementById('webInterfaceSection');
+    webInterfaceSection.classList.remove('hidden');
+    
+    // Scroll to web interface
+    setTimeout(function() {
+        webInterfaceSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 100);
+}
+
+function goBackToModeSelection() {
+    // Hide all sections
+    document.getElementById('promptOutputSection').classList.add('hidden');
+    document.getElementById('webInterfaceSection').classList.add('hidden');
+    document.getElementById('generationProgress').classList.add('hidden');
+    document.getElementById('resultsViewer').classList.add('hidden');
+    
+    // Show mode selection
+    const generationMode = document.getElementById('generationMode');
+    generationMode.classList.remove('hidden');
+    
+    setTimeout(function() {
+        generationMode.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 100);
+}
+
+function startWebGeneration() {
+    const apiKey = document.getElementById('claudeApiKey').value.trim();
+    
+    if (!apiKey) {
+        showAlert('Please enter your Claude API key');
+        return;
+    }
+    
+    if (!apiKey.startsWith('sk-ant-api')) {
+        showAlert('Please enter a valid Claude API key (starts with sk-ant-api)');
+        return;
+    }
+    
+    // Hide API config and show progress
+    document.querySelector('.api-config').style.display = 'none';
+    document.getElementById('generationProgress').classList.remove('hidden');
+    
+    // Start generation
+    generateWithWebInterface(apiKey);
+}
+
+async function generateWithWebInterface(apiKey) {
+    const progressLog = document.getElementById('progressLog');
+    
+    function addLogEntry(step, message, type = 'info') {
+        const logEntry = document.createElement('div');
+        logEntry.className = `log-entry log-${type}`;
+        logEntry.innerHTML = `
+            <span class="log-step">Step ${step}</span>
+            <span class="log-message">${message}</span>
+            <span class="log-time">${new Date().toLocaleTimeString()}</span>
+        `;
+        progressLog.appendChild(logEntry);
+        progressLog.scrollTop = progressLog.scrollHeight;
+    }
+    
+    try {
+        addLogEntry(1, 'Iniciando agente PimBo...', 'info');
+        
+        const projectData = {
+            name: appState.formData.projectName,
+            description: appState.formData.description,
+            justification: appState.formData.justification,
+            phase: appState.formData.phase,
+            approach: appState.formData.approach
+        };
+        
+        const requestData = {
+            projectData: projectData,
+            selectedArtifacts: appState.formData.artifacts,
+            apiKey: apiKey
+        };
+        
+        addLogEntry(2, 'Enviando datos al agente PHP...', 'info');
+        
+        const response = await fetch('php/agent.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestData)
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const result = await response.json();
+        
+        if (!result.success) {
+            throw new Error(result.error || 'Unknown error occurred');
+        }
+        
+        // Display logs from PHP agent
+        if (result.logs) {
+            result.logs.forEach(log => {
+                addLogEntry(log.step, log.message, log.step === 'ERROR' ? 'error' : 'success');
+            });
+        }
+        
+        addLogEntry('✓', 'Proceso completado exitosamente', 'success');
+        
+        // Show results
+        displayResults(result.results, result.summary);
+        
+    } catch (error) {
+        addLogEntry('✗', 'Error: ' + error.message, 'error');
+        console.error('Generation error:', error);
+    }
+}
+
+function displayResults(results, summary) {
+    const resultsViewer = document.getElementById('resultsViewer');
+    const resultsTabs = document.getElementById('resultsTabs');
+    const resultsContent = document.getElementById('resultsContent');
+    
+    // Clear previous content
+    resultsTabs.innerHTML = '';
+    resultsContent.innerHTML = '';
+    
+    // Create tabs for each result
+    results.forEach((result, index) => {
+        const tab = document.createElement('button');
+        tab.className = 'result-tab' + (index === 0 ? ' active' : '');
+        tab.innerHTML = `
+            <span class="tab-name">${result.name}</span>
+            <span class="tab-format">.${result.extension}</span>
+        `;
+        tab.onclick = () => showResultContent(result, index);
+        resultsTabs.appendChild(tab);
+    });
+    
+    // Show first result by default
+    if (results.length > 0) {
+        showResultContent(results[0], 0);
+    }
+    
+    // Show results viewer
+    resultsViewer.classList.remove('hidden');
+    
+    setTimeout(function() {
+        resultsViewer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 100);
+}
+
+function showResultContent(result, index) {
+    // Update active tab
+    document.querySelectorAll('.result-tab').forEach((tab, i) => {
+        tab.classList.toggle('active', i === index);
+    });
+    
+    const resultsContent = document.getElementById('resultsContent');
+    
+    let contentHtml = '';
+    
+    switch (result.extension) {
+        case 'md':
+            contentHtml = `
+                <div class="result-header">
+                    <h5>${result.name}</h5>
+                    <button class="btn-download" onclick="downloadResult('${result.filename}', \`${result.content.replace(/`/g, '\\`')}\`)">Download</button>
+                </div>
+                <div class="result-markdown">${markdownToHtml(result.content)}</div>
+            `;
+            break;
+            
+        case 'json':
+            try {
+                const jsonData = JSON.parse(result.content);
+                contentHtml = `
+                    <div class="result-header">
+                        <h5>${result.name}</h5>
+                        <button class="btn-download" onclick="downloadResult('${result.filename}', \`${result.content.replace(/`/g, '\\`')}\`)">Download</button>
+                    </div>
+                    <div class="result-json">${renderWBSTree(jsonData)}</div>
+                `;
+            } catch (e) {
+                contentHtml = `
+                    <div class="result-header">
+                        <h5>${result.name}</h5>
+                        <button class="btn-download" onclick="downloadResult('${result.filename}', \`${result.content.replace(/`/g, '\\`')}\`)">Download</button>
+                    </div>
+                    <div class="result-raw">${result.content}</div>
+                `;
+            }
+            break;
+            
+        case 'csv':
+            contentHtml = `
+                <div class="result-header">
+                    <h5>${result.name}</h5>
+                    <button class="btn-download" onclick="downloadResult('${result.filename}', \`${result.content.replace(/`/g, '\\`')}\`)">Download</button>
+                </div>
+                <div class="result-csv">${csvToTable(result.content)}</div>
+            `;
+            break;
+            
+        default:
+            contentHtml = `
+                <div class="result-header">
+                    <h5>${result.name}</h5>
+                    <button class="btn-download" onclick="downloadResult('${result.filename}', \`${result.content.replace(/`/g, '\\`')}\`)">Download</button>
+                </div>
+                <div class="result-raw">${result.content}</div>
+            `;
+    }
+    
+    resultsContent.innerHTML = contentHtml;
+}
+
+function downloadResult(filename, content) {
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+}
+
+// ============================================
+// Visualization Helper Functions
+// ============================================
+
+function markdownToHtml(markdown) {
+    // Simple markdown to HTML conversion
+    return markdown
+        .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+        .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+        .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+        .replace(/^\- (.*$)/gim, '<li>$1</li>')
+        .replace(/(\n<li>.*<\/li>\n)/gs, '<ul>$1</ul>')
+        .replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>')
+        .replace(/\*(.*)\*/gim, '<em>$1</em>')
+        .replace(/\n/gim, '<br>');
+}
+
+function csvToTable(csv) {
+    const lines = csv.trim().split('\n');
+    if (lines.length === 0) return '<p>No data</p>';
+    
+    let html = '<table class="csv-table">';
+    
+    // Header
+    const headers = lines[0].split(',').map(h => h.replace(/"/g, '').trim());
+    html += '<thead><tr>';
+    headers.forEach(header => {
+        html += `<th>${header}</th>`;
+    });
+    html += '</tr></thead>';
+    
+    // Rows
+    html += '<tbody>';
+    for (let i = 1; i < lines.length; i++) {
+        const cells = lines[i].split(',').map(c => c.replace(/"/g, '').trim());
+        html += '<tr>';
+        cells.forEach(cell => {
+            html += `<td>${cell}</td>`;
+        });
+        html += '</tr>';
+    }
+    html += '</tbody>';
+    
+    html += '</table>';
+    return html;
+}
+
+function renderWBSTree(jsonData) {
+    if (!jsonData.wbs) return '<p>Invalid WBS data</p>';
+    
+    function renderNode(node, level = 0) {
+        let html = `<div class="wbs-node wbs-level-${level}">`;
+        html += `<div class="wbs-item">${node.name}</div>`;
+        
+        if (node.children) {
+            html += '<div class="wbs-children">';
+            Object.keys(node.children).forEach(key => {
+                html += renderNode(node.children[key], level + 1);
+            });
+            html += '</div>';
+        }
+        
+        html += '</div>';
+        return html;
+    }
+    
+    let html = `<div class="wbs-container">`;
+    html += `<h4>${jsonData.project_name || 'Project WBS'}</h4>`;
+    
+    Object.keys(jsonData.wbs).forEach(key => {
+        html += renderNode(jsonData.wbs[key], 0);
+    });
+    
+    html += '</div>';
+    return html;
 }

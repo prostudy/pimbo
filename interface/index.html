@@ -318,14 +318,67 @@
 
                 </div>
 
-                <!-- Output Section -->
-                <div id="outputSection" class="output-section hidden">
+                <!-- Generation Mode Selection -->
+                <div id="generationMode" class="generation-mode hidden">
+                    <h3 class="mode-header">Choose Generation Method</h3>
+                    <p class="mode-description">Select how you want to generate your project artifacts</p>
+                    
+                    <div class="mode-options">
+                        <div class="mode-option" onclick="selectMode('prompt')">
+                            <div class="mode-icon">📋</div>
+                            <h4>Manual Generation</h4>
+                            <p>Copy the prompt and paste it into your preferred AI tool</p>
+                            <span class="mode-badge">Traditional</span>
+                        </div>
+                        
+                        <div class="mode-option" onclick="selectMode('web')">
+                            <div class="mode-icon">🤖</div>
+                            <h4>Automated Web Interface</h4>
+                            <p>Let our AI agent automatically generate all artifacts and visualize them</p>
+                            <span class="mode-badge">Powered by Claude</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prompt Output Section (Manual Mode) -->
+                <div id="promptOutputSection" class="output-section hidden">
                     <h3 class="output-header">Generated Prompt</h3>
                     <p class="output-instructions" id="outputInstructions">
                         Copy the following text and paste it into your selected AI provider.
                     </p>
                     <div class="prompt-output" id="promptOutput"></div>
                     <button class="btn btn-copy" onclick="copyPrompt(event)">Copy to Clipboard</button>
+                    <button class="btn btn-secondary" onclick="goBackToModeSelection()">← Back to Options</button>
+                </div>
+
+                <!-- Web Interface Section (Automated Mode) -->
+                <div id="webInterfaceSection" class="web-interface-section hidden">
+                    <h3 class="web-header">AI Agent Generation</h3>
+                    <p class="web-instructions">Our AI agent will automatically generate all selected artifacts using Claude API</p>
+                    
+                    <!-- API Key Configuration -->
+                    <div class="api-config">
+                        <div class="form-group">
+                            <label for="claudeApiKey">Claude API Key *</label>
+                            <input type="password" id="claudeApiKey" placeholder="sk-ant-api...">
+                            <p class="help-text">Enter your Claude API key to enable automated generation</p>
+                        </div>
+                        <button class="btn btn-primary" onclick="startWebGeneration()">Start Generation</button>
+                        <button class="btn btn-secondary" onclick="goBackToModeSelection()">← Back to Options</button>
+                    </div>
+                    
+                    <!-- Generation Progress -->
+                    <div id="generationProgress" class="generation-progress hidden">
+                        <h4>Generation Progress</h4>
+                        <div class="progress-log" id="progressLog"></div>
+                    </div>
+                    
+                    <!-- Results Viewer -->
+                    <div id="resultsViewer" class="results-viewer hidden">
+                        <h4>Generated Artifacts</h4>
+                        <div class="results-tabs" id="resultsTabs"></div>
+                        <div class="results-content" id="resultsContent"></div>
+                    </div>
                 </div>
             </div>
         </div>
