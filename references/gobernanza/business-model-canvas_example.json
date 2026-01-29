@@ -1,0 +1,149 @@
+{
+    "project_name": "",
+    "project_id": "",
+    "date_created": "",
+    "version": "",
+    "business_model_canvas": {
+        "segmentos_clientes": {
+            "title": "",
+            "description": "",
+            "segments": [
+                {
+                    "segment": "",
+                    "description": "",
+                    "size": "",
+                    "needs": []
+                }
+            ]
+        },
+        "propuestas_valor": {
+            "title": "",
+            "description": "",
+            "propositions": [
+                {
+                    "value": "",
+                    "problem": "",
+                    "solution": "",
+                    "benefit": ""
+                }
+            ]
+        },
+        "canales": {
+            "title": "",
+            "description": "",
+            "channels": [
+                {
+                    "channel": "",
+                    "type": "",
+                    "description": "",
+                    "phases": []
+                }
+            ]
+        },
+        "relaciones_clientes": {
+            "title": "",
+            "description": "",
+            "relationships": [
+                {
+                    "type": "",
+                    "description": "",
+                    "effort": "",
+                    "benefit": ""
+                }
+            ]
+        },
+        "fuentes_ingresos": {
+            "title": "",
+            "description": "",
+            "note": "",
+            "revenue_streams": [
+                {
+                    "stream": "",
+                    "type": "",
+                    "description": "",
+                    "revenue": "",
+                    "rationale": ""
+                }
+            ],
+            "pricing_strategy": ""
+        },
+        "recursos_clave": {
+            "title": "",
+            "description": "",
+            "resources": [
+                {
+                    "category": "",
+                    "resource": "",
+                    "description": "",
+                    "criticality": "",
+                    "status": ""
+                }
+            ]
+        },
+        "actividades_clave": {
+            "title": "",
+            "description": "",
+            "activities": [
+                {
+                    "activity": "",
+                    "description": "",
+                    "frequency": "",
+                    "responsible": "",
+                    "value": ""
+                }
+            ]
+        },
+        "asociaciones_clave": {
+            "title": "",
+            "description": "",
+            "partnerships": [
+                {
+                    "partner": "",
+                    "type": "",
+                    "relationship": "",
+                    "value": "",
+                    "risk": ""
+                }
+            ]
+        },
+        "estructura_costos": {
+            "title": "",
+            "description": "",
+            "total_budget": "",
+            "cost_structure": [
+                {
+                    "category": "",
+                    "items": [
+                        {
+                            "item": "",
+                            "cost": "",
+                            "type": "",
+                            "description": ""
+                        }
+                    ],
+                    "subtotal": ""
+                }
+            ],
+            "cost_drivers": [
+                {
+                    "driver": "",
+                    "impact": "",
+                    "mitigation": ""
+                }
+            ],
+            "funding_strategy": ""
+        }
+    },
+    "strategic_insights": {
+        "key_insights": [],
+        "risks": [],
+        "success_metrics": []
+    },
+    "metadata": {
+        "generated_by": "",
+        "template_version": "",
+        "pmbok_alignment": "",
+        "framework": "",
+        "language": ""
+    }
+}

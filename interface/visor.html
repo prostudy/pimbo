@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pimbo Visor</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        /* Estilos específicos para el visor que complementan style.css */
+        .visor-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .drop-zone {
+            border: 2px dashed #007AFF;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            background-color: #F5F9FF;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            cursor: pointer;
+        }
+
+        .drop-zone:hover,
+        .drop-zone.dragover {
+            background-color: #E6F0FF;
+            border-color: #0056B3;
+            transform: scale(1.01);
+        }
+
+        .drop-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .drop-text {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .drop-hint {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        #file-input {
+            display: none;
+        }
+
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 45px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: none;
+            /* Oculto hasta que haya contenido */
+        }
+
+        .viewer-controls {
+            text-align: center;
+            margin-bottom: 20px;
+            display: none;
+            /* Oculto hasta que haya contenido */
+        }
+
+        @media (max-width: 767px) {
+            .markdown-body {
+                padding: 15px;
+            }
+        }
+
+        /* Styles for JSON/Mermaid Visualization */
+        .diagram-container {
+            width: 100%;
+            overflow-x: auto;
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+            background: white;
+        }
+
+        .json-code {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            padding: 16px;
+            overflow: auto;
+            font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+            font-size: 85%;
+            line-height: 1.45;
+        }
+
+        .bmc-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(3, minmax(200px, auto));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .bmc-block {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 4px;
+            background: #f9f9f9;
+        }
+
+        .bmc-block h4 {
+            margin-top: 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        /* BMC Layout */
+        .bmc-kp {
+            grid-column: 1 / 2;
+            grid-row: 1 / 3;
+        }
+
+        /* Key Partners */
+        .bmc-ka {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+        }
+
+        /* Key Activities */
+        .bmc-kr {
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+        }
+
+        /* Key Resources */
+        .bmc-vp {
+            grid-column: 3 / 4;
+            grid-row: 1 / 3;
+        }
+
+        /* Value Propositions */
+        .bmc-cr {
+            grid-column: 4 / 5;
+            grid-row: 1 / 2;
+        }
+
+        /* Customer Relationships */
+        .bmc-ch {
+            grid-column: 4 / 5;
+            grid-row: 2 / 3;
+        }
+
+        /* Channels */
+        .bmc-cs {
+            grid-column: 5 / 6;
+            grid-row: 1 / 3;
+        }
+
+        /* Customer Segments */
+        .bmc-c$ {
+            grid-column: 1 / 3;
+            grid-row: 3 / 4;
+        }
+
+        /* Cost Structure */
+        .bmc-rs {
+            grid-column: 3 / 6;
+            grid-row: 3 / 4;
+        }
+
+        /* Revenue Streams */
+
+        @media (max-width: 1024px) {
+            .bmc-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto;
+            }
+
+            .bmc-kp,
+            .bmc-ka,
+            .bmc-kr,
+            .bmc-vp,
+            .bmc-cr,
+            .bmc-ch,
+            .bmc-cs,
+            .bmc-c$,
+            .bmc-rs {
+                grid-column: auto;
+                grid-row: auto;
+            }
+        }
+
+        /* Interactive JSON Tree Styles */
+        .json-tree {
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .json-tree details {
+            margin-left: 20px;
+        }
+
+        .json-tree summary {
+            cursor: pointer;
+            outline: none;
+            list-style: none;
+        }
+
+        .json-tree summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .json-tree summary::before {
+            content: '▶';
+            display: inline-block;
+            font-size: 10px;
+            margin-right: 5px;
+            transition: transform 0.1s;
+            color: #666;
+        }
+
+        .json-tree details[open]>summary::before {
+            transform: rotate(90deg);
+        }
+
+        .json-key {
+            color: #881391;
+            /* Key color */
+            font-weight: 600;
+        }
+
+        .json-string {
+            color: #c41a16;
+        }
+
+        /* String color */
+        .json-number {
+            color: #1c00cf;
+        }
+
+        /* Number color */
+        .json-boolean {
+            color: #aa0d91;
+        }
+
+        /* Boolean color */
+        .json-null {
+            color: #808080;
+            font-style: italic;
+        }
+
+        .tree-item {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header idéntico al index.html -->
+        <div class="header">
+            <div class="header-content">
+                <img src="images/pimbo_profile_350.png" alt="PimBo Logo" class="header-logo">
+                <div class="header-text">
+                    <h1 class="header-title">PimBo Visor</h1>
+                    <p class="header-subtitle">Visualizador de Artefactos PMBOK 8</p>
+                </div>
+                <a href="index.html" class="btn btn-secondary" style="text-decoration: none; font-size: 0.9rem;">
+                    ✨ Generador
+                </a>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="content visor-container">
+
+            <div id="drop-zone" class="drop-zone">
+                <span class="drop-icon">📄</span>
+                <div class="drop-text">Arrastra tu archivo .md o .json aquí</div>
+                <div class="drop-hint">o haz clic para seleccionar un archivo del proyecto</div>
+                <input type="file" id="file-input" accept=".md,.json">
+            </div>
+
+            <div id="viewer-controls" class="viewer-controls">
+                <button id="reset-btn" class="btn btn-secondary">Abrir otro archivo</button>
+            </div>
+
+            <div id="content" class="markdown-body"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="js/visor_app.js"></script>
+</body>
+
+</html>
