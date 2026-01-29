@@ -232,6 +232,7 @@ Para que los participantes del diplomado incluyan al inicio de su conversación:
 
 ```
 Configuración de salida:
+- Guarda todo en una carpeta con el nombre del proyecto, sin espacio, sin caracteres especiales
 - Genera archivos directamente, sin mostrar contenido en chat
 - Usa .csv para tablas/registros, .md para documentos, .json para jerarquías
 - Nombra: [PROYECTO]-[artefacto]-v1.[ext]
