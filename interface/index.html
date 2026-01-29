@@ -5,280 +5,394 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PimBo - Generador de Artefactos PMBOK 8</title>
     <link rel="stylesheet" href="css/style.css">
-    
 </head>
 <body>
     <div class="container">
+        <!-- Header -->
         <div class="header">
-            <h1>🚀 PimBo</h1>
-            <p class="subtitle">Generador Inteligente de Artefactos de Gestión de Proyectos PMBOK 8</p>
-            <p class="version">Powered by Claude AI & Google Gemini</p>
+            <div class="header-content">
+                <img src="images/pimbo_profile_350.png" alt="PimBo Logo" class="header-logo">
+                <div class="header-text">
+                    <h1 class="header-title">PimBo</h1>
+                    <p class="header-subtitle">Professional Project Management Documentation Generator</p>
+                </div>
+            </div>
         </div>
 
+        <!-- Progress Indicator -->
+        <div class="progress-container">
+            <div class="progress-wrapper">
+                <div class="progress-steps">
+                <div class="progress-line">
+                    <div class="progress-line-fill"></div>
+                </div>
+                <div class="progress-step active">
+                    <div class="progress-step-circle">1</div>
+                    <div class="progress-step-label">Project</div>
+                </div>
+                <div class="progress-step">
+                    <div class="progress-step-circle">2</div>
+                    <div class="progress-step-label">Config</div>
+                </div>
+                <div class="progress-step">
+                    <div class="progress-step-circle">3</div>
+                    <div class="progress-step-label">Artifacts</div>
+                </div>
+                <div class="progress-step">
+                    <div class="progress-step-circle">4</div>
+                    <div class="progress-step-label">Provider</div>
+                </div>
+                <div class="progress-step">
+                    <div class="progress-step-circle">5</div>
+                    <div class="progress-step-label">Summary</div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- Content -->
         <div class="content">
-            <!-- SECCIÓN 0: Selección de Proveedor de IA -->
-            <div class="section">
-                <h2>🤖 Proveedor de IA</h2>
-                <p class="help-text">Selecciona qué inteligencia artificial usarás para generar los artefactos</p>
-
-                <div class="provider-selector">
-                    <label class="provider-option selected" data-provider="claude">
-                        <input type="radio" name="provider" value="claude" checked>
-                        <div class="provider-logo">🧠</div>
-                        <div class="provider-name">Claude AI</div>
-                        <div class="provider-description">
-                            Excelente para documentos narrativos y análisis detallado
-                        </div>
-                        <ul class="provider-features">
-                            <li>Genera archivos directamente</li>
-                            <li>Mejor para documentación compleja</li>
-                            <li>Análisis contextual profundo</li>
-                        </ul>
-                    </label>
-
-                    <label class="provider-option" data-provider="gemini">
-                        <input type="radio" name="provider" value="gemini">
-                        <div class="provider-logo">💎</div>
-                        <div class="provider-name">Google Gemini</div>
-                        <div class="provider-description">
-                            Ideal para datos estructurados y visualización
-                        </div>
-                        <ul class="provider-features">
-                            <li>Muestra artefactos visualmente</li>
-                            <li>Genera archivo ZIP descargable</li>
-                            <li>Excelente para tablas y matrices</li>
-                        </ul>
-                    </label>
-                </div>
-
-                <div id="providerInfo" class="info-box" style="margin-top: 20px;">
-                    <strong>Usando Claude AI:</strong> Los archivos se generarán automáticamente en tu directorio. No se mostrarán en el chat.
-                </div>
-            </div>
-
-            <!-- SECCIÓN 1: Información del Proyecto -->
-            <div class="section">
-                <h2>📋 Información del Proyecto</h2>
+            <!-- STEP 1: Project Information -->
+            <div id="step-1" class="step-section active">
+                <h2 class="step-title">Project Information</h2>
+                <p class="step-description">Provide essential details about your project</p>
 
                 <div class="form-group">
-                    <label for="projectName">Nombre del Proyecto *</label>
-                    <input type="text" id="projectName" placeholder="Ej: Sistema CRM para Departamento de Ventas">
-                    <p class="help-text">Nombre descriptivo y corto del proyecto</p>
+                    <label for="projectName">Project Name *</label>
+                    <input type="text" id="projectName" placeholder="e.g., Sales Department CRM System">
+                    <p class="help-text">Descriptive and concise project name</p>
                 </div>
 
                 <div class="form-group">
-                    <label for="projectDescription">Descripción / Requerimiento *</label>
-                    <textarea id="projectDescription" placeholder="Describe el proyecto, su propósito y qué se busca lograr..."></textarea>
-                    <p class="help-text">Describe qué es el proyecto y qué problema resuelve</p>
+                    <label for="projectDescription">Project Description / Requirements *</label>
+                    <textarea id="projectDescription" placeholder="Describe the project, its purpose, and objectives..."></textarea>
+                    <p class="help-text">Explain what the project is and what problem it solves</p>
                 </div>
 
                 <div class="form-group">
-                    <label for="projectJustification">Justificación / Caso de Negocio *</label>
-                    <textarea id="projectJustification" placeholder="¿Por qué es necesario este proyecto? ¿Qué valor aporta?"></textarea>
-                    <p class="help-text">Explica por qué se debe realizar este proyecto</p>
+                    <label for="projectJustification">Business Case / Justification *</label>
+                    <textarea id="projectJustification" placeholder="Why is this project necessary? What value does it provide?"></textarea>
+                    <p class="help-text">Explain why this project should be undertaken</p>
                 </div>
-
-                <div class="quick-templates">
-                    <strong>Plantillas rápidas:</strong>
-                    <button class="template-btn" onclick="loadTemplate('crm')">CRM de Ventas</button>
-                    <button class="template-btn" onclick="loadTemplate('erp')">Sistema ERP</button>
-                    <button class="template-btn" onclick="loadTemplate('mobile')">App Móvil</button>
-                    <button class="template-btn" onclick="loadTemplate('infrastructure')">Infraestructura IT</button>
-                </div>
-            </div>
-
-            <!-- SECCIÓN 2: Configuración del Proyecto -->
-            <div class="section">
-                <h2>⚙️ Configuración del Proyecto</h2>
 
                 <div class="form-group">
-                    <label>Fase del Ciclo de Vida *</label>
-                    <div class="phase-selector">
-                        <button class="phase-btn" data-phase="inicio" onclick="selectPhase('inicio')">Inicio</button>
-                        <button class="phase-btn" data-phase="planificacion" onclick="selectPhase('planificacion')">Planificación</button>
-                        <button class="phase-btn" data-phase="ejecucion" onclick="selectPhase('ejecucion')">Ejecución</button>
-                        <button class="phase-btn" data-phase="monitoreo" onclick="selectPhase('monitoreo')">Monitoreo</button>
-                        <button class="phase-btn" data-phase="cierre" onclick="selectPhase('cierre')">Cierre</button>
+                    <label>Quick Templates</label>
+                    <div class="quick-templates">
+                        <button class="template-btn" data-template="crm">
+                            Sales CRM
+                        </button>
+                        <button class="template-btn" data-template="erp">
+                            ERP System
+                        </button>
+                        <button class="template-btn" data-template="mobile">
+                            Mobile App
+                        </button>
+                        <button class="template-btn" data-template="infrastructure">
+                            Cloud Infrastructure
+                        </button>
                     </div>
-                    <p class="help-text">Selecciona en qué fase se encuentra tu proyecto</p>
-                </div>
-
-                <div class="form-group">
-                    <label for="approach">Enfoque del Proyecto *</label>
-                    <select id="approach">
-                        <option value="">Seleccionar enfoque...</option>
-                        <option value="predictivo">Predictivo (Cascada/Tradicional)</option>
-                        <option value="agil">Ágil (Scrum/Kanban)</option>
-                        <option value="hibrido">Híbrido (Predictivo + Ágil)</option>
-                        <option value="iterativo">Iterativo/Incremental</option>
-                    </select>
-                    <p class="help-text">¿Cómo se gestionará el proyecto?</p>
                 </div>
             </div>
 
-            <!-- SECCIÓN 3: Selección de Artefactos -->
-            <div class="section">
-                <h2>📦 Artefactos a Generar</h2>
-                <p class="help-text" style="margin-bottom: 20px;">Selecciona los documentos que necesitas generar para tu proyecto</p>
+            <!-- STEP 2: Project Configuration -->
+            <div id="step-2" class="step-section">
+                <h2 class="step-title">Project Configuration</h2>
+                <p class="step-description">Define the lifecycle phase and management approach</p>
 
-                <div class="artifacts-grid" id="artifactsGrid">
+                <div class="form-group">
+                    <label>Project Lifecycle Phase *</label>
+                    <div class="phase-grid">
+                        <button class="phase-btn" data-phase="inicio">Initiating</button>
+                        <button class="phase-btn" data-phase="planificacion">Planning</button>
+                        <button class="phase-btn" data-phase="ejecucion">Executing</button>
+                        <button class="phase-btn" data-phase="monitoreo">Monitoring</button>
+                        <button class="phase-btn" data-phase="cierre">Closing</button>
+                    </div>
+                    <p class="help-text">Select the current phase of your project</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="approach">Project Management Approach *</label>
+                    <select id="approach">
+                        <option value="">Select approach...</option>
+                        <option value="predictivo">Predictive (Waterfall/Traditional)</option>
+                        <option value="agil">Agile (Scrum/Kanban)</option>
+                        <option value="hibrido">Hybrid (Predictive + Agile)</option>
+                        <option value="iterativo">Iterative/Incremental</option>
+                    </select>
+                    <p class="help-text">How will the project be managed?</p>
+                </div>
+            </div>
+
+            <!-- STEP 3: Artifact Selection -->
+            <div id="step-3" class="step-section">
+                <h2 class="step-title">Artifact Selection</h2>
+                <p class="step-description">Select the documents required for your project</p>
+
+                <div class="artifacts-grid">
                     <!-- Gobernanza -->
-                    <div class="artifact-card" onclick="toggleArtifact('acta')">
+                    <div class="artifact-card">
+                        <input type="checkbox" id="acta">
                         <div class="artifact-header">
-                            <input type="checkbox" id="acta" onclick="event.stopPropagation()">
                             <h3>Acta de Constitución</h3>
                         </div>
                         <p class="artifact-description">
                             Documento que autoriza formalmente el proyecto. Incluye objetivos, alcance preliminar, patrocinador y presupuesto inicial.
                         </p>
-                        <span class="artifact-badge">Gobernanza</span>
-                        <span class="artifact-badge">Fase: Inicio</span>
+                        <div class="artifact-badges">
+                            <span class="artifact-badge">Gobernanza</span>
+                            <span class="artifact-badge">Inicio</span>
+                        </div>
                     </div>
 
                     <!-- Alcance -->
-                    <div class="artifact-card" onclick="toggleArtifact('wbs')">
+                    <div class="artifact-card">
+                        <input type="checkbox" id="wbs">
                         <div class="artifact-header">
-                            <input type="checkbox" id="wbs" onclick="event.stopPropagation()">
                             <h3>WBS (EDT)</h3>
                         </div>
                         <p class="artifact-description">
-                            Estructura de Desglose del Trabajo. Descomposición jerárquica del trabajo total del proyecto en componentes manejables.
+                            Estructura de Desglose del Trabajo. Descomposición jerárquica del trabajo total del proyecto.
                         </p>
-                        <span class="artifact-badge">Alcance</span>
-                        <span class="artifact-badge">Fase: Planificación</span>
+                        <div class="artifact-badges">
+                            <span class="artifact-badge">Alcance</span>
+                            <span class="artifact-badge">Planificación</span>
+                        </div>
                     </div>
 
-                    <div class="artifact-card" onclick="toggleArtifact('requisitos')">
+                    <div class="artifact-card">
+                        <input type="checkbox" id="requisitos">
                         <div class="artifact-header">
-                            <input type="checkbox" id="requisitos" onclick="event.stopPropagation()">
                             <h3>Documento de Requisitos</h3>
                         </div>
                         <p class="artifact-description">
-                            Lista completa de requisitos funcionales y no funcionales del proyecto con prioridades y criterios de aceptación.
+                            Lista completa de requisitos funcionales y no funcionales con prioridades y criterios de aceptación.
                         </p>
-                        <span class="artifact-badge">Alcance</span>
-                        <span class="artifact-badge">Fase: Planificación</span>
+                        <div class="artifact-badges">
+                            <span class="artifact-badge">Alcance</span>
+                            <span class="artifact-badge">Planificación</span>
+                        </div>
                     </div>
 
                     <!-- Cronograma -->
-                    <div class="artifact-card" onclick="toggleArtifact('cronograma')">
+                    <div class="artifact-card">
+                        <input type="checkbox" id="cronograma">
                         <div class="artifact-header">
-                            <input type="checkbox" id="cronograma" onclick="event.stopPropagation()">
                             <h3>Cronograma (Gantt)</h3>
                         </div>
                         <p class="artifact-description">
-                            Cronograma del proyecto con actividades, duraciones, dependencias y camino crítico en formato Gantt.
+                            Cronograma con actividades, duraciones, dependencias y camino crítico en formato Gantt.
                         </p>
-                        <span class="artifact-badge">Cronograma</span>
-                        <span class="artifact-badge">Fase: Planificación</span>
+                        <div class="artifact-badges">
+                            <span class="artifact-badge">Cronograma</span>
+                            <span class="artifact-badge">Planificación</span>
+                        </div>
                     </div>
 
                     <!-- Finanzas -->
-                    <div class="artifact-card" onclick="toggleArtifact('presupuesto')">
+                    <div class="artifact-card">
+                        <input type="checkbox" id="presupuesto">
                         <div class="artifact-header">
-                            <input type="checkbox" id="presupuesto" onclick="event.stopPropagation()">
                             <h3>Presupuesto</h3>
                         </div>
                         <p class="artifact-description">
-                            Presupuesto detallado del proyecto por categorías, con reservas de contingencia y distribución temporal.
+                            Presupuesto detallado por categorías, con reservas de contingencia y distribución temporal.
                         </p>
-                        <span class="artifact-badge">Finanzas</span>
-                        <span class="artifact-badge">Fase: Planificación</span>
+                        <div class="artifact-badges">
+                            <span class="artifact-badge">Finanzas</span>
+                            <span class="artifact-badge">Planificación</span>
+                        </div>
                     </div>
 
                     <!-- Interesados -->
-                    <div class="artifact-card" onclick="toggleArtifact('interesados')">
+                    <div class="artifact-card">
+                        <input type="checkbox" id="interesados">
                         <div class="artifact-header">
-                            <input type="checkbox" id="interesados" onclick="event.stopPropagation()">
                             <h3>Registro de Interesados</h3>
                         </div>
                         <p class="artifact-description">
-                            Identificación de stakeholders con análisis de poder/interés y estrategias de gestión específicas.
+                            Identificación de stakeholders con análisis de poder/interés y estrategias de gestión.
                         </p>
-                        <span class="artifact-badge">Interesados</span>
-                        <span class="artifact-badge">Fase: Inicio</span>
+                        <div class="artifact-badges">
+                            <span class="artifact-badge">Interesados</span>
+                            <span class="artifact-badge">Inicio</span>
+                        </div>
                     </div>
 
-                    <div class="artifact-card" onclick="toggleArtifact('comunicaciones')">
+                    <div class="artifact-card">
+                        <input type="checkbox" id="comunicaciones">
                         <div class="artifact-header">
-                            <input type="checkbox" id="comunicaciones" onclick="event.stopPropagation()">
                             <h3>Plan de Comunicaciones</h3>
                         </div>
                         <p class="artifact-description">
                             Define qué información se compartirá con quién, cuándo, cómo y con qué frecuencia.
                         </p>
-                        <span class="artifact-badge">Interesados</span>
-                        <span class="artifact-badge">Fase: Planificación</span>
+                        <div class="artifact-badges">
+                            <span class="artifact-badge">Interesados</span>
+                            <span class="artifact-badge">Planificación</span>
+                        </div>
                     </div>
 
                     <!-- Recursos -->
-                    <div class="artifact-card" onclick="toggleArtifact('raci')">
+                    <div class="artifact-card">
+                        <input type="checkbox" id="raci">
                         <div class="artifact-header">
-                            <input type="checkbox" id="raci" onclick="event.stopPropagation()">
                             <h3>Matriz RACI</h3>
                         </div>
                         <p class="artifact-description">
-                            Asigna responsabilidades específicas: Responsable, Aprobador, Consultado e Informado para cada entregable.
+                            Asigna responsabilidades: Responsable, Aprobador, Consultado e Informado para cada entregable.
                         </p>
-                        <span class="artifact-badge">Recursos</span>
-                        <span class="artifact-badge">Fase: Planificación</span>
+                        <div class="artifact-badges">
+                            <span class="artifact-badge">Recursos</span>
+                            <span class="artifact-badge">Planificación</span>
+                        </div>
                     </div>
 
                     <!-- Riesgo -->
-                    <div class="artifact-card" onclick="toggleArtifact('riesgos')">
+                    <div class="artifact-card">
+                        <input type="checkbox" id="riesgos">
                         <div class="artifact-header">
-                            <input type="checkbox" id="riesgos" onclick="event.stopPropagation()">
                             <h3>Registro de Riesgos</h3>
                         </div>
                         <p class="artifact-description">
-                            Documenta riesgos identificados con probabilidad, impacto, estrategia de respuesta y responsable.
+                            Documenta riesgos con probabilidad, impacto, estrategia de respuesta y responsable.
                         </p>
-                        <span class="artifact-badge">Riesgo</span>
-                        <span class="artifact-badge">Fase: Planificación</span>
+                        <div class="artifact-badges">
+                            <span class="artifact-badge">Riesgo</span>
+                            <span class="artifact-badge">Planificación</span>
+                        </div>
                     </div>
 
                     <!-- Ágil -->
-                    <div class="artifact-card" onclick="toggleArtifact('backlog')">
+                    <div class="artifact-card">
+                        <input type="checkbox" id="backlog">
                         <div class="artifact-header">
-                            <input type="checkbox" id="backlog" onclick="event.stopPropagation()">
                             <h3>Product Backlog</h3>
                         </div>
                         <p class="artifact-description">
-                            Lista priorizada de historias de usuario y funcionalidades del producto para proyectos ágiles.
+                            Lista priorizada de historias de usuario y funcionalidades para proyectos ágiles.
                         </p>
-                        <span class="artifact-badge">Ágil</span>
-                        <span class="artifact-badge">Fase: Inicio</span>
+                        <div class="artifact-badges">
+                            <span class="artifact-badge">Ágil</span>
+                            <span class="artifact-badge">Inicio</span>
+                        </div>
                     </div>
 
-                    <div class="artifact-card" onclick="toggleArtifact('historias')">
+                    <div class="artifact-card">
+                        <input type="checkbox" id="historias">
                         <div class="artifact-header">
-                            <input type="checkbox" id="historias" onclick="event.stopPropagation()">
                             <h3>Historias de Usuario</h3>
                         </div>
                         <p class="artifact-description">
-                            Funcionalidades descritas desde la perspectiva del usuario con criterios de aceptación específicos.
+                            Funcionalidades desde la perspectiva del usuario con criterios de aceptación específicos.
                         </p>
-                        <span class="artifact-badge">Ágil</span>
-                        <span class="artifact-badge">Fase: Planificación</span>
+                        <div class="artifact-badges">
+                            <span class="artifact-badge">Ágil</span>
+                            <span class="artifact-badge">Planificación</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- BOTÓN GENERAR -->
-            <div class="section" style="text-align: center;">
-                <button class="btn" onclick="generatePrompt()">
-                    <span id="btnText">✨ Generar Prompt</span>
-                </button>
+            <!-- STEP 4: AI Provider Selection -->
+            <div id="step-4" class="step-section">
+                <h2 class="step-title">AI Provider Selection</h2>
+                <p class="step-description">Choose which artificial intelligence will generate your project artifacts</p>
+
+                <div class="provider-grid">
+                    <div class="provider-card selected" data-provider="claude">
+                        <input type="radio" name="provider" value="claude" checked>
+                        <div class="provider-header">
+                            <div class="provider-logo">🧠</div>
+                            <div class="provider-info">
+                                <div class="provider-name">Claude AI</div>
+                                <div class="provider-description">Excellent for narrative documents and detailed analysis</div>
+                            </div>
+                        </div>
+                        <ul class="provider-features">
+                            <li>Generates files automatically</li>
+                            <li>Best for complex documentation</li>
+                            <li>Deep contextual analysis</li>
+                        </ul>
+                    </div>
+
+                    <div class="provider-card" data-provider="gemini">
+                        <input type="radio" name="provider" value="gemini">
+                        <div class="provider-header">
+                            <div class="provider-logo">💎</div>
+                            <div class="provider-info">
+                                <div class="provider-name">Google Gemini</div>
+                                <div class="provider-description">Ideal for structured data and visualization</div>
+                            </div>
+                        </div>
+                        <ul class="provider-features">
+                            <li>Shows artifacts visually</li>
+                            <li>Generates downloadable ZIP file</li>
+                            <li>Excellent for tables and matrices</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="providerInfo" class="info-box info">
+                    <strong>Claude AI:</strong> Files will be automatically generated in your directory. Content will not be displayed in chat.
+                </div>
             </div>
 
-            <!-- OUTPUT -->
-            <div class="output-section" id="outputSection">
-                <h2 style="color: #667eea; margin-bottom: 20px;">📝 Prompt Generado</h2>
-                <p id="outputInstructions" style="margin-bottom: 15px; color: #666;">
-                    Copia el siguiente texto y pégalo en Claude Code o Claude.ai para generar tus artefactos:
-                </p>
-                <div class="prompt-output" id="promptOutput"></div>
-                <button class="btn copy-btn" onclick="copyPrompt(event)">📋 Copiar Prompt</button>
+            <!-- STEP 5: Summary & Generation -->
+            <div id="step-5" class="step-section">
+                <h2 class="step-title">Summary & Generation</h2>
+                <p class="step-description">Review your configuration and generate the prompt</p>
+
+                <div class="summary-section">
+                    <div class="summary-item">
+                        <div class="summary-label">Project Name</div>
+                        <div class="summary-value" id="summaryProjectName">-</div>
+                    </div>
+
+                    <div class="summary-item">
+                        <div class="summary-label">Project Phase</div>
+                        <div class="summary-value" id="summaryPhase">-</div>
+                    </div>
+
+                    <div class="summary-item">
+                        <div class="summary-label">Management Approach</div>
+                        <div class="summary-value" id="summaryApproach">-</div>
+                    </div>
+
+                    <div class="summary-item">
+                        <div class="summary-label">Selected Artifacts</div>
+                        <ul class="summary-list" id="summaryArtifacts"></ul>
+                    </div>
+
+                    <div class="summary-item">
+                        <div class="summary-label">AI Provider</div>
+                        <div class="summary-value" id="summaryProvider">-</div>
+                    </div>
+                </div>
+
+                <!-- Output Section -->
+                <div id="outputSection" class="output-section hidden">
+                    <h3 class="output-header">Generated Prompt</h3>
+                    <p class="output-instructions" id="outputInstructions">
+                        Copy the following text and paste it into your selected AI provider.
+                    </p>
+                    <div class="prompt-output" id="promptOutput"></div>
+                    <button class="btn btn-copy" onclick="copyPrompt(event)">Copy to Clipboard</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="step-navigation">
+            <div class="step-navigation-inner">
+                <button id="prevBtn" class="btn btn-secondary" style="display: none;">
+                    <span>←</span>
+                    <span>Back</span>
+                </button>
+                <button id="nextBtn" class="btn btn-primary">
+                    <span>Next</span>
+                    <span>→</span>
+                </button>
             </div>
         </div>
     </div>
