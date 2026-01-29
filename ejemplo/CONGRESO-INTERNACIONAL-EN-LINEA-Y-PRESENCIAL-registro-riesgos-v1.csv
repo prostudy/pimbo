@@ -1,0 +1,103 @@
+ID,Categoría,Descripción del Riesgo,Causa Raíz,Impacto Potencial,Probabilidad,Impacto,Puntuación (PxI),Prioridad,Estrategia,Acciones de Respuesta,Responsable,Fecha Identificación,Estado,Costo Respuesta (MXN),Trigger/Indicador,Plan de Contingencia,Fecha Revisión
+R001,TECNOLOGÍA,Falla crítica de la plataforma híbrida durante el evento,"Sobrecarga de conexiones simultáneas, bugs no detectados, ataque DDoS","Imposibilidad de transmitir sesiones, pérdida total de audiencia virtual, daño reputacional severo",Media (50%),Muy Alto (0.8),0.40,CRÍTICO,MITIGAR,"1. Contratar plataforma con SLA 99.9% uptime
+2. Realizar pruebas de carga con 1500 usuarios simultáneos
+3. Configurar servidor de respaldo (failover automático)
+4. Tener equipo técnico 24/7 durante evento
+5. Contratar seguro de responsabilidad tecnológica",Líder Tecnología,28-Ene-26,ACTIVO,"$50,000","Caída de plataforma >5 min, quejas masivas de participantes virtuales","Activar plataforma de respaldo (Zoom/Teams), comunicar cambio inmediato por email/SMS, ofrecer descuento 20% en futuras ediciones",15-Feb-26
+R002,CONTENIDO,Cancelación de keynote speaker internacional principal 2 semanas antes del evento,"Emergencia personal, restricciones de viaje, enfermedad","Pérdida de atractivo del evento, decepción de asistentes, posibles solicitudes de reembolso",Media (50%),Alto (0.6),0.30,ALTO,MITIGAR,"1. Tener roster de 3 speakers backup de igual nivel
+2. Incluir cláusula de sustitución en contrato
+3. Mantener contacto semanal con speaker mes previo
+4. Contratar seguro de cancelación de evento
+5. Grabar keynote pregrabado como respaldo",Líder Contenido,28-Ene-26,ACTIVO,"$25,000","Comunicación irregular del speaker, cancelación de vuelos, situación geopolítica en país de origen","Activar inmediatamente speaker backup #1, enviar comunicado explicativo transparente, ofrecer sesión adicional exclusiva como compensación",15-Feb-26
+R003,FINANZAS,No alcanzar la meta de patrocinios ($800k MXN),"Recesión económica, competencia de otros eventos, propuesta de valor poco atractiva","Déficit presupuestario, necesidad de recortar servicios, reducción de calidad del evento",Media (50%),Alto (0.6),0.30,ALTO,MITIGAR,"1. Iniciar prospección temprana (marzo 2026)
+2. Diversificar niveles de patrocinio (Platinum/Gold/Silver)
+3. Crear paquetes a la medida para industrias específicas
+4. Incluir beneficios virtuales (webinars post-evento)
+5. Tener lista de 20 prospectos por cada 10 requeridos",Líder Finanzas,28-Ene-26,ACTIVO,"$15,000","A junio 2026 tener <50% del objetivo, rechazo de >5 prospectos principales","Reducir presupuesto en áreas no críticas (decoración, material premium), buscar apoyo adicional PMI/UNAM, aumentar cuotas de registro 15%",30-Mar-26
+R004,LOGÍSTICA,Restricciones sanitarias COVID-19 que limiten aforo presencial,"Nueva ola de contagios, nueva variante, políticas gubernamentales restrictivas","Reducción de capacidad presencial de 250 a 100 personas, necesidad de cambiar a 100% virtual","Baja (30%)",Medio (0.4),0.12,MEDIO,ACEPTAR,"1. Diseñar desde inicio como evento híbrido
+2. Mantener ratio 60% virtual / 40% presencial
+3. Tener protocolos sanitarios estrictos aprobados
+4. Incluir cláusula de cambio de modalidad en contratos
+5. Comunicación proactiva sobre flexibilidad",Líder Logística,28-Ene-26,ACTIVO,$0 (ya considerado),"Aumento de casos COVID-19 en CDMX >30%, nuevas restricciones gobierno CDMX","Cambiar a 100% virtual con 48h de anticipación, reembolsar diferencia presencial-virtual, mantener misma calidad de contenido",15-Feb-26
+R005,MARKETING,Baja participación en el registro (<400 asistentes),"Marketing insuficiente, competencia de otros eventos en mismas fechas, precio elevado","No alcanzar masa crítica, pérdidas económicas, percepción de fracaso, dificultad para futuras ediciones",Media (50%),Alto (0.6),0.30,ALTO,MITIGAR,"1. Lanzar campaña marketing 3 meses antes (junio)
+2. Ofrecer descuento early bird agresivo (40% off)
+3. Crear programa de referidos con incentivos
+4. Alianzas con universidades para descuentos grupales
+5. Inversión mínima $120k en publicidad digital",Líder Marketing,28-Ene-26,ACTIVO,"$40,000","A 20 días del evento tener <250 registros, tráfico web <500 visitas semanales","Extensión de early bird, webinar gratuito previo como gancho, contacto directo con empresas para registros corporativos",30-Jun-26
+R006,TECNOLOGÍA,Problemas de conectividad de internet en venue UNAM,"Saturación de red, corte de servicio ISP, interferencias","Imposibilidad de transmitir desde venue, sesiones presenciales sin conexión virtual",Media (50%),Alto (0.6),0.30,ALTO,MITIGAR,"1. Contratar enlace dedicado 500 Mbps con SLA
+2. Tener enlace de respaldo de ISP diferente (200 Mbps)
+3. Configurar hotspots móviles 4G/5G como tercera opción
+4. Realizar pruebas de estrés 2 semanas antes
+5. Coordinación estrecha con área TI de UNAM",Líder Tecnología,28-Ene-26,ACTIVO,"$30,000",Caída de internet >10 min durante pruebas o evento,"Activar enlace de respaldo ISP #2, usar hotspots móviles como bridge, mover transmisión a ubicación alterna dentro de UNAM",15-Feb-26
+R007,CONTENIDO,Ponentes no envían materiales de presentación a tiempo,"Falta de seguimiento, plazos poco claros, ponentes desorganizados","Retrasos en publicación de programa, sesiones sin material de apoyo, experiencia pobre para asistentes",Alta (70%),Medio (0.4),0.28,ALTO,MITIGAR,"1. Establecer fechas límite claras (20 julio)
+2. Sistema de recordatorios automáticos (3 recordatorios)
+3. Plantilla estándar pre-diseñada
+4. Penalización por entrega tardía (no aparece en memoria)
+5. Coordinador dedicado a seguimiento de ponentes",Líder Contenido,28-Ene-26,ACTIVO,"$8,000","Ponente no responde a 2 recordatorios consecutivos, a 10 días del evento falta >30% de materiales","Usar grabación de sesión en vivo como material, crear resumen ejecutivo del ponente para memoria, solicitar materiales post-evento",30-Jun-26
+R008,LOGÍSTICA,Problemas con proveedor de catering (calidad o incumplimiento),"Falta de experiencia en eventos grandes, problemas de abasto, mala planificación","Insatisfacción de asistentes, quejas públicas en redes, problemas de salud, daño a imagen del evento",Media (50%),Medio (0.4),0.20,MEDIO,MITIGAR,"1. Contratar proveedor con experiencia en eventos >200 personas
+2. Exigir certificaciones sanitarias vigentes
+3. Realizar prueba de menú 1 mes antes
+4. Cláusula de penalización por incumplimiento
+5. Tener proveedor de respaldo identificado",Líder Logística,28-Ene-26,ACTIVO,"$12,000","Quejas de calidad en prueba de menú, retrasos en entregas de confirmación","Activar proveedor backup inmediatamente, simplificar menú a opciones seguras, aumentar presupuesto catering 20% si es necesario",30-May-26
+R009,LEGAL,Conflicto de derechos de autor o propiedad intelectual en contenidos,"Ponentes usan material sin autorización, grabaciones sin permisos, música sin licencia","Demandas legales, necesidad de retirar contenido, multas, daño reputacional",Baja (30%),Alto (0.6),0.18,MEDIO,MITIGAR,"1. Incluir cláusula de responsabilidad en contrato de ponentes
+2. Revisión legal de materiales con contenido sensible
+3. Licenciar música y recursos multimedia oficialmente
+4. Aviso legal claro sobre grabación y uso de imagen
+5. Contratar seguro de responsabilidad civil",Líder Contenido,28-Ene-26,ACTIVO,"$20,000",Reclamo o aviso legal durante preparación o post-evento,"Retirar inmediatamente contenido cuestionado, negociar con parte afectada, aplicar cláusula de responsabilidad a ponente infractor",15-Feb-26
+R010,RECURSOS,Renuncia o ausencia de miembro clave del equipo en fase crítica,"Sobrecarga laboral, mejores oportunidades laborales, enfermedad prolongada","Retrasos en entregables, sobrecarga de otros miembros, pérdida de conocimiento crítico del proyecto",Media (50%),Medio (0.4),0.20,MEDIO,MITIGAR,"1. Documentar procesos y responsabilidades claramente
+2. Capacitación cruzada en tareas críticas
+3. Tener freelancers de respaldo identificados
+4. Ambiente de trabajo positivo y reconocimiento
+5. Plan de sucesión para roles clave",Director Proyecto,28-Ene-26,ACTIVO,"$35,000","Aumento de ausencias, expresión de insatisfacción, búsqueda activa de empleo","Activar respaldo inmediato (freelancer/temporal), redistribuir tareas, ofrecer bono de retención si es crítico",30-Abr-26
+R011,INTERESADOS,Desalineación o conflicto entre PMI y UNAM sobre aspectos del evento,"Diferencias de visión, prioridades institucionales distintas, problemas de comunicación","Retrasos en aprobaciones, cambios de último minuto, tensión en la relación, impacto en imagen conjunta",Baja (30%),Alto (0.6),0.18,MEDIO,MITIGAR,"1. Reuniones mensuales de alineación con ambas partes
+2. Acta de acuerdos firmada desde el inicio
+3. Proceso claro de escalamiento de decisiones
+4. Comité de gobierno paritario (50/50)
+5. Comunicación transparente y frecuente",Director Proyecto,28-Ene-26,ACTIVO,"$5,000","Retrasos en aprobaciones >1 semana, cancelación de reuniones de seguimiento, comunicación tensa","Escalamiento inmediato a directivos, mediación por tercero neutral, buscar soluciones ganar-ganar, enfoque en objetivos comunes",30-Mar-26
+R012,TECNOLOGÍA,Ciberataque o filtración de datos de participantes,"Vulnerabilidades de seguridad, phishing, ransomware, hackeo de base de datos","Pérdida de confianza, demandas por protección de datos, multas IFAI, cancelación del evento en caso extremo",Baja (30%),Muy Alto (0.8),0.24,ALTO,MITIGAR,"1. Implementar certificado SSL en toda la plataforma
+2. Cumplimiento estricto LFPDPPP (ley mexicana)
+3. Contratar auditoría de seguridad externa
+4. Backups encriptados diarios
+5. Seguro de ciberseguridad
+6. Plan de respuesta a incidentes de seguridad",Líder Tecnología,28-Ene-26,ACTIVO,"$25,000","Intentos de acceso no autorizado, reportes de phishing, vulnerabilidades en escaneos","Activar protocolo de respuesta inmediata, notificar a afectados <72h, contratar expertos forenses, ofrecer monitoreo de crédito gratuito",15-Feb-26
+R013,FINANZAS,Sobrecostos significativos en ejecución (>15% presupuesto),"Estimaciones iniciales incorrectas, scope creep, inflación, cambios de último minuto","Déficit financiero, necesidad de fondos adicionales, recortes de servicios, estrés de patrocinadores",Media (50%),Medio (0.4),0.20,MEDIO,MITIGAR,"1. Estimaciones conservadoras con buffer 10%
+2. Control estricto de cambios con análisis de impacto
+3. Revisión quincenal de presupuesto vs. real
+4. Proceso de aprobación para gastos >$10k
+5. Reserva de contingencia del 10%",Líder Finanzas,28-Ene-26,ACTIVO,"$99,050 (reserva)","Variación >5% en categorías principales, tendencia de sobrecosto 2 meses consecutivos","Congelar gastos no esenciales, renegociar contratos con proveedores, solicitar aportación adicional patrocinadores, reducir alcance no crítico",30-Abr-26
+R014,EXTERNO,Evento meteorológico severo durante los días del congreso (15-18 agosto),"Temporada de lluvias en CDMX, tormenta, inundaciones en zona UNAM","Dificultad de acceso al venue, baja asistencia presencial, problemas de electricidad/internet",Media (50%),Bajo (0.2),0.10,BAJO,ACEPTAR,"1. Monitoreo de pronóstico meteorológico desde 1 semana antes
+2. Comunicación proactiva a asistentes sobre posible mal clima
+3. Instrucciones de transporte alternativo
+4. Generadores eléctricos de respaldo en venue
+5. Modelo híbrido permite flexibilidad",Líder Logística,28-Ene-26,ACTIVO,$0 (no requiere inversión adicional),"Pronóstico de lluvia intensa >70% probabilidad 3 días antes, alertas meteorológicas CDMX","Comunicar a asistentes presenciales opción de cambio a virtual sin costo, coordinar transporte compartido, extender horarios de sesiones si hay retrasos",10-Ago-26
+R015,CONTENIDO,Calidad de ponencias por debajo de expectativas,"Proceso de selección poco riguroso, falta de preparación de ponentes, expectativas muy altas","Insatisfacción de asistentes, NPS bajo, comentarios negativos, afectación para futuras ediciones",Media (50%),Medio (0.4),0.20,MEDIO,MITIGAR,"1. Comité de evaluación con criterios claros y estrictos
+2. Solicitar video demo de ponentes nuevos
+3. Sesión de preparación obligatoria para ponentes
+4. Moderadores entrenados para dinamizar sesiones
+5. Encuestas en tiempo real para identificar problemas",Líder Contenido,28-Ene-26,ACTIVO,"$15,000","NPS <60 en encuestas post-sesión, quejas en redes sociales durante evento","Intervención inmediata de moderador para mejorar dinámica, sesiones de Q&A extendidas, ofrecer contenido adicional de valor post-evento",15-Ago-26
+R016,LOGÍSTICA,Incidente de seguridad o emergencia médica durante el evento,"Accidente, enfermedad súbita, situación de violencia, evacuación necesaria","Interrupción del evento, responsabilidad legal, daño físico a participantes, pánico, cobertura negativa en medios",Baja (30%),Alto (0.6),0.18,MEDIO,MITIGAR,"1. Contratar paramédicos en sitio durante todo el evento
+2. Plan de evacuación ensayado con staff
+3. Seguro de responsabilidad civil por $5M MXN
+4. Personal de seguridad capacitado
+5. Coordinación con servicios de emergencia UNAM
+6. Protocolo de comunicación de crisis activado",Líder Logística,28-Ene-26,ACTIVO,"$18,000",Cualquier emergencia médica o de seguridad que requiera atención,"Activar protocolo de emergencia, atención médica inmediata, evacuación ordenada si es necesario, comunicación transparente a todos, seguimiento post-incidente",01-Ago-26
+R017,MARKETING,Cobertura negativa en medios o crisis de reputación en redes sociales,"Controversia con ponente, error en comunicación, queja viral de asistente, ataque coordinado","Daño reputacional, cancelaciones de registro, pérdida de patrocinadores, impacto en marca PMI-UNAM",Baja (30%),Alto (0.6),0.18,MEDIO,MITIGAR,"1. Monitoreo 24/7 de redes sociales durante campaña y evento
+2. Comité de crisis con vocero oficial designado
+3. Política clara de manejo de controversias
+4. Respuesta rápida (<2h) a situaciones críticas
+5. Relación proactiva con medios clave",Líder Marketing,28-Ene-26,ACTIVO,"$10,000","Trending topic negativo, >100 menciones negativas en <24h, contacto de medios para aclaraciones","Activar comité de crisis, emitir comunicado oficial, ofrecer disculpas si procede, corrección transparente, contacto directo con afectados",01-Jun-26
+R018,LOGÍSTICA,Proveedor clave incumple contrato a último momento (<2 semanas),"Quiebra de proveedor, sobreventa de servicios, fuerza mayor","Imposibilidad de entregar servicio contratado, búsqueda urgente de reemplazo, sobrecostos, degradación de calidad",Baja (30%),Alto (0.6),0.18,MEDIO,MITIGAR,"1. Contratos con cláusulas de penalización por incumplimiento
+2. Verificar solidez financiera de proveedores antes de contratar
+3. Tener proveedores backup identificados para servicios críticos
+4. Pagos escalonados por hitos cumplidos
+5. Comunicación semanal con proveedores mes previo",Líder Logística,28-Ene-26,ACTIVO,"$20,000","Comunicación irregular de proveedor, retrasos en entregas menores, rumores de problemas financieros","Activar proveedor backup inmediatamente, aplicar penalizaciones contractuales, simplificar requerimientos si es necesario, aumento de presupuesto si urgente",15-Jul-26
+R019,CONTENIDO,Sesiones paralelas con desequilibrio de asistencia (unas vacías otras saturadas),"Programación inadecuada, ponentes desiguales en atractivo, mala comunicación de contenidos","Desperdicio de recursos en salas vacías, frustración en salas llenas, mala experiencia de asistentes","Alta (70%)",Bajo (0.2),0.14,MEDIO,ACEPTAR,"1. Realizar encuesta de interés previa al evento
+2. Permitir cambio de sesión en tiempo real vía app
+3. Diseñar salas con capacidad flexible
+4. Transmitir todas las sesiones en virtual (sin límite)
+5. Análisis de registro por sesión para ajustar",Líder Contenido,28-Ene-26,ACTIVO,$0 (estrategia de diseño),"Registro a sesiones con desequilibrio >70% capacidad vs <30%, quejas anticipadas de asistentes","Habilitar traslado entre salas en tiempo real, transmisión adicional de sesión popular, grabación disponible post-evento",15-Ago-26
+R020,FINANZAS,Solicitudes de reembolso masivas post-registro,"Insatisfacción con programa final, competencia de otro evento mejor, cambios personales de asistentes","Pérdida de ingresos, complejidad administrativa, posible déficit presupuestario, imagen negativa",Baja (30%),Medio (0.4),0.12,BAJO,ACEPTAR,"1. Política de reembolso clara desde el inicio (descuento según fecha)
+2. Programa atractivo y competitivo desde el anuncio
+3. Opciones de transferencia de registro en lugar de reembolso
+4. Comunicación constante del valor del evento
+5. Reserva financiera para cubrir reembolsos",Líder Finanzas,28-Ene-26,ACTIVO,"$15,000 (buffer)","Solicitudes de reembolso >5% del total de registros, tendencia creciente 1 mes antes","Ofrecer transferencia a colega sin costo, crédito 100% para próxima edición, minimizar reembolsos cash, comunicar firmeza de política",01-Jul-26

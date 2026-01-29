@@ -1,0 +1,866 @@
+{
+  "project": {
+    "code": "CONG-HIBRIDO-2026",
+    "name": "Congreso Internacional en Línea y Presencial",
+    "version": "1.0",
+    "date": "2026-01-28",
+    "wbs": {
+      "id": "1.0",
+      "name": "Congreso Internacional Híbrido PMI-UNAM 2026",
+      "children": [
+        {
+          "id": "1.1",
+          "name": "Gestión del Proyecto",
+          "children": [
+            {
+              "id": "1.1.1",
+              "name": "Inicio del Proyecto",
+              "children": [
+                {
+                  "id": "1.1.1.1",
+                  "name": "Acta de Constitución",
+                  "deliverable": true,
+                  "responsible": "Director de Proyecto"
+                },
+                {
+                  "id": "1.1.1.2",
+                  "name": "Identificación de Interesados",
+                  "deliverable": true,
+                  "responsible": "Director de Proyecto"
+                },
+                {
+                  "id": "1.1.1.3",
+                  "name": "Kick-off Meeting",
+                  "deliverable": false,
+                  "responsible": "Director de Proyecto"
+                }
+              ]
+            },
+            {
+              "id": "1.1.2",
+              "name": "Planificación del Proyecto",
+              "children": [
+                {
+                  "id": "1.1.2.1",
+                  "name": "Plan de Gestión del Alcance",
+                  "deliverable": true,
+                  "responsible": "Director de Proyecto"
+                },
+                {
+                  "id": "1.1.2.2",
+                  "name": "Cronograma Detallado",
+                  "deliverable": true,
+                  "responsible": "Director de Proyecto"
+                },
+                {
+                  "id": "1.1.2.3",
+                  "name": "Presupuesto Detallado",
+                  "deliverable": true,
+                  "responsible": "Líder Finanzas"
+                },
+                {
+                  "id": "1.1.2.4",
+                  "name": "Plan de Gestión de Riesgos",
+                  "deliverable": true,
+                  "responsible": "Director de Proyecto"
+                },
+                {
+                  "id": "1.1.2.5",
+                  "name": "Plan de Comunicaciones",
+                  "deliverable": true,
+                  "responsible": "Líder Marketing"
+                }
+              ]
+            },
+            {
+              "id": "1.1.3",
+              "name": "Monitoreo y Control",
+              "children": [
+                {
+                  "id": "1.1.3.1",
+                  "name": "Reuniones de Seguimiento Semanal",
+                  "deliverable": false,
+                  "responsible": "Director de Proyecto"
+                },
+                {
+                  "id": "1.1.3.2",
+                  "name": "Reportes de Avance Quincenales",
+                  "deliverable": true,
+                  "responsible": "Director de Proyecto"
+                },
+                {
+                  "id": "1.1.3.3",
+                  "name": "Control de Cambios",
+                  "deliverable": false,
+                  "responsible": "Director de Proyecto"
+                },
+                {
+                  "id": "1.1.3.4",
+                  "name": "Gestión de Riesgos Continua",
+                  "deliverable": false,
+                  "responsible": "Todo el equipo"
+                }
+              ]
+            },
+            {
+              "id": "1.1.4",
+              "name": "Cierre del Proyecto",
+              "children": [
+                {
+                  "id": "1.1.4.1",
+                  "name": "Informe Final del Proyecto",
+                  "deliverable": true,
+                  "responsible": "Director de Proyecto"
+                },
+                {
+                  "id": "1.1.4.2",
+                  "name": "Lecciones Aprendidas",
+                  "deliverable": true,
+                  "responsible": "Director de Proyecto"
+                },
+                {
+                  "id": "1.1.4.3",
+                  "name": "Cierre Administrativo y Financiero",
+                  "deliverable": true,
+                  "responsible": "Líder Finanzas"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "1.2",
+          "name": "Contenido y Programa Académico",
+          "children": [
+            {
+              "id": "1.2.1",
+              "name": "Convocatoria de Ponentes",
+              "children": [
+                {
+                  "id": "1.2.1.1",
+                  "name": "Diseño de Convocatoria",
+                  "deliverable": true,
+                  "responsible": "Líder Contenido"
+                },
+                {
+                  "id": "1.2.1.2",
+                  "name": "Difusión de Convocatoria",
+                  "deliverable": false,
+                  "responsible": "Líder Marketing"
+                },
+                {
+                  "id": "1.2.1.3",
+                  "name": "Recepción de Propuestas",
+                  "deliverable": false,
+                  "responsible": "Líder Contenido"
+                }
+              ]
+            },
+            {
+              "id": "1.2.2",
+              "name": "Selección y Curación de Contenido",
+              "children": [
+                {
+                  "id": "1.2.2.1",
+                  "name": "Comité de Evaluación",
+                  "deliverable": false,
+                  "responsible": "Líder Contenido"
+                },
+                {
+                  "id": "1.2.2.2",
+                  "name": "Evaluación de Propuestas",
+                  "deliverable": true,
+                  "responsible": "Comité Académico"
+                },
+                {
+                  "id": "1.2.2.3",
+                  "name": "Notificación a Ponentes",
+                  "deliverable": false,
+                  "responsible": "Líder Contenido"
+                },
+                {
+                  "id": "1.2.2.4",
+                  "name": "Confirmación de Participación",
+                  "deliverable": true,
+                  "responsible": "Líder Contenido"
+                }
+              ]
+            },
+            {
+              "id": "1.2.3",
+              "name": "Desarrollo del Programa",
+              "children": [
+                {
+                  "id": "1.2.3.1",
+                  "name": "Agenda del Congreso 4 días",
+                  "deliverable": true,
+                  "responsible": "Líder Contenido"
+                },
+                {
+                  "id": "1.2.3.2",
+                  "name": "Asignación de Salas y Horarios",
+                  "deliverable": true,
+                  "responsible": "Líder Contenido"
+                },
+                {
+                  "id": "1.2.3.3",
+                  "name": "Coordinación con Ponentes",
+                  "deliverable": false,
+                  "responsible": "Líder Contenido"
+                },
+                {
+                  "id": "1.2.3.4",
+                  "name": "Materiales de Ponencias",
+                  "deliverable": true,
+                  "responsible": "Ponentes"
+                }
+              ]
+            },
+            {
+              "id": "1.2.4",
+              "name": "Contratación de Speakers Magistrales",
+              "children": [
+                {
+                  "id": "1.2.4.1",
+                  "name": "Identificación de Speakers Objetivo",
+                  "deliverable": true,
+                  "responsible": "Líder Contenido"
+                },
+                {
+                  "id": "1.2.4.2",
+                  "name": "Negociación y Contratación",
+                  "deliverable": true,
+                  "responsible": "Director de Proyecto"
+                },
+                {
+                  "id": "1.2.4.3",
+                  "name": "Logística de Speakers Internacionales",
+                  "deliverable": false,
+                  "responsible": "Líder Logística"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "1.3",
+          "name": "Plataforma Tecnológica Híbrida",
+          "children": [
+            {
+              "id": "1.3.1",
+              "name": "Selección de Plataforma",
+              "children": [
+                {
+                  "id": "1.3.1.1",
+                  "name": "Análisis de Requerimientos Técnicos",
+                  "deliverable": true,
+                  "responsible": "Líder Tecnología"
+                },
+                {
+                  "id": "1.3.1.2",
+                  "name": "Evaluación de Proveedores",
+                  "deliverable": true,
+                  "responsible": "Líder Tecnología"
+                },
+                {
+                  "id": "1.3.1.3",
+                  "name": "Selección y Contratación",
+                  "deliverable": true,
+                  "responsible": "Director de Proyecto"
+                }
+              ]
+            },
+            {
+              "id": "1.3.2",
+              "name": "Configuración de Plataforma",
+              "children": [
+                {
+                  "id": "1.3.2.1",
+                  "name": "Instalación y Configuración",
+                  "deliverable": false,
+                  "responsible": "Proveedor Tecnológico"
+                },
+                {
+                  "id": "1.3.2.2",
+                  "name": "Personalización con Marca PMI-UNAM",
+                  "deliverable": true,
+                  "responsible": "Líder Tecnología"
+                },
+                {
+                  "id": "1.3.2.3",
+                  "name": "Integración de Salas Virtuales",
+                  "deliverable": true,
+                  "responsible": "Líder Tecnología"
+                },
+                {
+                  "id": "1.3.2.4",
+                  "name": "Sistema de Registro y Check-in",
+                  "deliverable": true,
+                  "responsible": "Líder Tecnología"
+                }
+              ]
+            },
+            {
+              "id": "1.3.3",
+              "name": "Equipamiento Audiovisual",
+              "children": [
+                {
+                  "id": "1.3.3.1",
+                  "name": "Cámaras y Sistemas de Captura",
+                  "deliverable": true,
+                  "responsible": "Líder Tecnología"
+                },
+                {
+                  "id": "1.3.3.2",
+                  "name": "Audio Profesional (micrófonos, amplificación)",
+                  "deliverable": true,
+                  "responsible": "Líder Tecnología"
+                },
+                {
+                  "id": "1.3.3.3",
+                  "name": "Pantallas y Proyectores",
+                  "deliverable": true,
+                  "responsible": "Líder Logística"
+                },
+                {
+                  "id": "1.3.3.4",
+                  "name": "Iluminación Profesional",
+                  "deliverable": true,
+                  "responsible": "Líder Logística"
+                }
+              ]
+            },
+            {
+              "id": "1.3.4",
+              "name": "Pruebas y Soporte Técnico",
+              "children": [
+                {
+                  "id": "1.3.4.1",
+                  "name": "Pruebas de Carga y Estrés",
+                  "deliverable": true,
+                  "responsible": "Líder Tecnología"
+                },
+                {
+                  "id": "1.3.4.2",
+                  "name": "Prueba General Pre-Evento",
+                  "deliverable": true,
+                  "responsible": "Líder Tecnología"
+                },
+                {
+                  "id": "1.3.4.3",
+                  "name": "Plan de Contingencia Técnica",
+                  "deliverable": true,
+                  "responsible": "Líder Tecnología"
+                },
+                {
+                  "id": "1.3.4.4",
+                  "name": "Equipo de Soporte en Sitio",
+                  "deliverable": false,
+                  "responsible": "Líder Tecnología"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "1.4",
+          "name": "Logística Presencial",
+          "children": [
+            {
+              "id": "1.4.1",
+              "name": "Venue y Espacios",
+              "children": [
+                {
+                  "id": "1.4.1.1",
+                  "name": "Selección y Reserva de Venue UNAM",
+                  "deliverable": true,
+                  "responsible": "Líder Logística"
+                },
+                {
+                  "id": "1.4.1.2",
+                  "name": "Distribución de Espacios (salas, registro, stands)",
+                  "deliverable": true,
+                  "responsible": "Líder Logística"
+                },
+                {
+                  "id": "1.4.1.3",
+                  "name": "Señalización y Rotulación",
+                  "deliverable": true,
+                  "responsible": "Líder Logística"
+                },
+                {
+                  "id": "1.4.1.4",
+                  "name": "Acondicionamiento de Salas",
+                  "deliverable": false,
+                  "responsible": "Líder Logística"
+                }
+              ]
+            },
+            {
+              "id": "1.4.2",
+              "name": "Servicios de Catering",
+              "children": [
+                {
+                  "id": "1.4.2.1",
+                  "name": "Cotización de Proveedores",
+                  "deliverable": true,
+                  "responsible": "Líder Logística"
+                },
+                {
+                  "id": "1.4.2.2",
+                  "name": "Contratación de Catering",
+                  "deliverable": true,
+                  "responsible": "Líder Finanzas"
+                },
+                {
+                  "id": "1.4.2.3",
+                  "name": "Menú y Opciones Alimentarias",
+                  "deliverable": true,
+                  "responsible": "Líder Logística"
+                },
+                {
+                  "id": "1.4.2.4",
+                  "name": "Coffee Breaks 4 días",
+                  "deliverable": false,
+                  "responsible": "Proveedor Catering"
+                }
+              ]
+            },
+            {
+              "id": "1.4.3",
+              "name": "Materiales y Acreditación",
+              "children": [
+                {
+                  "id": "1.4.3.1",
+                  "name": "Diseño de Gafetes e Identificadores",
+                  "deliverable": true,
+                  "responsible": "Líder Marketing"
+                },
+                {
+                  "id": "1.4.3.2",
+                  "name": "Impresión de Materiales (programas, folders)",
+                  "deliverable": true,
+                  "responsible": "Líder Marketing"
+                },
+                {
+                  "id": "1.4.3.3",
+                  "name": "Kit de Bienvenida para Asistentes",
+                  "deliverable": true,
+                  "responsible": "Líder Logística"
+                },
+                {
+                  "id": "1.4.3.4",
+                  "name": "Diplomas de Participación",
+                  "deliverable": true,
+                  "responsible": "Líder Contenido"
+                }
+              ]
+            },
+            {
+              "id": "1.4.4",
+              "name": "Protocolos de Seguridad y Sanidad",
+              "children": [
+                {
+                  "id": "1.4.4.1",
+                  "name": "Plan de Seguridad y Emergencias",
+                  "deliverable": true,
+                  "responsible": "Líder Logística"
+                },
+                {
+                  "id": "1.4.4.2",
+                  "name": "Protocolo Sanitario COVID-19",
+                  "deliverable": true,
+                  "responsible": "Líder Logística"
+                },
+                {
+                  "id": "1.4.4.3",
+                  "name": "Personal de Seguridad Contratado",
+                  "deliverable": true,
+                  "responsible": "Líder Logística"
+                },
+                {
+                  "id": "1.4.4.4",
+                  "name": "Suministros Sanitarios (gel, cubrebocas)",
+                  "deliverable": true,
+                  "responsible": "Líder Logística"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "1.5",
+          "name": "Marketing y Comunicación",
+          "children": [
+            {
+              "id": "1.5.1",
+              "name": "Estrategia de Marketing",
+              "children": [
+                {
+                  "id": "1.5.1.1",
+                  "name": "Plan de Marketing Digital",
+                  "deliverable": true,
+                  "responsible": "Líder Marketing"
+                },
+                {
+                  "id": "1.5.1.2",
+                  "name": "Identidad Visual del Congreso",
+                  "deliverable": true,
+                  "responsible": "Diseñador Gráfico"
+                },
+                {
+                  "id": "1.5.1.3",
+                  "name": "Mensajes Clave y Propuesta de Valor",
+                  "deliverable": true,
+                  "responsible": "Líder Marketing"
+                },
+                {
+                  "id": "1.5.1.4",
+                  "name": "Plan de Medios (digital y tradicional)",
+                  "deliverable": true,
+                  "responsible": "Líder Marketing"
+                }
+              ]
+            },
+            {
+              "id": "1.5.2",
+              "name": "Campaña Digital",
+              "children": [
+                {
+                  "id": "1.5.2.1",
+                  "name": "Sitio Web del Congreso",
+                  "deliverable": true,
+                  "responsible": "Líder Tecnología"
+                },
+                {
+                  "id": "1.5.2.2",
+                  "name": "Campaña en Redes Sociales",
+                  "deliverable": false,
+                  "responsible": "Líder Marketing"
+                },
+                {
+                  "id": "1.5.2.3",
+                  "name": "Email Marketing (3 campañas)",
+                  "deliverable": false,
+                  "responsible": "Líder Marketing"
+                },
+                {
+                  "id": "1.5.2.4",
+                  "name": "Publicidad Pagada (Google, LinkedIn, Facebook)",
+                  "deliverable": false,
+                  "responsible": "Líder Marketing"
+                }
+              ]
+            },
+            {
+              "id": "1.5.3",
+              "name": "Relaciones Públicas",
+              "children": [
+                {
+                  "id": "1.5.3.1",
+                  "name": "Base de Datos de Medios",
+                  "deliverable": true,
+                  "responsible": "Líder Marketing"
+                },
+                {
+                  "id": "1.5.3.2",
+                  "name": "Comunicados de Prensa (3 etapas)",
+                  "deliverable": true,
+                  "responsible": "Líder Marketing"
+                },
+                {
+                  "id": "1.5.3.3",
+                  "name": "Entrevistas y Apariciones en Medios",
+                  "deliverable": false,
+                  "responsible": "Director de Proyecto"
+                },
+                {
+                  "id": "1.5.3.4",
+                  "name": "Cobertura Durante el Evento",
+                  "deliverable": false,
+                  "responsible": "Líder Marketing"
+                }
+              ]
+            },
+            {
+              "id": "1.5.4",
+              "name": "Gestión de Registro",
+              "children": [
+                {
+                  "id": "1.5.4.1",
+                  "name": "Sistema de Registro en Línea",
+                  "deliverable": true,
+                  "responsible": "Líder Tecnología"
+                },
+                {
+                  "id": "1.5.4.2",
+                  "name": "Gestión de Base de Datos de Asistentes",
+                  "deliverable": false,
+                  "responsible": "Líder Marketing"
+                },
+                {
+                  "id": "1.5.4.3",
+                  "name": "Comunicación Pre-Evento con Registrados",
+                  "deliverable": false,
+                  "responsible": "Líder Marketing"
+                },
+                {
+                  "id": "1.5.4.4",
+                  "name": "Encuestas de Satisfacción Post-Evento",
+                  "deliverable": true,
+                  "responsible": "Líder Marketing"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "1.6",
+          "name": "Gestión de Patrocinios",
+          "children": [
+            {
+              "id": "1.6.1",
+              "name": "Paquetes de Patrocinio",
+              "children": [
+                {
+                  "id": "1.6.1.1",
+                  "name": "Diseño de Paquetes (Platinum, Gold, Silver)",
+                  "deliverable": true,
+                  "responsible": "Líder Finanzas"
+                },
+                {
+                  "id": "1.6.1.2",
+                  "name": "Propuesta Comercial",
+                  "deliverable": true,
+                  "responsible": "Líder Finanzas"
+                },
+                {
+                  "id": "1.6.1.3",
+                  "name": "Materiales de Ventas",
+                  "deliverable": true,
+                  "responsible": "Líder Marketing"
+                }
+              ]
+            },
+            {
+              "id": "1.6.2",
+              "name": "Prospección y Ventas",
+              "children": [
+                {
+                  "id": "1.6.2.1",
+                  "name": "Lista de Patrocinadores Objetivo",
+                  "deliverable": true,
+                  "responsible": "Líder Finanzas"
+                },
+                {
+                  "id": "1.6.2.2",
+                  "name": "Reuniones con Patrocinadores Potenciales",
+                  "deliverable": false,
+                  "responsible": "Director de Proyecto"
+                },
+                {
+                  "id": "1.6.2.3",
+                  "name": "Negociación y Cierre",
+                  "deliverable": false,
+                  "responsible": "Director de Proyecto"
+                },
+                {
+                  "id": "1.6.2.4",
+                  "name": "Contratos de Patrocinio Firmados",
+                  "deliverable": true,
+                  "responsible": "Líder Finanzas"
+                }
+              ]
+            },
+            {
+              "id": "1.6.3",
+              "name": "Activación de Patrocinadores",
+              "children": [
+                {
+                  "id": "1.6.3.1",
+                  "name": "Stands para Patrocinadores",
+                  "deliverable": true,
+                  "responsible": "Líder Logística"
+                },
+                {
+                  "id": "1.6.3.2",
+                  "name": "Visibilidad en Materiales y Plataforma",
+                  "deliverable": false,
+                  "responsible": "Líder Marketing"
+                },
+                {
+                  "id": "1.6.3.3",
+                  "name": "Espacios de Networking Patrocinados",
+                  "deliverable": false,
+                  "responsible": "Líder Logística"
+                },
+                {
+                  "id": "1.6.3.4",
+                  "name": "Reporte Post-Evento a Patrocinadores",
+                  "deliverable": true,
+                  "responsible": "Líder Finanzas"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "1.7",
+          "name": "Ejecución del Evento (15-18 Agosto)",
+          "children": [
+            {
+              "id": "1.7.1",
+              "name": "Día 1 - Inauguración (15 Agosto)",
+              "children": [
+                {
+                  "id": "1.7.1.1",
+                  "name": "Ceremonia de Apertura",
+                  "deliverable": false,
+                  "responsible": "Líder Contenido"
+                },
+                {
+                  "id": "1.7.1.2",
+                  "name": "Keynote Principal",
+                  "deliverable": false,
+                  "responsible": "Speaker Magistral"
+                },
+                {
+                  "id": "1.7.1.3",
+                  "name": "Sesiones Paralelas Día 1",
+                  "deliverable": false,
+                  "responsible": "Líder Contenido"
+                },
+                {
+                  "id": "1.7.1.4",
+                  "name": "Networking de Inauguración",
+                  "deliverable": false,
+                  "responsible": "Líder Logística"
+                }
+              ]
+            },
+            {
+              "id": "1.7.2",
+              "name": "Día 2 - Conferencias (16 Agosto)",
+              "children": [
+                {
+                  "id": "1.7.2.1",
+                  "name": "Sesiones Magistrales Día 2",
+                  "deliverable": false,
+                  "responsible": "Líder Contenido"
+                },
+                {
+                  "id": "1.7.2.2",
+                  "name": "Talleres Prácticos",
+                  "deliverable": false,
+                  "responsible": "Líder Contenido"
+                },
+                {
+                  "id": "1.7.2.3",
+                  "name": "Panel de Expertos",
+                  "deliverable": false,
+                  "responsible": "Líder Contenido"
+                },
+                {
+                  "id": "1.7.2.4",
+                  "name": "Visita a Stands de Patrocinadores",
+                  "deliverable": false,
+                  "responsible": "Líder Logística"
+                }
+              ]
+            },
+            {
+              "id": "1.7.3",
+              "name": "Día 3 - Conferencias (17 Agosto)",
+              "children": [
+                {
+                  "id": "1.7.3.1",
+                  "name": "Sesiones Especializadas por Industria",
+                  "deliverable": false,
+                  "responsible": "Líder Contenido"
+                },
+                {
+                  "id": "1.7.3.2",
+                  "name": "Casos de Éxito Internacionales",
+                  "deliverable": false,
+                  "responsible": "Líder Contenido"
+                },
+                {
+                  "id": "1.7.3.3",
+                  "name": "Sesiones Interactivas Q&A",
+                  "deliverable": false,
+                  "responsible": "Líder Contenido"
+                },
+                {
+                  "id": "1.7.3.4",
+                  "name": "Networking Evening",
+                  "deliverable": false,
+                  "responsible": "Líder Logística"
+                }
+              ]
+            },
+            {
+              "id": "1.7.4",
+              "name": "Día 4 - Cierre (18 Agosto)",
+              "children": [
+                {
+                  "id": "1.7.4.1",
+                  "name": "Talleres de Cierre",
+                  "deliverable": false,
+                  "responsible": "Líder Contenido"
+                },
+                {
+                  "id": "1.7.4.2",
+                  "name": "Conferencia de Clausura",
+                  "deliverable": false,
+                  "responsible": "Speaker Magistral"
+                },
+                {
+                  "id": "1.7.4.3",
+                  "name": "Ceremonia de Entrega de Diplomas",
+                  "deliverable": false,
+                  "responsible": "Líder Contenido"
+                },
+                {
+                  "id": "1.7.4.4",
+                  "name": "Desmontaje de Venue",
+                  "deliverable": false,
+                  "responsible": "Líder Logística"
+                }
+              ]
+            },
+            {
+              "id": "1.7.5",
+              "name": "Operaciones Durante el Evento",
+              "children": [
+                {
+                  "id": "1.7.5.1",
+                  "name": "Centro de Control Técnico",
+                  "deliverable": false,
+                  "responsible": "Líder Tecnología"
+                },
+                {
+                  "id": "1.7.5.2",
+                  "name": "Atención a Asistentes Presenciales",
+                  "deliverable": false,
+                  "responsible": "Líder Logística"
+                },
+                {
+                  "id": "1.7.5.3",
+                  "name": "Soporte a Participantes Virtuales",
+                  "deliverable": false,
+                  "responsible": "Líder Tecnología"
+                },
+                {
+                  "id": "1.7.5.4",
+                  "name": "Resolución de Incidencias",
+                  "deliverable": false,
+                  "responsible": "Director de Proyecto"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

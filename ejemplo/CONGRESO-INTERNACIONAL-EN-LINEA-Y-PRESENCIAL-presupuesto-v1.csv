@@ -1,0 +1,77 @@
+Categoría,Subcategoría,Descripción,Cantidad,Unidad,Costo Unitario (MXN),Costo Total (MXN),Proveedor/Responsable,Fecha Estimada de Gasto,Notas
+TECNOLOGÍA,Plataforma Híbrida,Licencia plataforma eventos híbridos (Hopin/Webex Events),1,Licencia 4 días,"$120,000","$120,000",Por cotizar,Jul 2026,Incluye 1000 participantes virtuales simultáneos
+TECNOLOGÍA,Plataforma Híbrida,Soporte técnico especializado durante evento,4,Días,"$7,500","$30,000",Por cotizar,Ago 2026,Equipo de 2 técnicos en sitio
+TECNOLOGÍA,Equipamiento Audiovisual,Cámaras PTZ profesionales (3 unidades),3,Unidad,"$15,000","$45,000",Proveedor AV,Ago 2026,Renta por 4 días
+TECNOLOGÍA,Equipamiento Audiovisual,Sistema de audio profesional (micrófonos inalámbricos),8,Unidad,"$2,500","$20,000",Proveedor AV,Ago 2026,Incluye mezcladora
+TECNOLOGÍA,Equipamiento Audiovisual,Pantallas LED 3x2m para salas principales,3,Unidad,"$12,000","$36,000",Proveedor AV,Ago 2026,Renta por 4 días
+TECNOLOGÍA,Equipamiento Audiovisual,Proyectores HD para salas paralelas,5,Unidad,"$3,000","$15,000",Proveedor AV,Ago 2026,Incluye pantallas
+TECNOLOGÍA,Internet y Conectividad,Enlace dedicado de internet 500 Mbps,1,Servicio,"$18,000","$18,000",Telmex/Totalplay,Ago 2026,Instalación temporal venue
+TECNOLOGÍA,Registro Digital,Sistema de registro y check-in digital,1,Sistema,"$15,000","$15,000",EventsBox,Jun 2026,Con app móvil
+TECNOLOGÍA,Sitio Web,Desarrollo sitio web del congreso,1,Proyecto,"$25,000","$25,000",Agencia Digital,Mar 2026,Con sistema de registro integrado
+,,,,,,Subtotal Tecnología:,"$324,000",,,
+VENUE Y LOGÍSTICA,Espacios,Renta de auditorios UNAM (4 días),4,Días,"$15,000","$60,000",UNAM,Ago 2026,Precio preferencial por convenio
+VENUE Y LOGÍSTICA,Espacios,Acondicionamiento y montaje de salas,1,Servicio,"$35,000","$35,000",Proveedor logística,Ago 2026,Incluye mobiliario adicional
+VENUE Y LOGÍSTICA,Señalización,Diseño e impresión de señalética,1,Paquete,"$12,000","$12,000",Imprenta,Ago 2026,Incluye instalación
+VENUE Y LOGÍSTICA,Stands,Montaje de 10 stands para patrocinadores,10,Stand,"$8,000","$80,000",Proveedor stands,Ago 2026,Diseño modular 3x3m
+VENUE Y LOGÍSTICA,Seguridad,Personal de seguridad (6 personas x 4 días),24,Jornadas,"$1,200","$28,800",Empresa de seguridad,Ago 2026,Cobertura 8am-8pm
+VENUE Y LOGÍSTICA,Sanitización,Protocolos COVID-19 y suministros,1,Paquete,"$18,000","$18,000",Proveedor sanitización,Ago 2026,Gel, cubrebocas, termómetros
+VENUE Y LOGÍSTICA,Mobiliario,Sillas y mesas adicionales,1,Renta,"$22,000","$22,000",Renta de mobiliario,Ago 2026,Para áreas de networking
+,,,,,,Subtotal Venue y Logística:,"$255,800",,,
+CATERING,Coffee Breaks,Coffee break mañana (250 personas x 4 días),1000,Servicios,"$85","$85,000",Catering Gourmet,Ago 2026,Incluye café premium y snacks
+CATERING,Coffee Breaks,Coffee break tarde (250 personas x 4 días),1000,Servicios,"$85","$85,000",Catering Gourmet,Ago 2026,Incluye refrigerios
+CATERING,Alimentos,Lunch día inauguración (15 ago) - 250 personas,250,Servicios,"$250","$62,500",Catering Gourmet,Ago 2026,Menú ejecutivo
+CATERING,Alimentos,Lunch día 2 (16 ago) - 250 personas,250,Servicios,"$250","$62,500",Catering Gourmet,Ago 2026,Opciones vegetarianas
+CATERING,Bebidas,Servicio de cafetería continua (4 días),4,Días,"$8,000","$32,000",Catering Gourmet,Ago 2026,2 estaciones de café
+CATERING,Evento Especial,Cóctel de networking día 3 (200 personas),200,Servicios,"$180","$36,000",Catering Gourmet,Ago 2026,Canapés y bebidas
+,,,,,,Subtotal Catering:,"$363,000",,,
+MARKETING Y COMUNICACIÓN,Diseño Gráfico,Identidad visual del congreso,1,Proyecto,"$18,000","$18,000",Diseñador freelance,Feb 2026,Logo y manual de marca
+MARKETING Y COMUNICACIÓN,Material Impreso,Programas del congreso (500 unidades),500,Unidad,"$45","$22,500",Imprenta,Jul 2026,A color full formato carta
+MARKETING Y COMUNICACIÓN,Material Impreso,Folders corporativos (500 unidades),500,Unidad,"$28","$14,000",Imprenta,Jul 2026,Con logo PMI-UNAM
+MARKETING Y COMUNICACIÓN,Gafetes,Impresión de gafetes y cordones (600 unidades),600,Unidad,"$35","$21,000",Proveedor credenciales,Ago 2026,Incluye porta gafetes
+MARKETING Y COMUNICACIÓN,Diplomas,Diseño e impresión de diplomas (600 unidades),600,Unidad,"$22","$13,200",Imprenta,Ago 2026,Papel seguridad con folio
+MARKETING Y COMUNICACIÓN,Publicidad Digital,Campaña Google Ads (3 meses),3,Meses,"$12,000","$36,000",Agencia digital,May-Jul 2026,Display y búsqueda
+MARKETING Y COMUNICACIÓN,Publicidad Digital,Campaña LinkedIn Ads (2 meses),2,Meses,"$15,000","$30,000",Agencia digital,Jun-Jul 2026,Targeting profesionales PM
+MARKETING Y COMUNICACIÓN,Publicidad Digital,Campaña Facebook/Instagram (2 meses),2,Meses,"$8,000","$16,000",Agencia digital,Jun-Jul 2026,Segmentación regional
+MARKETING Y COMUNICACIÓN,Email Marketing,Plataforma email marketing (6 meses),6,Meses,"$1,200","$7,200",MailChimp,Mar-Ago 2026,Plan para 50k contactos
+MARKETING Y COMUNICACIÓN,Relaciones Públicas,Servicio de PR y comunicados de prensa,1,Paquete,"$28,000","$28,000",Agencia PR,May-Ago 2026,3 comunicados + cobertura
+MARKETING Y COMUNICACIÓN,Material Promocional,Kit de bienvenida para asistentes (500 unidades),500,Unidad,"$95","$47,500",Proveedor merchandising,Jul 2026,USB + libreta + pluma
+MARKETING Y COMUNICACIÓN,Video,Video promocional congreso (2 min),1,Video,"$22,000","$22,000",Productora,Abr 2026,Para redes sociales
+,,,,,,Subtotal Marketing:,"$275,400",,,
+CONTENIDO Y SPEAKERS,Honorarios,Keynote speaker internacional principal,1,Conferencia,"$80,000","$80,000",Por contratar,Ago 2026,Incluye viáticos
+CONTENIDO Y SPEAKERS,Honorarios,Speaker magistral nacional,2,Conferencia,"$25,000","$50,000",Por contratar,Ago 2026,Reconocidos en industria
+CONTENIDO Y SPEAKERS,Viáticos,Hospedaje speakers internacionales (3 noches),3,Habitaciones,"$2,800","$8,400",Hotel cercano UNAM,Ago 2026,Hotel 4 estrellas
+CONTENIDO Y SPEAKERS,Viáticos,Traslados aeropuerto speakers internacionales,6,Traslados,"$800","$4,800",Transporte ejecutivo,Ago 2026,Ida y vuelta
+CONTENIDO Y SPEAKERS,Coordinación,Coordinador de ponentes (6 meses),6,Meses,"$18,000","$108,000",Contratación temporal,Mar-Ago 2026,Medio tiempo
+CONTENIDO Y SPEAKERS,Materiales,Apoyo logístico para ponentes,1,Paquete,"$12,000","$12,000",Varios,Ago 2026,Clickers presentadores USB etc
+,,,,,,Subtotal Contenido y Speakers:,"$263,200",,,
+PATROCINIOS Y STANDS,Activación,Material POP para stands de patrocinadores,10,Stands,"$3,500","$35,000",Proveedor merchandising,Ago 2026,Banners roll-ups displays
+PATROCINIOS Y STANDS,Servicios,Personal de apoyo para stands (4 días),8,Personas-día,"$1,800","$14,400",Agencia de staff,Ago 2026,2 personas x 4 días
+,,,,,,Subtotal Patrocinios:,"$49,400",,,
+PERSONAL OPERATIVO,Coordinación General,Project Manager (8 meses),8,Meses,"$35,000","$280,000",Contratación,Ene-Ago 2026,Tiempo completo
+PERSONAL OPERATIVO,Operaciones,Staff operativo durante evento (10 personas x 4 días),40,Jornadas,"$1,500","$60,000",Contratación temporal,Ago 2026,Registro atención logística
+PERSONAL OPERATIVO,Tecnología,Técnicos de soporte A/V (3 personas x 4 días),12,Jornadas,"$2,500","$30,000",Proveedor AV,Ago 2026,Especialistas transmisión
+PERSONAL OPERATIVO,Contenido,Asistentes de moderación (4 personas x 4 días),16,Jornadas,"$1,800","$28,800",Contratación temporal,Ago 2026,Control de sesiones Q&A
+,,,,,,Subtotal Personal:,"$398,800",,,
+ADMINISTRACIÓN,Seguros,Seguro de responsabilidad civil del evento,1,Póliza,"$18,000","$18,000",Aseguradora,Jul 2026,Cobertura hasta 5M MXN
+ADMINISTRACIÓN,Legales,Honorarios legales (contratos proveedores),1,Servicio,"$15,000","$15,000",Abogado externo,Mar-Jul 2026,Revisión contratos clave
+ADMINISTRACIÓN,Software,Licencias software gestión proyecto (8 meses),8,Meses,"$800","$6,400",Asana/Monday,Ene-Ago 2026,Para equipo proyecto
+ADMINISTRACIÓN,Gastos Varios,Gastos administrativos menores,1,Paquete,"$12,000","$12,000",Varios,Ene-Ago 2026,Papelería courier copias
+,,,,,,Subtotal Administración:,"$51,400",,,
+,,,,,,SUBTOTAL GENERAL:,"$1,981,000",,,
+,,,,,,,,,,
+RESERVAS,Contingencia,Reserva de contingencia (10%),1,Reserva,"$198,100","$198,100",Sin asignar,Según necesidad,Para riesgos identificados
+RESERVAS,Gestión,Reserva de gestión (5%),1,Reserva,"$99,050","$99,050",Sin asignar,Según necesidad,Para imprevistos menores
+,,,,,,TOTAL CON RESERVAS:,"$2,278,150",,,
+,,,,,,,,,,
+INGRESOS,Patrocinios,Patrocinadores Platinum (3 x $200k),3,Patrocinio,"$200,000","$600,000",Por confirmar,Mar-Jun 2026,Stand premium + branding
+INGRESOS,Patrocinios,Patrocinadores Gold (5 x $100k),5,Patrocinio,"$100,000","$500,000",Por confirmar,Abr-Jun 2026,Stand estándar + logo
+INGRESOS,Patrocinios,Patrocinadores Silver (7 x $50k),7,Patrocinio,"$50,000","$350,000",Por confirmar,Abr-Jul 2026,Logo en materiales
+INGRESOS,Registros,Registro presencial early bird (150 x $2800),150,Registro,"$2,800","$420,000",Directo,Jun-Jul 2026,Precio anticipado
+INGRESOS,Registros,Registro presencial regular (100 x $3500),100,Registro,"$3,500","$350,000",Directo,Ago 2026,Precio regular
+INGRESOS,Registros,Registro virtual (300 x $800),300,Registro,"$800","$240,000",Directo,Jun-Ago 2026,Acceso completo online
+INGRESOS,Aportación,Aportación PMI Capítulo México,1,Aportación,"$150,000","$150,000",PMI México,Feb 2026,Fondos institucionales
+INGRESOS,Aportación,Apoyo UNAM (venue y servicios),1,Aportación,"$100,000","$100,000",UNAM,Feb 2026,En especie
+,,,,,,TOTAL INGRESOS PROYECTADOS:,"$2,710,000",,,
+,,,,,,,,,,
+,,,,,,BALANCE PROYECTADO:,"$431,850",,,Superávit para reinversión
+,,,,,,MARGEN:,19%,,,Sobre ingresos totales
