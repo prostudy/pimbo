@@ -121,7 +121,7 @@ El skill identifica los roles de autoridad:
 - **Tomadores de decisiones clave** - Para cambios significativos
 - **Comité de control de cambios** - Aprueba cambios al proyecto
 
-- **Comité de control de cambios** - Aprueba cambios al proyecto
+
 
 ### Paso 3b: Generación del Business Model Canvas (Opcional)
 

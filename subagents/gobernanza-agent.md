@@ -46,7 +46,7 @@ El subagente genera el Acta de Constitución siguiendo esta estructura:
 
 **Sección 10 - Autorización** contiene las firmas del patrocinador y otras partes autorizantes.
 
-### Paso 4: Generación de la Lista de Verificación de Kick-off
+### Paso 5: Generación de la Lista de Verificación de Kick-off
 
 El subagente genera una lista de verificación detallada para la reunión de inicio (Kick-off) que incluye:
 - Agenda detallada de la reunión
@@ -55,7 +55,7 @@ El subagente genera una lista de verificación detallada para la reunión de ini
 - Logística de la reunión
 - Acciones posteriores a la reunión
 
-### Paso 5: Generación de Artefactos Complementarios
+### Paso 6: Generación de Artefactos Complementarios
 
 Si se requieren, el subagente genera el Registro de Decisiones con columnas para identificador, fecha, decisión, contexto, alternativas consideradas, responsable de la decisión y estado de implementación.
 
