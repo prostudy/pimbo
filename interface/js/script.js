@@ -5,9 +5,8 @@
 // Estado de la aplicación
 const appState = {
     currentStep: 1,
-    totalSteps: 5,
+    totalSteps: 4,
     formData: {
-        provider: 'claude',
         projectName: '',
         description: '',
         justification: '',
@@ -54,14 +53,6 @@ document.addEventListener('DOMContentLoaded', function() {
 // ============================================
 
 function initializeApp() {
-    // Event listeners para provider selector
-    document.querySelectorAll('.provider-card').forEach(card => {
-        card.addEventListener('click', function() {
-            const provider = this.getAttribute('data-provider');
-            selectProvider(provider);
-        });
-    });
-
     // Event listeners para phase selector
     document.querySelectorAll('.phase-btn').forEach(btn => {
         btn.addEventListener('click', function() {
@@ -212,9 +203,7 @@ function validateCurrentStep() {
             return validateStep2();
         case 3: // Artifacts
             return validateStep3();
-        case 4: // Provider selection
-            return validateStep4();
-        case 5: // Summary
+        case 4: // Summary
             return true; // No validation needed
         default:
             return true;
@@ -268,14 +257,6 @@ function validateStep3() {
     return true;
 }
 
-function validateStep4() {
-    if (!appState.formData.provider) {
-        showAlert('Please select an AI provider');
-        return false;
-    }
-    return true;
-}
-
 function showAlert(message) {
     alert(message);
 }
@@ -302,8 +283,8 @@ function saveFormData() {
     localStorage.setItem('pimbo_formData', JSON.stringify(appState.formData));
     localStorage.setItem('pimbo_currentStep', appState.currentStep.toString());
 
-    // Actualizar resumen si estamos en el paso 5
-    if (appState.currentStep === 5) {
+    // Actualizar resumen si estamos en el paso 4
+    if (appState.currentStep === 4) {
         updateSummary();
     }
 }
@@ -330,9 +311,6 @@ function loadSavedData() {
             if (appState.formData.approach) {
                 document.getElementById('approach').value = appState.formData.approach;
             }
-            if (appState.formData.provider) {
-                selectProvider(appState.formData.provider);
-            }
             if (appState.formData.phase) {
                 selectPhase(appState.formData.phase);
             }
@@ -356,46 +334,6 @@ function loadSavedData() {
     if (savedStep) {
         appState.currentStep = parseInt(savedStep);
     }
-}
-
-// ============================================
-// Provider Selection
-// ============================================
-
-function selectProvider(provider) {
-    appState.formData.provider = provider;
-
-    // Actualizar UI
-    document.querySelectorAll('.provider-card').forEach(function(card) {
-        card.classList.remove('selected');
-        const radio = card.querySelector('input[type="radio"]');
-        if (radio) {
-            radio.checked = false;
-        }
-    });
-
-    const selectedCard = document.querySelector('[data-provider="' + provider + '"]');
-    if (selectedCard) {
-        selectedCard.classList.add('selected');
-        const radio = selectedCard.querySelector('input[type="radio"]');
-        if (radio) {
-            radio.checked = true;
-        }
-    }
-
-    // Actualizar info box
-    const infoBox = document.getElementById('providerInfo');
-    if (infoBox) {
-        if (provider === 'claude') {
-            infoBox.className = 'info-box info';
-            infoBox.innerHTML = '<strong>Claude AI:</strong> Files will be automatically generated in your directory. Content will not be displayed in chat.';
-        } else {
-            infoBox.className = 'info-box warning';
-            infoBox.innerHTML = '<strong>Google Gemini:</strong> Artifacts will be displayed visually in chat for copying. A downloadable ZIP file will be generated at the end.';
-        }
-    }
-
-    saveFormData();
 }
 
 // ============================================
@@ -454,10 +392,6 @@ function loadTemplate(templateName) {
 // ============================================
 
 function updateSummary() {
-    // Provider
-    document.getElementById('summaryProvider').textContent =
-        appState.formData.provider === 'claude' ? 'Claude AI' : 'Google Gemini';
-
     // Project name
     document.getElementById('summaryProjectName').textContent =
         appState.formData.projectName || '-';
@@ -549,38 +483,21 @@ function generatePrompt() {
         iterativo: 'Iterativo/Incremental'
     };
 
-    let prompt = '';
-
-    if (appState.formData.provider === 'claude') {
-        prompt = generateClaudePrompt(
-            appState.formData.projectName,
-            appState.formData.description,
-            appState.formData.justification,
-            phaseLabels[appState.formData.phase],
-            approachLabels[appState.formData.approach],
-            selectedArtifacts
-        );
-    } else {
-        prompt = generateGeminiPrompt(
-            appState.formData.projectName,
-            appState.formData.description,
-            appState.formData.justification,
-            phaseLabels[appState.formData.phase],
-            approachLabels[appState.formData.approach],
-            selectedArtifacts
-        );
-    }
+    const prompt = generatePromptText(
+        appState.formData.projectName,
+        appState.formData.description,
+        appState.formData.justification,
+        phaseLabels[appState.formData.phase],
+        approachLabels[appState.formData.approach],
+        selectedArtifacts
+    );
 
     // Mostrar output
     document.getElementById('promptOutput').textContent = prompt;
 
     // Update instructions
     const instructions = document.getElementById('outputInstructions');
-    if (appState.formData.provider === 'claude') {
-        instructions.innerHTML = 'Copy the following text and paste it into <strong>Claude Code</strong> or <strong>Claude.ai</strong> to generate your artifacts:';
-    } else {
-        instructions.innerHTML = '<strong>Instructions:</strong><br>1. Copy the complete prompt<br>2. Paste it into Google Gemini<br>3. Artifacts will be displayed visually<br>4. Download the ZIP file at the end';
-    }
+    instructions.innerHTML = 'Copy the following text and paste it into your AI assistant (Claude, Gemini, ChatGPT, etc.):';
 
     // Mostrar sección de output
     const outputSection = document.getElementById('outputSection');
@@ -592,85 +509,54 @@ function generatePrompt() {
     }, 100);
 }
 
-function generateClaudePrompt(projectName, description, justification, phase, approach, artifacts) {
+function generatePromptText(projectName, description, justification, phase, approach, artifacts) {
     const projectCode = projectName.toUpperCase().replace(/\s+/g, '-');
     const artifactList = artifacts.map(function(artifact, index) {
-        return (index + 1) + '. ' + artifact;
+        return '- ' + artifact;
     }).join('\n');
 
-    return 'Actúa como el agente coordinador del sistema PimBo especializado en PMBOK 8.\n\n' +
-        'INFORMACIÓN DEL PROYECTO:\n' +
-        '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n' +
-        'Nombre del Proyecto: ' + projectName + '\n\n' +
-        'Descripción:\n' + description + '\n\n' +
-        'Justificación / Caso de Negocio:\n' + justification + '\n\n' +
-        'Fase del Ciclo de Vida: ' + phase + '\n' +
-        'Enfoque del Proyecto: ' + approach + '\n\n' +
-        'ARTEFACTOS A GENERAR:\n' +
-        '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n' +
+    return 'Eres el AGENTE COORDINADOR del sistema PimBo, especializado en PMBOK 8 del PMI.\n\n' +
+        '## TU ROL\n' +
+        'Orquestas subagentes especializados por dominio para generar artefactos profesionales de gestión de proyectos.\n\n' +
+        '## SUBAGENTES DISPONIBLES\n' +
+        '| Subagente | Artefactos | Formato |\n' +
+        '|-----------|------------|--------|\n' +
+        '| gobernanza-agent | Acta de Constitución, Registro Decisiones | .md |\n' +
+        '| alcance-agent | WBS, Diccionario WBS, Requisitos | .json, .csv |\n' +
+        '| cronograma-agent | Cronograma Gantt, Hitos, Actividades | .csv |\n' +
+        '| finanzas-agent | Presupuesto, Flujo de Caja | .csv |\n' +
+        '| interesados-agent | Registro Interesados, Plan Comunicaciones | .csv, .md |\n' +
+        '| recursos-agent | Matriz RACI, Organigrama | .csv, .json |\n' +
+        '| riesgo-agent | Registro Riesgos, Matriz Prob/Impacto | .csv |\n' +
+        '| agile-agent | Product Backlog, Historias Usuario, DoD | .csv, .json, .md |\n\n' +
+        '## PROYECTO A DOCUMENTAR\n' +
+        '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n' +
+        '**Nombre:** ' + projectName + '\n' +
+        '**Código:** ' + projectCode + '\n\n' +
+        '**Descripción:**\n' + description + '\n\n' +
+        '**Justificación/Caso de Negocio:**\n' + justification + '\n\n' +
+        '**Fase:** ' + phase + '\n' +
+        '**Enfoque:** ' + approach + '\n\n' +
+        '## ARTEFACTOS SOLICITADOS\n' +
         artifactList + '\n\n' +
-        'INSTRUCCIONES:\n' +
-        '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n' +
-        '1. Lee el contexto del proyecto proporcionado\n' +
-        '2. Activa los subagentes apropiados según los artefactos solicitados\n' +
-        '3. Genera cada artefacto siguiendo las plantillas en /references/\n' +
-        '4. Guarda cada archivo con el formato: ' + projectCode + '-[artefacto]-v1.[ext]\n' +
-        '5. Usa los formatos especificados en config-salidas.md:\n' +
-        '   - CSV para registros, matrices y cronogramas\n' +
-        '   - JSON para estructuras jerárquicas (WBS)\n' +
-        '   - MD para documentos narrativos (Acta, Planes)\n\n' +
-        'IMPORTANTE:\n' +
-        '- NO muestres el contenido en el chat, solo genera los archivos\n' +
-        '- Confirma cada archivo generado con: ✓ Archivo generado: [nombre]\n' +
-        '- Adapta los artefactos al enfoque ' + approach + '\n\n' +
+        '## PROCESO DE GENERACIÓN\n' +
+        '1. Analiza el contexto del proyecto y su enfoque (' + approach + ')\n' +
+        '2. Para cada artefacto, activa el subagente especializado correspondiente\n' +
+        '3. Genera contenido PROFESIONAL y COMPLETO (no placeholders ni ejemplos genéricos)\n' +
+        '4. Usa datos coherentes entre artefactos (mismos nombres, fechas, montos)\n' +
+        '5. Adapta el nivel de detalle según la fase (' + phase + ')\n\n' +
+        '## REGLAS DE SALIDA\n' +
+        '- **CREA** archivos directamente, sin explicaciones previas\n' +
+        '- **NOMBRA:** ' + projectCode + '-[artefacto]-v1.[ext]\n' +
+        '- **FORMATOS:** CSV (tablas/registros), JSON (jerarquías), MD (narrativos)\n' +
+        '- **NO MUESTRES** contenido en el chat\n' +
+        '- **CONFIRMA:** ✓ Archivo generado: [nombre]\n\n' +
+        '## CRITERIOS DE CALIDAD\n' +
+        '- Contenido específico al proyecto (no genérico)\n' +
+        '- Datos realistas y coherentes entre documentos\n' +
+        '- Formato profesional listo para presentar\n' +
+        '- Alineado con principios PMBOK 8: valor, calidad, sostenibilidad\n\n' +
         'Genera los artefactos ahora.';
-}
-
-function generateGeminiPrompt(projectName, description, justification, phase, approach, artifacts) {
-    const projectCode = projectName.toUpperCase().replace(/\s+/g, '-');
-    const artifactList = artifacts.map(function(artifact, index) {
-        return (index + 1) + '. ' + artifact;
-    }).join('\n');
-
-    return 'Eres PimBo, un agente experto en generar documentación de proyectos según PMBOK 8.\n\n' +
-        '🎯 INFORMACIÓN DEL PROYECTO\n' +
-        '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n' +
-        '📋 Proyecto: ' + projectName + '\n\n' +
-        '📝 Descripción:\n' + description + '\n\n' +
-        '💼 Justificación:\n' + justification + '\n\n' +
-        '⚙️ Configuración:\n' +
-        '• Fase: ' + phase + '\n' +
-        '• Enfoque: ' + approach + '\n\n' +
-        '📦 ARTEFACTOS A GENERAR\n' +
-        '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n' +
-        artifactList + '\n\n' +
-        '📋 INSTRUCCIONES PARA GEMINI\n' +
-        '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n' +
-        'Para cada artefacto solicitado:\n\n' +
-        '1. MOSTRAR VISUALMENTE: Genera el contenido completo del artefacto con formato claro\n\n' +
-        '2. FORMATO DE PRESENTACIÓN:\n' +
-        '   ╔═══════════════════════════════════════════════════════╗\n' +
-        '   ║  📄 NOMBRE DEL ARTEFACTO                              ║\n' +
-        '   ║  Archivo: ' + projectCode + '-[nombre]-v1.[extensión]     ║\n' +
-        '   ╚═══════════════════════════════════════════════════════╝\n\n' +
-        '   [CONTENIDO COMPLETO DEL ARTEFACTO AQUÍ]\n\n' +
-        '   ─────────────────────────────────────────────────────────\n' +
-        '   ✅ Listo para copiar y guardar\n\n' +
-        '3. GUÍAS POR TIPO:\n' +
-        '   📄 MARKDOWN (.md): Acta, Planes, Historias\n' +
-        '   📊 CSV (.csv): Cronograma, Presupuesto, RACI, Riesgos, Backlog\n' +
-        '   🌳 JSON (.json): WBS\n\n' +
-        '4. AL FINALIZAR - ARCHIVO ZIP:\n' +
-        '   ╔═══════════════════════════════════════════════════════╗\n' +
-        '   ║  📦 DESCARGA TODOS LOS ARCHIVOS                       ║\n' +
-        '   ╚═══════════════════════════════════════════════════════╝\n\n' +
-        '   🔽 Genera un archivo ZIP con todos los artefactos y proporciona el link\n\n' +
-        'IMPORTANTE:\n' +
-        '- Genera TODOS los artefactos solicitados\n' +
-        '- Contenido COMPLETO (no resúmenes)\n' +
-        '- Formato visual claro\n' +
-        '- ZIP al final\n\n' +
-        '¡Comienza ahora! 🚀';
 }
 
 // ============================================

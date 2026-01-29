@@ -40,10 +40,6 @@
                 </div>
                 <div class="progress-step">
                     <div class="progress-step-circle">4</div>
-                    <div class="progress-step-label">Provider</div>
-                </div>
-                <div class="progress-step">
-                    <div class="progress-step-circle">5</div>
                     <div class="progress-step-label">Summary</div>
                 </div>
             </div>
@@ -294,52 +290,8 @@
                 </div>
             </div>
 
-            <!-- STEP 4: AI Provider Selection -->
+            <!-- STEP 4: Summary & Generation -->
             <div id="step-4" class="step-section">
-                <h2 class="step-title">AI Provider Selection</h2>
-                <p class="step-description">Choose which artificial intelligence will generate your project artifacts</p>
-
-                <div class="provider-grid">
-                    <div class="provider-card selected" data-provider="claude">
-                        <input type="radio" name="provider" value="claude" checked>
-                        <div class="provider-header">
-                            <div class="provider-logo">🧠</div>
-                            <div class="provider-info">
-                                <div class="provider-name">Claude AI</div>
-                                <div class="provider-description">Excellent for narrative documents and detailed analysis</div>
-                            </div>
-                        </div>
-                        <ul class="provider-features">
-                            <li>Generates files automatically</li>
-                            <li>Best for complex documentation</li>
-                            <li>Deep contextual analysis</li>
-                        </ul>
-                    </div>
-
-                    <div class="provider-card" data-provider="gemini">
-                        <input type="radio" name="provider" value="gemini">
-                        <div class="provider-header">
-                            <div class="provider-logo">💎</div>
-                            <div class="provider-info">
-                                <div class="provider-name">Google Gemini</div>
-                                <div class="provider-description">Ideal for structured data and visualization</div>
-                            </div>
-                        </div>
-                        <ul class="provider-features">
-                            <li>Shows artifacts visually</li>
-                            <li>Generates downloadable ZIP file</li>
-                            <li>Excellent for tables and matrices</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div id="providerInfo" class="info-box info">
-                    <strong>Claude AI:</strong> Files will be automatically generated in your directory. Content will not be displayed in chat.
-                </div>
-            </div>
-
-            <!-- STEP 5: Summary & Generation -->
-            <div id="step-5" class="step-section">
                 <h2 class="step-title">Summary & Generation</h2>
                 <p class="step-description">Review your configuration and generate the prompt</p>
 
@@ -364,10 +316,6 @@
                         <ul class="summary-list" id="summaryArtifacts"></ul>
                     </div>
 
-                    <div class="summary-item">
-                        <div class="summary-label">AI Provider</div>
-                        <div class="summary-value" id="summaryProvider">-</div>
-                    </div>
                 </div>
 
                 <!-- Output Section -->
