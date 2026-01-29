@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursos PMBOK & Agile - TodoPMP Style</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Estilos específicos para esta página se cargarán aquí o en un archivo separado -->
+    <link rel="stylesheet" href="css/resources.css">
+</head>
+
+<body>
+
+    <!-- Header / Navbar (Simplified for this landing) -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a href="index.html" class="brand-link">
+                <img src="images/pimbo_profile_350.png" alt="Logo" class="nav-logo">
+                <span class="brand-text">PimBo Resources</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="btn btn-ghost">← Volver al Generador</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-layout">
+        <!-- Sidebar Filter (Desktop) -->
+        <aside class="sidebar" id="category-sidebar">
+            <div class="sidebar-header">
+                <h3>Categorías</h3>
+            </div>
+            <div class="category-list" id="category-list">
+                <!-- Categories injected via JS -->
+                <div class="category-item active" data-category="all">
+                    <span class="cat-icon">📚</span> Todos los recursos
+                </div>
+            </div>
+
+            <!-- Stats Widget -->
+            <div class="stats-widget">
+                <h4>Tus Estadísticas</h4>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <span class="stat-num" id="stat-read">0</span>
+                        <span class="stat-label">Leídos</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-num" id="stat-saved">0</span>
+                        <span class="stat-label">Guardados</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="resource-grid-container">
+            <!-- Mobile Filter Dropdown (Visible only on mobile) -->
+            <div class="mobile-filter">
+                <select id="mobile-category-select">
+                    <option value="all">📚 Todos los recursos</option>
+                    <!-- Options injected via JS -->
+                </select>
+            </div>
+
+            <div class="resource-grid" id="resource-grid">
+                <!-- Cards injected via JS -->
+                <div class="loading-spinner">Cargando recursos...</div>
+            </div>
+        </main>
+
+        <!-- Side Panel (Hidden by default) -->
+        <div class="side-panel-overlay" id="panel-overlay"></div>
+        <div class="side-panel" id="side-panel">
+            <div class="panel-header">
+                <div class="panel-meta">
+                    <span class="panel-tag" id="panel-tag">Tag</span>
+                    <span class="panel-date" id="panel-date">Date</span>
+                </div>
+                <button class="close-panel-btn" id="close-panel">×</button>
+            </div>
+
+            <div class="panel-content-scroll">
+                <img src="" alt="" class="panel-hero-img" id="panel-image">
+                <h2 class="panel-title" id="panel-title">Title</h2>
+
+                <div class="panel-actions">
+                    <a href="#" target="_blank" class="btn btn-primary" id="panel-link">🔗 Abrir original</a>
+                    <button class="btn btn-ghost" id="panel-save">🔖 Guardar</button>
+                </div>
+
+                <div class="panel-body" id="panel-body">
+                    <!-- Dynamic Content -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/resources_app.js"></script>
+</body>
+
+</html>

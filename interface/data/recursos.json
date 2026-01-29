@@ -1,0 +1,306 @@
+{
+    "categories": [
+        {
+            "id": "all",
+            "name": "Todos los recursos",
+            "icon": "📚"
+        },
+        {
+            "id": "pmbok",
+            "name": "PMBOK 7/8",
+            "icon": "📖"
+        },
+        {
+            "id": "agile",
+            "name": "Agile & Scrum",
+            "icon": "⚡"
+        },
+        {
+            "id": "pmp",
+            "name": "Certificación PMP",
+            "icon": "🎓"
+        },
+        {
+            "id": "ia",
+            "name": "IA en Proyectos",
+            "icon": "🤖"
+        },
+        {
+            "id": "gobernanza",
+            "name": "Gobernanza",
+            "icon": "🏛️"
+        },
+        {
+            "id": "alcance",
+            "name": "Alcance",
+            "icon": "🎯"
+        },
+        {
+            "id": "cronograma",
+            "name": "Cronograma",
+            "icon": "⏳"
+        },
+        {
+            "id": "costos",
+            "name": "Costos",
+            "icon": "💰"
+        },
+        {
+            "id": "riesgos",
+            "name": "Riesgos",
+            "icon": "⚠️"
+        },
+        {
+            "id": "recursos",
+            "name": "Recursos",
+            "icon": "👥"
+        },
+        {
+            "id": "interesados",
+            "name": "Interesados",
+            "icon": "👥"
+        }
+    ],
+    "resources": [
+        {
+            "id": 1,
+            "title": "¿Cómo usar PimBo?",
+            "category": "pmbok",
+            "type": "article",
+            "description": "Agente de IA Inteligente para Generación Automática de Documentación de Proyectos",
+            "image": "https://placehold.co/600x400/1e293b/fbbf24?text=PimBo",
+            "url": "https://pimbo.ai/",
+            "date": "5 dic 2025",
+            "tags": [
+                "PimBo",
+                "Guía"
+            ],
+            "content": "<div class='video-container'><iframe width='100%' height='315' src='https://todopmp.com/wp-content/uploads/2026/01/La_Orquesta_de_IA_pimBo.mp4' frameborder='0' allowfullscreen></iframe></div><p>Genera artefactos profesionales de gestión de proyectos basados en PMBOK 8 en segundos</p><p><strong>PimBo</strong> es un sistema de agentes de IA especializados que automatiza la generación de documentación de gestión de proyectos siguiendo los estándares del PMBOK®  (Project Management Body of Knowledge) del Project Management Institute (PMI).</p>"
+        },
+        {
+            "id": 2,
+            "title": "40 Procesos PMBOK 8: Mapa Interactivo",
+            "category": "pmbok",
+            "type": "article",
+            "description": "Domina los 40 procesos del PMBOK 8 con nuestro mapa interactivo gratuito. Una guía visual esencial para entender el flujo de trabajo.",
+            "image": "https://placehold.co/600x400/1e293b/fbbf24?text=PMBOK+Map",
+            "url": "https://todopmp.com/procesos-pmbok/",
+            "date": "5 dic 2025",
+            "tags": [
+                "Interactivo",
+                "Guía"
+            ],
+            "content": "<h3>Mapa de Procesos PMBOK 8</h3><p>La octava edición del PMBOK marca un cambio fundamental hacia los principios y dominios de desempeño. Sin embargo, entender los procesos subyacentes sigue siendo clave.</p>"
+        },
+        {
+            "id": 6,
+            "title": "Acta de Constitución del Proyecto",
+            "category": "gobernanza",
+            "type": "tool",
+            "description": "Documento que autoriza formalmente el proyecto. Incluye objetivos, alcance preliminar, patrocinador y presupuesto inicial.",
+            "image": "https://placehold.co/600x400/007AFF/ffffff?text=Project+Charter",
+            "url": "https://todopmp.com/wp-content/uploads/2026/01/El_Plano_del_Proyecto.mp4",
+            "date": "Generador",
+            "tags": [
+                "Gobernanza",
+                "Inicio"
+            ],
+            "content": "<div class='video-container'><iframe width='100%' height='315' src='https://todopmp.com/wp-content/uploads/2026/01/El_Plano_del_Proyecto.mp4' frameborder='0' allowfullscreen></iframe></div><p>Descubre cómo la IA generativa puede automatizar la creación de actas de constitución, planes de riesgo y más.</p>"
+        },
+        {
+            "id": 7,
+            "title": "WBS (Estructura de Desglose del Trabajo)",
+            "category": "alcance",
+            "type": "tool",
+            "description": "Estructura de Desglose del Trabajo. Descomposición jerárquica del trabajo total del proyecto.",
+            "image": "https://placehold.co/600x400/5856D6/ffffff?text=WBS",
+            "url": "index.html",
+            "date": "Generador",
+            "tags": [
+                "Alcance",
+                "Planificación"
+            ],
+            "content": "<h3>Alcance</h3><p>Descompón tu proyecto en entregables manejables. Esta herramienta genera una estructura JSON lista para visualizar.</p>"
+        },
+        {
+            "id": 8,
+            "title": "Documento de Requisitos",
+            "category": "alcance",
+            "type": "tool",
+            "description": "Lista completa de requisitos funcionales y no funcionales con prioridades y criterios de aceptación.",
+            "image": "https://placehold.co/600x400/5856D6/ffffff?text=Requisitos",
+            "url": "index.html",
+            "date": "Generador",
+            "tags": [
+                "Alcance",
+                "Planificación"
+            ],
+            "content": "<h3>Alcance</h3><p>Documenta exahustivamente las necesidades de los interesados y del producto.</p>"
+        },
+        {
+            "id": 9,
+            "title": "Cronograma del Proyecto",
+            "category": "cronograma",
+            "type": "tool",
+            "description": "Cronograma con actividades, duraciones, dependencias y camino crítico en formato Gantt (CSV).",
+            "image": "https://placehold.co/600x400/32ADE6/ffffff?text=Gantt",
+            "url": "index.html",
+            "date": "Generador",
+            "tags": [
+                "Cronograma",
+                "Planificación"
+            ],
+            "content": "<h3>Cronograma</h3><p>Genera una lista de actividades detallada compatible con herramientas de diagrama de Gantt.</p>"
+        },
+        {
+            "id": 10,
+            "title": "Presupuesto del Proyecto",
+            "category": "costos",
+            "type": "tool",
+            "description": "Presupuesto detallado por categorías, con reservas de contingencia y distribución temporal.",
+            "image": "https://placehold.co/600x400/34C759/ffffff?text=Presupuesto",
+            "url": "index.html",
+            "date": "Generador",
+            "tags": [
+                "Finanzas",
+                "Planificación"
+            ],
+            "content": "<h3>Costos / Finanzas</h3><p>Estima los costos de tu proyecto con precisión, incluyendo CAPEX, OPEX y reservas.</p>"
+        },
+        {
+            "id": 11,
+            "title": "Registro de Interesados",
+            "category": "interesados",
+            "type": "tool",
+            "description": "Identificación de stakeholders con análisis de poder/interés y estrategias de gestión.",
+            "image": "https://placehold.co/600x400/FF9500/ffffff?text=Stakeholders",
+            "url": "index.html",
+            "date": "Generador",
+            "tags": [
+                "Interesados",
+                "Inicio"
+            ],
+            "content": "<h3>Interesados</h3><p>Mapea a todas las personas y organizaciones afectadas por tu proyecto.</p>"
+        },
+        {
+            "id": 12,
+            "title": "Plan de Comunicaciones",
+            "category": "interesados",
+            "type": "tool",
+            "description": "Define qué información se compartirá con quién, cuándo, cómo y con qué frecuencia.",
+            "image": "https://placehold.co/600x400/FF9500/ffffff?text=Comms+Plan",
+            "url": "index.html",
+            "date": "Generador",
+            "tags": [
+                "Interesados",
+                "Planificación"
+            ],
+            "content": "<h3>Interesados</h3><p>Establece un flujo de información claro para mantener a todos alineados.</p>"
+        },
+        {
+            "id": 13,
+            "title": "Matriz RACI",
+            "category": "recursos",
+            "type": "tool",
+            "description": "Asigna responsabilidades: Responsable, Aprobador, Consultado e Informado para cada entregable.",
+            "image": "https://placehold.co/600x400/FF3B30/ffffff?text=RACI",
+            "url": "index.html",
+            "date": "Generador",
+            "tags": [
+                "Recursos",
+                "Planificación"
+            ],
+            "content": "<h3>Recursos</h3><p>Clarifica roles y responsabilidades para evitar confusiones en la ejecución.</p>"
+        },
+        {
+            "id": 14,
+            "title": "Registro de Riesgos",
+            "category": "riesgos",
+            "type": "tool",
+            "description": "Documenta riesgos con probabilidad, impacto, estrategia de respuesta y responsable.",
+            "image": "https://placehold.co/600x400/FF2D92/ffffff?text=Riesgos",
+            "url": "index.html",
+            "date": "Generador",
+            "tags": [
+                "Riesgo",
+                "Planificación"
+            ],
+            "content": "<h3>Riesgos</h3><p>Identifica y planifica respuestas a las amenazas y oportunidades del proyecto.</p>"
+        },
+        {
+            "id": 15,
+            "title": "Product Backlog",
+            "category": "agile",
+            "type": "tool",
+            "description": "Lista priorizada de historias de usuario y funcionalidades para proyectos ágiles.",
+            "image": "https://placehold.co/600x400/30D158/ffffff?text=Backlog",
+            "url": "index.html",
+            "date": "Generador",
+            "tags": [
+                "Ágil",
+                "Inicio"
+            ],
+            "content": "<h3>Ágil</h3><p>Gestiona los requisitos cambiantes en entornos adaptativos con un Product Backlog dinámico.</p>"
+        },
+        {
+            "id": 16,
+            "title": "Historias de Usuario",
+            "category": "agile",
+            "type": "tool",
+            "description": "Funcionalidades desde la perspectiva del usuario con criterios de aceptación específicos.",
+            "image": "https://placehold.co/600x400/30D158/ffffff?text=User+Stories",
+            "url": "index.html",
+            "date": "Generador",
+            "tags": [
+                "Ágil",
+                "Planificación"
+            ],
+            "content": "<h3>Ágil</h3><p>Define requerimientos centrados en el valor para el usuario final.</p>"
+        },
+        {
+            "id": 17,
+            "title": "Business Case",
+            "category": "gobernanza",
+            "type": "tool",
+            "description": "Justificación económica detallada del proyecto con análisis costo-beneficio, ROI esperado y alternativas evaluadas.",
+            "image": "https://placehold.co/600x400/007AFF/ffffff?text=Business+Case",
+            "url": "index.html",
+            "date": "Generador",
+            "tags": [
+                "Gobernanza",
+                "Inicio"
+            ],
+            "content": "<h3>Gobernanza</h3><p>Justifica la inversión de tu proyecto con un análisis financiero sólido.</p>"
+        },
+        {
+            "id": 18,
+            "title": "Lista de Verificación de Kick-off",
+            "category": "gobernanza",
+            "type": "tool",
+            "description": "Lista de verificación para reunión de inicio del proyecto.",
+            "image": "https://placehold.co/600x400/007AFF/ffffff?text=Kick-off",
+            "url": "index.html",
+            "date": "Generador",
+            "tags": [
+                "Gobernanza",
+                "Inicio"
+            ],
+            "content": "<h3>Gobernanza</h3><p>Asegura que tu reunión de arranque cubra todos los puntos esenciales.</p>"
+        },
+        {
+            "id": 19,
+            "title": "Business Model Canvas",
+            "category": "gobernanza",
+            "type": "tool",
+            "description": "Modelo de negocio visual en 9 bloques. Ideal para startups y nuevos productos.",
+            "image": "https://placehold.co/600x400/007AFF/ffffff?text=BMC",
+            "url": "index.html",
+            "date": "Generador",
+            "tags": [
+                "Gobernanza",
+                "Estrategia"
+            ],
+            "content": "<h3>Gobernanza</h3><p>Visualiza la estrategia completa de tu modelo de negocio en una sola página.</p>"
+        }
+    ]
+}
