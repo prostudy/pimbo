@@ -89,8 +89,14 @@ Los directores de proyectos y equipos dedican **30-40% de su tiempo** a crear do
 
 ✅ **Inteligente** - Usa Claude AI para contexto y coherencia
 
+
+**IMPORTANTE:** No es que la tecnología sea mala, sino que su uso como "muleta" en lugar de "herramienta" está documentado como un factor que reduce la autonomía intelectual y la actividad cerebral.
+Por eso PimBo está diseñado como un asistente que acelera tu trabajo, no como un reemplazo de tu juicio profesional. Usa los artefactos generados como punto de partida y adáptalos con tu experiencia y conocimiento del contexto real del proyecto.
+
 ---
 
+## 🎯 Probar en NotebookLM
+Puedes usar directamente en [NotebookLM](https://notebooklm.google.com/notebook/1be4fd0d-83ee-441d-b6c5-5e8537544f27), sin instalación.
 
 
 ## 🛠️ Instalación
@@ -100,6 +106,8 @@ Los directores de proyectos y equipos dedican **30-40% de su tiempo** a crear do
 - **Claude Code** o acceso a **Claude.ai**
 - Navegador web moderno (para interfaz web)
 - Python 3.8+ (solo para interfaz Streamlit)
+
+
 
 ### Instalación Rápida
 
@@ -680,7 +688,7 @@ in the Software without restriction...
 
 ### Obtener Ayuda
 
-- 📖 **Documentación**: [/pmbok8-agents-system/interface/README.md](pmbok8-agents-system/interface/README.md)
+- 📖 **Documentación**: [pmbok8-agents-system/interface/README.md](pmbok8-agents-system/interface/README.md)
 - 🐛 **Issues**: [GitHub Issues](https://github.com/tu-usuario/pimbo/issues)
 - 💬 **Discusiones**: [GitHub Discussions](https://github.com/tu-usuario/pimbo/discussions)
 - 📧 **Email**: pimbo-support@tu-dominio.com
