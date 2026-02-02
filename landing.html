@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PimBo - Sistema de Agentes de Gestión de Proyectos PMBOK 8 | Automatiza tu Documentación</title>
+    
+    <!-- Meta Tags SEO -->
+    <meta name="description" content="Sistema de agentes inteligentes que automatiza la creación de artefactos de gestión de proyectos según PMBOK 8. Compatible con Claude, Gemini. Soporta Ágil, Predictivo e Híbrido.">
+    <meta name="keywords" content="PMBOK 8, gestión de proyectos, IA, automatización, artefactos PMI, Claude, Gemini, Scrum, Cascada">
+    <meta name="author" content="PimBo Project Management System">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="PimBo - Sistema de Agentes de Gestión de Proyectos PMBOK 8">
+    <meta property="og:description" content="Automatiza la creación de artefactos de gestión de proyectos con IA. Compatible con PMBOK 8, soporta todos los enfoques metodológicos.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pimbo.pm">
+    <meta property="og:image" content="https://todopmp.com/pimbo/images/pmibo_og.png">
+    <meta property="og:site_name" content="PimBo">
+    <meta property="og:locale" content="es_ES">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PimBo - Sistema de Agentes PMBOK 8">
+    <meta name="twitter:description" content="Automatiza tu documentación de gestión de proyectos con IA especializada en PMBOK 8.">
+    <meta name="twitter:image" content="https://todopmp.com/pimbo/images/pmibo_og.png">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "PimBo",
+        "description": "Sistema de agentes inteligentes para automatización de artefactos de gestión de proyectos según PMBOK 8",
+        "url": "https://pimbo.pm",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "MXN"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "PimBo Project Management System"
+        },
+        "keywords": ["PMBOK 8", "gestión de proyectos", "IA", "automatización", "artefactos PMI"],
+        "programmingLanguage": "JavaScript",
+        "softwareVersion": "1.0"
+    }
+    </script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'dark': {
+                            'bg': '#0f172a',
+                            'card': '#1e293b',
+                            'border': '#334155',
+                            'text': '#f1f5f9',
+                            'accent': '#3b82f6',
+                            'secondary': '#64748b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Styles -->
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a0e1a 0%, #1a1f36 50%, #0f172a 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(29, 78, 216, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(30, 64, 175, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 50%, #1e40af 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 50%, #1e40af 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .card-hover:hover::before {
+            left: 100%;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 
+                0 25px 50px rgba(59, 130, 246, 0.15),
+                0 0 0 1px rgba(59, 130, 246, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 50%, #1e40af 100%);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 
+                0 15px 35px rgba(59, 130, 246, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(29, 78, 216, 0.1) 100%);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(29, 78, 216, 0.2) 100%);
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 
+                0 15px 35px rgba(59, 130, 246, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+        
+        .step-number {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 50%, #1e40af 100%);
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 1.3rem;
+            box-shadow: 
+                0 8px 25px rgba(59, 130, 246, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+        
+        .step-number::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8, #1e40af);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.5;
+            filter: blur(8px);
+        }
+        
+        .feature-icon {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 50%, #1e40af 100%);
+            width: 72px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 
+                0 10px 30px rgba(59, 130, 246, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+        
+        .feature-icon::after {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8, #1e40af);
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0.4;
+            filter: blur(12px);
+        }
+        
+        .badge {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(29, 78, 216, 0.2) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .badge:hover::before {
+            left: 100%;
+        }
+        
+        .disclaimer-box {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.1) 100%);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .disclaimer-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.05), transparent);
+            transition: left 0.8s ease;
+        }
+        
+        .disclaimer-box:hover::before {
+            left: 100%;
+        }
+        
+        .stats-grid > div {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(29, 78, 216, 0.05) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .stats-grid > div:hover {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(29, 78, 216, 0.1) 100%);
+            border-color: rgba(59, 130, 246, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Ensure content is above background */
+        header, section, footer {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body class="bg-dark-bg text-dark-text">
+    <!-- Hero Section -->
+    <header class="min-h-screen flex items-center justify-center px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="mb-8">
+                <br>
+                <div class="mb-8">
+                    <span class="inline-block px-4 py-2 badge rounded-full text-sm font-semibold">
+                        <i class="fas fa-robot mr-2"></i>Powered by AI Agents
+                    </span>
+                </div>  
+                <!-- PimBo Logo -->
+                <img src="https://todopmp.com/wp-content/uploads/2026/01/pimbo_letters-clean.png" 
+                     alt="PimBo Logo" 
+                     class="h-16 md:h-20 mx-auto mb-4 opacity-90 hover:opacity-100 transition-opacity">
+                
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            Gestión de<br>
+                <span class="gradient-text">Proyectos con IA</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-dark-secondary mb-8 max-w-3xl mx-auto leading-relaxed">
+                Crea Actas, WBS, Cronogramas y más artefactos PMBOK 8 en segundos.<br>
+                <span class="text-green-400 font-semibold">Gratis • Compatible con Claude, Gemini y NotebookLM</span>
+            </p>
+            
+            <!-- Disclaimer -->
+            <div class="mb-8 max-w-2xl mx-auto">
+                <div class="disclaimer-box rounded-lg p-4 text-sm text-yellow-300">
+                    <i class="fas fa-flask mr-2"></i>
+                    <strong>Experimental:</strong> PimBo es un entorno de IA para prototipar productos y analizar el impacto de la IA en gestión de proyectos.<br><br>
+                </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+                <a href="https://notebooklm.google.com/notebook/1be4fd0d-83ee-441d-b6c5-5e8537544f27" target="_blank" 
+                   class="btn-secondary px-8 py-4 rounded-lg font-semibold text-dark-text flex items-center justify-center gap-3 text-lg">
+                    <i class="fas fa-play text-xl"></i>
+                   Usar en NotebookLM<br> 
+                </a>
+
+                <a href="https://github.com/prostudy/pimbo" target="_blank" 
+                   class="btn-primary px-8 py-4 rounded-lg font-semibold text-white flex items-center justify-center gap-3 text-lg">
+                    <i class="fab fa-github text-xl"></i>
+                    Proyecto
+                </a>
+                
+               
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center stats-grid">
+                <div>
+                    <div class="text-3xl font-bold gradient-text">%</div>
+                    <div class="text-dark-secondary">Reducción en tiempo de documentación</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold gradient-text">100%</div>
+                    <div class="text-dark-secondary">Cumplimiento PMBOK 8</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold gradient-text">7</div>
+                    <div class="text-dark-secondary">Dominios cubiertos</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold gradient-text">∞</div>
+                    <div class="text-dark-secondary">Proyectos gestionados</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Propuesta de Valor -->
+    <section class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Elimina el <span class="gradient-text">Trabajo Manual</span> y 
+                    <span class="gradient-text">Asegura el Cumplimiento</span>
+                </h2>
+                <p class="text-xl text-dark-secondary max-w-3xl mx-auto">
+                    Deja atrás las horas de documentación repetitiva y los errores humanos. 
+                    PimBo automatiza la creación de artefactos profesionales mientras garantiza 
+                    el cumplimiento total de los estándares PMBOK 8.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-dark-accent">El Problema</h3>
+                    <ul class="space-y-4 text-dark-secondary">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-times-circle text-red-500 mt-1"></i>
+                            <span>40-60% del tiempo del gestor se consume en documentación</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-times-circle text-red-500 mt-1"></i>
+                            <span>Errores comunes en artefactos generados manualmente</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-times-circle text-red-500 mt-1"></i>
+                            <span>Inconsistencia entre documentos del mismo proyecto</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-times-circle text-red-500 mt-1"></i>
+                            <span>Dificultad para mantenerse actualizado con PMBOK 8</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-dark-accent">La Solución</h3>
+                    <ul class="space-y-4 text-dark-secondary">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                            <span>Generación automática en segundos, no horas</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                            <span>Artefactos 100% alineados con PMBOK 8</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                            <span>Coherencia perfecta entre todos los documentos</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                            <span>Actualización automática con últimos estándares</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Características Clave -->
+    <section class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Características <span class="gradient-text">Revolucionarias</span>
+                </h2>
+                <p class="text-xl text-dark-secondary max-w-3xl mx-auto">
+                    Diseñado por expertos en gestión de proyectos, potenciado por inteligencia artificial.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Adaptabilidad Total -->
+                <div class="bg-dark-card p-8 rounded-2xl card-hover">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-dark-accent">Adaptabilidad Total</h3>
+                    <p class="text-dark-secondary mb-4">
+                        Soporta todos los enfoques metodológicos sin esfuerzo. Ya sea Cascada tradicional, 
+                        Scrum ágil o un enfoque Híbrido, PimBo se adapta perfectamente a tu estilo de gestión.
+                    </p>
+                    <ul class="space-y-2 text-sm text-dark-secondary">
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Predictivo (Cascada)</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Ágil (Scrum/Kanban)</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Híbrido (Mix & Match)</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Cobertura 360° -->
+                <div class="bg-dark-card p-8 rounded-2xl card-hover">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-dark-accent">Cobertura 360°</h3>
+                    <p class="text-dark-secondary mb-4">
+                        Cubre los 7 dominios de desempeño del PMBOK 8 con artefactos especializados. 
+                        Desde la gobernanza hasta la gestión de riesgos, tienes todo cubierto.
+                    </p>
+                    <ul class="space-y-2 text-sm text-dark-secondary">
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Gobernanza, Alcance, Cronograma</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Finanzas, Interesados, Recursos</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Riesgo y Ágil</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Arquitectura Inteligente -->
+                <div class="bg-dark-card p-8 rounded-2xl card-hover">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-dark-accent">Arquitectura Inteligente</h3>
+                    <p class="text-dark-secondary mb-4">
+                        El Agente Coordinador orquesta subagentes especializados, cada uno experto en su dominio. 
+                        Resultados profesionales, coherentes y listos para usar.
+                    </p>
+                    <ul class="space-y-2 text-sm text-dark-secondary">
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>8 subagentes especializados</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Compatible con Claude y Gemini</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Formatos optimizados (CSV, MD, JSON)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cómo Funciona -->
+    <section class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Cómo <span class="gradient-text">Funciona</span>
+                </h2>
+                <p class="text-xl text-dark-secondary max-w-3xl mx-auto">
+                    Tres simples pasos para transformar tu gestión de proyectos.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Paso 1 -->
+                <div class="text-center">
+                    <div class="step-number mx-auto mb-6">1</div>
+                    <h3 class="text-2xl font-bold mb-4 text-dark-accent">Define tu Proyecto</h3>
+                    <p class="text-dark-secondary mb-4">
+                        Ingresa los datos básicos: objetivos del proyecto, fase actual, 
+                        y enfoque metodológico preferido. (Utiliza <a href="https://notebooklm.google.com/notebook/1be4fd0d-83ee-441d-b6c5-5e8537544f27" target="_blank">NotebookLM</a>, para empezar rápido)
+                    </p>
+                    <div class="bg-dark-card p-4 rounded-lg border border-dark-border">
+                        <code class="text-sm text-green-400">
+                            Proyecto: "Sistema CRM"<br>
+                            Fase: "Planificación"<br>
+                            Enfoque: "Híbrido"
+                        </code>
+                    </div>
+                </div>
+                
+                <!-- Paso 2 -->
+                <div class="text-center">
+                    <div class="step-number mx-auto mb-6">2</div>
+                    <h3 class="text-2xl font-bold mb-4 text-dark-accent">Activa Expertos</h3>
+                    <p class="text-dark-secondary mb-4">
+                        El Agente Coordinador analiza tus necesidades y activa 
+                        automáticamente los subagentes especializados.
+                    </p>
+                    <div class="bg-dark-card p-4 rounded-lg border border-dark-border">
+                        <code class="text-sm text-green-400">
+                            gobernanza-agent → Acta<br>
+                            alcance-agent → WBS<br>
+                            riesgo-agent → Registro
+                        </code>
+                    </div>
+                </div>
+                
+                <!-- Paso 3 -->
+                <div class="text-center">
+                    <div class="step-number mx-auto mb-6">3</div>
+                    <h3 class="text-2xl font-bold mb-4 text-dark-accent">Obtén Resultados</h3>
+                    <p class="text-dark-secondary mb-4">
+                        Recibe artefactos profesionales en formatos optimizados, 
+                        listos para presentar y usar en tu proyecto real.
+                    </p>
+                    <div class="bg-dark-card p-4 rounded-lg border border-dark-border">
+                        <code class="text-sm text-green-400">
+                            ✓ acta-constitucion.md<br>
+                            ✓ wbs.json<br>
+                            ✓ registro-riesgos.csv
+                        </code>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA Section -->
+            <div class="mt-20 text-center bg-dark-card p-12 rounded-2xl border border-dark-border">
+                <h3 class="text-3xl font-bold mb-6">
+                    ¿Listo para <span class="gradient-text">Revolucionar</span> tu Gestión de Proyectos?
+                </h3>
+                <p class="text-xl text-dark-secondary mb-8 max-w-2xl mx-auto">
+                    Únete a administradores de proyectos que ya están ahorrando 
+                    horas de trabajo manual con PimBo.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://github.com/prostudy/pimbo"  target="_blank"
+                       class="btn-primary px-8 py-4 rounded-lg font-semibold text-white flex items-center justify-center gap-3">
+                        <i class="fab fa-github"></i>
+                        PimBo Open Source
+                    </a>
+                    
+                    <a href="https://notebooklm.google.com/notebook/1be4fd0d-83ee-441d-b6c5-5e8537544f27"  target="_blank"
+                       class="btn-secondary px-8 py-4 rounded-lg font-semibold text-dark-text flex items-center justify-center gap-3">
+                        <i class="fas fa-play"></i>
+                        Usar sin instalar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <div class="mb-8 max-w-2xl mx-auto">
+                <div class="bg-yellow-900/20 border border-yellow-600/30 rounded-lg p-4 text-sm text-yellow-300">
+                    <i class="fas fa-lightbulb mr-2"></i>
+                    <strong>Nota importante:</strong> No es que la tecnología sea "mala", sino que su uso como "muleta" en lugar de "herramienta" está <strong>documentado</strong> como un factor que reduce la <strong>autonomía intelectual</strong> y la actividad cerebral.
+                    <br><br>
+                    <strong>PimBo</strong> está diseñado como un asistente que acelera tu trabajo, no como un reemplazo de tu juicio profesional. Usa los artefactos generados como punto de partida y adáptalos con tu experiencia y conocimiento del contexto real del proyecto.
+                </div>
+            </div>
+            
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 border-t border-dark-border">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h4 class="text-xl font-bold mb-4 gradient-text">PimBo</h4>
+                    <p class="text-dark-secondary text-sm">
+                        Sistema de agentes inteligentes para gestión de proyectos PMBOK 8.
+                    </p>
+                </div>
+                
+                <div>
+                    <h5 class="font-semibold mb-4 text-dark-accent">Producto</h5>
+                    <ul class="space-y-2 text-sm text-dark-secondary">
+                        <li><a href="https://github.com/prostudy/pimbo?tab=readme-ov-file#-caracter%C3%ADsticas-principales" target="_blank" class="hover:text-dark-accent">Características</a></li>
+                        <li><a href="https://github.com/prostudy/pimbo?tab=readme-ov-file#-demo-r%C3%A1pida" target="_blank" class="hover:text-dark-accent">Cómo Funciona</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="font-semibold mb-4 text-dark-accent">Recursos</h5>
+                    <ul class="space-y-2 text-sm text-dark-secondary">
+                        <li><a href="https://github.com/prostudy/pimbo" target="_blank" class="hover:text-dark-accent">GitHub</a></li>
+                        <li><a href="https://notebooklm.google.com/notebook/1be4fd0d-83ee-441d-b6c5-5e8537544f27" target="_blank" class="hover:text-dark-accent">Usar gratis dentro de NotebookLM</a></li>
+                        <li><a href="https://todopmp.com/pimbo/pimboard.php" target="_blank" class="hover:text-dark-accent">PimBoard</a></li>
+                    </ul>
+                </div>
+                
+                <!-- <div>
+                    <h5 class="font-semibold mb-4 text-dark-accent">Comunidad</h5>
+                    <ul class="space-y-2 text-sm text-dark-secondary">
+                        <li><a href="#blog" class="hover:text-dark-accent">Blog</a></li>
+                        <li><a href="#support" class="hover:text-dark-accent">Soporte</a></li>
+                        <li><a href="#contact" class="hover:text-dark-accent">Contacto</a></li>
+                    </ul>
+                </div> -->
+            </div>
+            
+            <div class="border-t border-dark-border pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-dark-secondary text-sm mb-4 md:mb-0">
+                        © 2026 PimBo. Todos los derechos reservados. Alineado con PMBOK 8 del PMI.
+                    </p>
+                    
+                    <div class="flex gap-4">
+                        <a href="https://github.com/prostudy/pimbo" 
+                           class="btn-secondary px-6 py-2 rounded-lg text-sm font-semibold flex items-center gap-2">
+                            <i class="fab fa-github"></i>
+                            Descargar
+                        </a>
+                        
+                        <a href="https://notebooklm.google.com/notebook/1be4fd0d-83ee-441d-b6c5-5e8537544f27" target="_blank" 
+                           class="btn-secondary px-6 py-2 rounded-lg text-sm font-semibold flex items-center gap-2">
+                            <i class="fas fa-play"></i>
+                            Usar gratis  
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.card-hover').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
